@@ -1,13 +1,14 @@
 {
   "name": "@lucasheight/odata-observable-store",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "OData observable store pattern. ",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
     "tsc": "tsc",
-    "del": "rmdir /s /q test",
-    "build": "rmdir /s /q dist && tsc"
+    "del": "rmdir /s /q dist",
+    "build": "rmdir /s /q dist && tsc",
+    "publish":"npm publish --access public"
   },
   "repository": {
     "type": "git",

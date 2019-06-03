@@ -4,6 +4,7 @@ import { tap, map, filter } from 'rxjs/operators';
 import { IsGuid } from './IsGuid';
 import { IStoreNotifier, IStoreSettings } from './IStore';
 import { action } from './store.enum';
+import { IOdataCollection } from './IOdataCollection';
 
 
 

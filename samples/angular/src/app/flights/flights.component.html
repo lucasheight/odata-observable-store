@@ -1,3 +1,8 @@
-<p>
-  flights works!
-</p>
+<h2>Flights</h2>
+
+<div *ngFor="let flight of flights$ |async">
+  <h4>{{flight.Name}}</h4>
+  <p>
+    Address: {{flight.Location.Address}}
+  </p>
+</div>

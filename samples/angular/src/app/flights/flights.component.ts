@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, pipe } from 'rxjs';
 import { takeUntil, map } from "rxjs/operators";
 import { FlightsService } from '../services/flights.service';
 import { IFlight } from '../services/IFlight';
@@ -15,9 +15,12 @@ export class FlightsComponent implements OnInit, OnDestroy {
   constructor(private flightService: FlightsService) { }
 
   ngOnInit() {
-    //this.flights$ = this.flightService.state$;
+    this.flights$ = this.flightService.state$.pipe(takeUntil(this.destroy$), map(m => m.value));
 
+    this.flightService.query();
   }
+
+  
   ngOnDestroy() {
     this.destroy$.next();
   }

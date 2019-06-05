@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FlightsComponent } from './flights/flights.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PeopleComponent } from './people/people.component';
-import { CredentialInterceptorService } from './services/credential-interceptor.service';
+import { OdataInterceptorService } from './services/odata-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { CredentialInterceptorService } from './services/credential-interceptor.
     ReactiveFormsModule
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:CredentialInterceptorService,multi:true}
+    {provide:HTTP_INTERCEPTORS,useClass:OdataInterceptorService,multi:true}
 
   ],
   bootstrap: [AppComponent]

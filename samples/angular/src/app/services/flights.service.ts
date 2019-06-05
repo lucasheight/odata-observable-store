@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FlightsService extends ODataStore<IFlight>{
-baseUrl:string ="https://services.odata.org/TripPinRESTierService/(S(jak0ecbo4gepctqprey0mz4b))/Airports"
+baseUrl:string ="/Airports"
   constructor(protected http: HttpClient) {
     super(http);
   }

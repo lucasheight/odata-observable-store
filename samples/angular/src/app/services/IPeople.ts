@@ -3,7 +3,7 @@ export interface IPeople{
     FirstName:string;
     LastName:string;
     MiddleName?:string;
-    Gender:string;
+    Gender:Gender;
     Age?:string|number;
     Emails?:string[];
     FavouriteFeature:string;
@@ -22,4 +22,7 @@ export interface ICity{
     Name:string;
     CountryRegion:string;
     Region:string;
+}
+export enum Gender{
+    Male="Male",Female="Female",Unknown="Unknown"
 }

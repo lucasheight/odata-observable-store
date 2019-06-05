@@ -4,7 +4,7 @@ import { Subject, Observable, fromEvent } from 'rxjs';
 import { IPeople } from '../services/IPeople';
 import { takeUntil, map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { action, IStoreNotifier } from '@lucasheight/odata-observable-store';
+import { action, IStoreNotifier } from '../../../../../src/';//'@lucasheight/odata-observable-store';
 
 @Component({
   selector: 'app-people',
@@ -26,7 +26,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     UserName: ["", Validators.required],
     FirstName: ["", Validators.required],
     LastName: ["", Validators.required],
-    Gender: ["", Validators.required]
+    MiddleName: [""]
   });
   isNew: boolean = true;
   @ViewChild("search", { static: false }) searchCtr: ElementRef;
@@ -37,8 +37,12 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     this.resetForm();
     this.message$ = this.peopleService.notifier$.pipe(
       takeUntil(this.destroy$),
-      //filter(f => f.action === action.Delete || f.action === action.Insert || f.action === action.Update)
+      
     );
+    this.message$.pipe(takeUntil(this.destroy$),filter(f=>f.action===action.Delete)).subscribe(s=>{
+      //clear the edit form after a delete
+      this.resetForm();
+    })
     // this.message$.subscribe(s => {
     //   console.log(s)
     // })
@@ -67,7 +71,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       )
   }
-  public onPerson = (username: string) => {
+  public onPerson = (username: string): void => {
     this.peopleService.get(<IPeople>{ UserName: username }, "UserName")
       .subscribe(s => {
         this.isNew = false;
@@ -76,26 +80,35 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
             UserName: s.UserName,
             FirstName: s.FirstName,
             LastName: s.LastName,
-            Gender: s.Gender
+            MiddleName: s.MiddleName
           });
         this.formGroup.get("UserName").disable();
       })
   }
-  public onSave = () => {
+  public onSave = (): void => {
     let item: IPeople = this.formGroup.value;
-
-    console.log("save", item)
+    item.UserName = this.formGroup.getRawValue().UserName;
+   // Microsoft.OData.SampleService.Models.TripPin.PersonGender
+   // item.Gender=`Microsoft.OData.SampleService.Models.TripPin.PersonGender'Female'`;
+   //item.Gender = Gender.Unknown;
+    console.log(this.isNew?"Insert":"Update", item)
     this.isNew ? this.peopleService.insert(item) : this.peopleService.patch(item, "UserName");
   }
-  public onCancel = () => this.resetForm();
+  public onRemove = (userName: string): void => {
+    console.log("remove", userName);
+    this.peopleService.remove(<IPeople>{ UserName: userName }, "UserName");
+    
+  
+  }
+  public onCancel = (): void => this.resetForm();
 
-  private resetForm() {
+  private resetForm(): void {
     this.isNew = true;
     this.formGroup.setValue({
       UserName: "",
       FirstName: "",
       LastName: "",
-      Gender: ""
+      MiddleName: ""
     });
     this.formGroup.get("UserName").enable();
   }

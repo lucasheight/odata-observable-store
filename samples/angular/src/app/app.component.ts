@@ -15,5 +15,5 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'angular';
+  title = 'TripPin RESTier OData V4 Service';
 }

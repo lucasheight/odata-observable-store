@@ -1,5 +1,7 @@
 # Angular
-This sample sets up a simple odata service from the [TripPin Sample Service](https://services.odata.org/TripPinRESTierService).
+This sample consumes a simple odata service from the [TripPin Sample Service](https://services.odata.org/TripPinRESTierService).
+
+More information on the service can be found here https://www.odata.org/odata-services/.
 
 ## Getting Started
 1. Make sure you have Angular CLI installed.

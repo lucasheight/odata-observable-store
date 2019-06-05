@@ -24,7 +24,7 @@ export abstract class ODataStore<T>  {
     protected _response$: Subject<HttpResponse<IOdataCollection<T>>> = new Subject();
     public response$: Observable<HttpResponse<IOdataCollection<T>>> = this._response$.asObservable();
     private _settings: IStoreSettings = {
-        //defaults
+        //default store settings
         notifyOnDelete: true,
         notifyOnGet: false,
         notifyOnInsert: true,
@@ -43,7 +43,7 @@ export abstract class ODataStore<T>  {
             segments.push(...queryString.split('&'))
         }
         segments.push("$count=true");
-
+        //prepend the ? if there are segments
         let query: string = segments.length>0?`?${segments.join('&')}`:"";
 
         this.http.get<IOdataCollection<T>>(`${this.baseUrl}${query}`, { observe: "response" })

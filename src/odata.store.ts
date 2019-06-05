@@ -44,9 +44,9 @@ export abstract class ODataStore<T>  {
         }
         segments.push("$count=true");
 
-        let query: string = segments.join('&'); //; state ? `${toODataString(state)}&$count=true` : "";
+        let query: string = segments.length>0?`?${segments.join('&')}`:"";
 
-        this.http.get<IOdataCollection<T>>(`${this.baseUrl}?${query}`, { observe: "response" })
+        this.http.get<IOdataCollection<T>>(`${this.baseUrl}${query}`, { observe: "response" })
             .subscribe(s => {
                 this._response$.next(s);
                 let currentState = Object.assign({}, this._state$.getValue(), this._initState);
@@ -60,7 +60,7 @@ export abstract class ODataStore<T>  {
 
         let segments: string[] = [];
         if (queryString) { segments.push(...queryString.split('&')) }
-        let query: string = segments.join('&');
+        let query: string = segments.length>0?`?${segments.join('&')}`:"";
         let id: string;
         if (Array.isArray(keys)) {
             id = keys.map(m => `${m}=${this.quoteKey(value[m as string])}`).join();
@@ -69,15 +69,15 @@ export abstract class ODataStore<T>  {
             id = this.quoteKey(value[keys as string]);
         }
 
-        let getObs = this.http.get<T>(`${this.baseUrl}(${id})?${query}`, { observe: "response" }).pipe(tap(t => { this._response$.next(t); this.dispatchNotifier(action.Get) }), map(m => m.body));
+        let getObs = this.http.get<T>(`${this.baseUrl}(${id})${query}`, { observe: "response" }).pipe(tap(t => { this._response$.next(t); this.dispatchNotifier(action.Get) }), map(m => m.body));
         return getObs;
 
     }
     public insert = (item: T, queryString: string = null) => {
         let segments: string[] = [];
         if (queryString) { segments.push(...queryString.split('&')) }
-        let query: string = segments.join('&');
-        this.http.post<T>(`${this.baseUrl}?${query}`, item, { observe: "response" }).subscribe(s => {
+        let query: string = segments.length>0?`?${segments.join('&')}`:"";
+        this.http.post<T>(`${this.baseUrl}${query}`, item, { observe: "response" }).subscribe(s => {
             this._response$.next(s);
             this.updateStore(s.body, "insert");
         })
@@ -85,7 +85,7 @@ export abstract class ODataStore<T>  {
     public update = <K extends keyof T>(item: T, keys: K | K[] = null, queryString: string = null, method: "put" | "post" = "put") => {
         let segments: string[] = [];
         if (queryString) { segments.push(...queryString.split('&')) }
-        let query: string = segments.join('&');
+        let query: string =segments.length>0?`?${segments.join('&')}`:"";
         let id: string;
         if (Array.isArray(keys)) {
             id = keys.map(m => `${m}=${this.quoteKey(item[m as string])}`).join();
@@ -93,7 +93,7 @@ export abstract class ODataStore<T>  {
         else {
             id = this.quoteKey(item[keys as string]);
         }
-        let url = keys != null ? `${this.baseUrl}(${id})?${query}` : `${this.baseUrl}?${query}`;
+        let url = keys != null ? `${this.baseUrl}(${id})${query}` : `${this.baseUrl}${query}`;
         let operation: Observable<HttpResponse<Object>>;
         switch (method) {
             case "post":
@@ -114,7 +114,7 @@ export abstract class ODataStore<T>  {
     public patch = <K extends keyof T>(item: T, keys: K | K[] = null, queryString: string = null, method: "patch" | "put" | "post" = "patch") => {
         let segments: string[] = [];
         if (queryString) { segments.push(...queryString.split('&')) }
-        let query: string = segments.join('&');
+        let query: string = segments.length>0?`?${segments.join('&')}`:"";
         let id: string;
         if (Array.isArray(keys)) {
             id = keys.map(m => `${m}=${this.quoteKey(item[m as string])}`).join();
@@ -122,7 +122,7 @@ export abstract class ODataStore<T>  {
         else {
             id = this.quoteKey(item[keys as string]);
         }
-        let url = keys != null ? `${this.baseUrl}(${id})?${query}` : `${this.baseUrl}?${query}`;
+        let url = keys != null ? `${this.baseUrl}(${id})${query}` : `${this.baseUrl}${query}`;
         let operation: Observable<HttpResponse<Object>>;
         switch (method) {
             case "put":

@@ -12,6 +12,7 @@ export class PeopleService extends ODataStore<IPeople>{
   constructor(protected http: HttpClient) {
     super(http, {notifyOnGet:true});
   }
+  //demonstrates how to apply a filter to a query
   queryByFirstName = (query: string): void => {
     let filter = `$filter=contains(FirstName,'${query}')`;
     this.query(filter);

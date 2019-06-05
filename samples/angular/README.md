@@ -1,27 +1,20 @@
 # Angular
+This sample sets up a simple odata service from the [TripPin Sample Service](https://services.odata.org/TripPinRESTierService).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+## Getting Started
+1. Make sure you have Angular CLI installed.
 
-## Development server
+    `npm install -g @angular/cli`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Run `npm install` in this folder.
+3. Run `ng serve` in this folder.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Enable Chrome CORS
+Or should say, **disable browser web security in chrome.**
 
-## Build
+In Win10:
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --incognito --disable-web-security --disable-gpu --user-data-dir=%LOCALAPPDATA%\Google\chromeTemp
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**WARNING** - It's not recommended to use this for casual browsing. I created a shortcut on my desktop to enable this when needed.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

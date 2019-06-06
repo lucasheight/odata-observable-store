@@ -22,7 +22,7 @@
 
 **Delete**: 
 
-*Defined in action.enum.ts:2*
+*Defined in [action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/2519408/src/action.enum.ts#L2)*
 
 ___
 <a id="get"></a>
@@ -31,7 +31,7 @@ ___
 
 **Get**: 
 
-*Defined in action.enum.ts:2*
+*Defined in [action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/2519408/src/action.enum.ts#L2)*
 
 ___
 <a id="insert"></a>
@@ -40,7 +40,7 @@ ___
 
 **Insert**: 
 
-*Defined in action.enum.ts:2*
+*Defined in [action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/2519408/src/action.enum.ts#L2)*
 
 ___
 <a id="query"></a>
@@ -49,7 +49,7 @@ ___
 
 **Query**: 
 
-*Defined in action.enum.ts:2*
+*Defined in [action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/2519408/src/action.enum.ts#L2)*
 
 ___
 <a id="update"></a>
@@ -58,7 +58,7 @@ ___
 
 **Update**: 
 
-*Defined in action.enum.ts:2*
+*Defined in [action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/2519408/src/action.enum.ts#L2)*
 
 ___
 

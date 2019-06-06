@@ -43,9 +43,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
       //clear the edit form after a delete
       this.resetForm();
     })
-    // this.message$.subscribe(s => {
-    //   console.log(s)
-    // })
+    
     this.people$ = this.peopleService.state$.pipe(takeUntil(this.destroy$), map(m => m.value));
     this.peopleService.query();
 

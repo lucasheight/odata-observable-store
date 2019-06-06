@@ -1,13 +1,14 @@
 {
   "name": "@lucasheight/odata-observable-store",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "OData observable store pattern. ",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
     "tsc": "tsc",
     "del": "rmdir /s /q dist",
-    "build": "rmdir /s /q dist && tsc"
+    "docs": "rmdir /s /q docs && typedoc --out docs --theme markdown src",
+    "build": "rmdir /s /q dist && tsc && npm run docs"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,11 @@
   },
   "keywords": [
     "odata",
-    "observable store"
+    "v4",
+    "store",
+    "observable store",
+    "angular",
+    "rxjs"
   ],
   "author": "Lynden Garrett",
   "license": "MIT",
@@ -32,6 +37,9 @@
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
+    "jsdoc-to-markdown": "^5.0.0",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-markdown": "^1.2.1",
     "typescript": "^3.5.1"
   }
 }

@@ -37,9 +37,9 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     this.resetForm();
     this.message$ = this.peopleService.notifier$.pipe(
       takeUntil(this.destroy$),
-      
+
     );
-    this.message$.pipe(takeUntil(this.destroy$),filter(f=>f.action===action.Delete)).subscribe(s=>{
+    this.message$.pipe(takeUntil(this.destroy$), filter(f => f.action === action.Delete)).subscribe(s => {
       //clear the edit form after a delete
       this.resetForm();
     })
@@ -88,17 +88,14 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
   public onSave = (): void => {
     let item: IPeople = this.formGroup.value;
     item.UserName = this.formGroup.getRawValue().UserName;
-   // Microsoft.OData.SampleService.Models.TripPin.PersonGender
-   // item.Gender=`Microsoft.OData.SampleService.Models.TripPin.PersonGender'Female'`;
-   //item.Gender = Gender.Unknown;
-    console.log(this.isNew?"Insert":"Update", item)
+    console.log(this.isNew ? "Insert" : "Update", item)
     this.isNew ? this.peopleService.insert(item) : this.peopleService.patch(item, "UserName");
   }
   public onRemove = (userName: string): void => {
     console.log("remove", userName);
     this.peopleService.remove(<IPeople>{ UserName: userName }, "UserName");
-    
-  
+
+
   }
   public onCancel = (): void => this.resetForm();
 

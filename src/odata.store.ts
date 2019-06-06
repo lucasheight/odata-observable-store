@@ -8,7 +8,7 @@ import { IOdataCollection } from './IOdataCollection';
 
 
 /**
- * Creates and Odata service store that follows the observable store pattern.
+ * Creates an Odata service store that follows the observable store pattern.
  *@description Provides default odata rest methods the handle the most common odata use.
  *In cases where public methods are not suffient use the protected methods, fillStore, updateStore and dispatchNotifier
  */
@@ -18,16 +18,16 @@ export abstract class ODataStore<T>  {
      * The base url for the odata service
      */
     abstract baseUrl: string;
-    protected _state$: BehaviorSubject<IOdataCollection<T>> = new BehaviorSubject(undefined);
+    private _state$: BehaviorSubject<IOdataCollection<T>> = new BehaviorSubject(undefined);
     /**
      * Current Observable store state
      */
     public state$: Observable<IOdataCollection<T>> = this._state$.asObservable().pipe(filter(f => typeof f === "object"));/* only get objects not the default state */
-    protected _notifier$: Subject<IStoreNotifier<T>> = new Subject();
+    private _notifier$: Subject<IStoreNotifier<T>> = new Subject();
    
     /**Current notifier Observable state */
     public notifier$: Observable<IStoreNotifier<T>> = this._notifier$.asObservable();
-    protected _response$: Subject<HttpResponse<IOdataCollection<T>>> = new Subject();
+    private _response$: Subject<HttpResponse<IOdataCollection<T>>> = new Subject();
     /**Current response observable state */
     public response$: Observable<HttpResponse<IOdataCollection<T>>> = this._response$.asObservable();
     private _settings: IStoreSettings = {

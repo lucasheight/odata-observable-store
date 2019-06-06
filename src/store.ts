@@ -1,6 +1,6 @@
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { IStoreNotifier, IStoreSettings } from './IStore';
-import { action } from './store.enum';
+import { action } from './action.enum';
 
 
 

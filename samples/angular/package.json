@@ -19,7 +19,7 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
-    "@lucasheight/odata-observable-store": "^1.0.6",
+    "@lucasheight/odata-observable-store": "^1.0.7",
     "rxjs": "^6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -33,6 +33,6 @@
     "@types/node": "~8.9.4",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.1"
   }
 }

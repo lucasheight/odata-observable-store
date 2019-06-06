@@ -4,7 +4,7 @@ import { Subject, Observable, fromEvent } from 'rxjs';
 import { IPeople } from '../services/IPeople';
 import { takeUntil, map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { action, IStoreNotifier } from '../../../../../src/';//'@lucasheight/odata-observable-store';
+import { action, IStoreNotifier } from '@lucasheight/odata-observable-store';
 
 @Component({
   selector: 'app-people',

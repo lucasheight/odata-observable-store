@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ODataStore, IStoreSettings } from '../../../../../src' //'@lucasheight/odata-observable-store';
+import { ODataStore, IStoreSettings } from '@lucasheight/odata-observable-store';
 import { IPeople } from './IPeople';
 import { HttpClient } from '@angular/common/http';
 

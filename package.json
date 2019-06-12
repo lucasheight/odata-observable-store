@@ -1,6 +1,6 @@
 {
   "name": "@lucasheight/odata-observable-store",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "OData observable store pattern. ",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

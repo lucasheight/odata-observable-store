@@ -60,7 +60,7 @@ export abstract class ODataStore<T>  {
         if (queryString) {
             segments.push(...queryString.split('&'))
         }
-        segments.push("$count=true");
+       // segments.push("$count=true");
         //prepend the ? if there are segments
         let query: string = segments.length > 0 ? `?${segments.join('&')}` : "";
 

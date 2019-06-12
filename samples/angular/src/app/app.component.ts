@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
       </h1>
     </div>
 <app-people></app-people>
+<div>
+  <app-kendo-grid></app-kendo-grid>
+</div>
     
   `,
   styles: []

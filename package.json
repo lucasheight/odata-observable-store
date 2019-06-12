@@ -33,6 +33,7 @@
     "@angular/cli": "^8.0.1",
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
+    "@progress/kendo-theme-default": "^3.6.1",
     "rxjs": "^6.5.2",
     "zone": "^0.3.4",
     "zone.js": "^0.9.1"

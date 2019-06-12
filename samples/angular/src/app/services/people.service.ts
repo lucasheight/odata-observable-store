@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ODataStore, IStoreSettings } from '@lucasheight/odata-observable-store';
 import { IPeople } from './IPeople';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +18,5 @@ export class PeopleService extends ODataStore<IPeople>{
     let filter = `$filter=contains(FirstName,'${query}')`;
     this.query(filter);
   }
+  count = ():Observable<number>=> this.http.get<number>(`${this.baseUrl}/$count`)
 }

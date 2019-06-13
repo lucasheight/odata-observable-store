@@ -9,6 +9,7 @@ import { action, IStoreNotifier } from '@lucasheight/odata-observable-store';
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
+  providers:[PeopleService],
   styles: [
     "div.wrapper{width:100%;padding:1em}",
     "div.people{border:1px solid lightgrey; width:45%;float:left;margin:4px;padding:5px}",
@@ -43,7 +44,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
       //clear the edit form after a delete
       this.resetForm();
     })
-    
+
     this.people$ = this.peopleService.state$.pipe(takeUntil(this.destroy$), map(m => m.value));
     this.peopleService.query();
 

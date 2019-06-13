@@ -1,10 +1,31 @@
 <div style="clear: both">
 
-  <kendo-grid [data]="data$ |async">
+  <kendo-grid [data]="data$ |async" [pageSize]="gridState.take" [pageable]="{
+    buttonCount:5,
+    info:true,
+    type:'numeric',
+    pageSizes:true,
+    previousNex:true
+    }" [loading]="loading" [filter]="gridState.filter" [groupable]="false" [group]="gridState.group" [sortable]="true"
+    [skip]="gridState.skip" [sort]="gridState.sort" [filterable]="true" [columnMenu]="true"
+    (dataStateChange)="onStateChange($event)" (add)="onAdd($event)" (edit)="onEdit($event)" (cancel)="onCancel($event)"
+    (save)="onSave($event)" (remove)="onRemove($event)">
+    <ng-template kendoGridToolbarTemplate>
+      <button kendoGridAddCommand>Add new</button>
+    </ng-template>
     <kendo-grid-column field="UserName"></kendo-grid-column>
     <kendo-grid-column field="FirstName"></kendo-grid-column>
+    <kendo-grid-column field="MiddleName"></kendo-grid-column>
     <kendo-grid-column field="LastName"></kendo-grid-column>
-    <kendo-grid-column field="Gender"></kendo-grid-column>
+    <kendo-grid-column field="Gender" [editable]="false"></kendo-grid-column>
+    <kendo-grid-command-column title="">
+      <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem>
+        <button kendoGridEditCommand [primary]="true" title="edit">Edit</button>
+        <button kendoGridRemoveCommand title="Delete record">Remove</button>
+        <button kendoGridSaveCommand [disabled]="fGroup?.invalid" title="Save changes">Save</button>
+        <button kendoGridCancelCommand [title]="isNew ? 'Discard changes' : 'Cancel'">Cancel</button>
+      </ng-template>
+    </kendo-grid-command-column>
   </kendo-grid>
 
 </div>

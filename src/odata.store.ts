@@ -333,6 +333,7 @@ export abstract class ODataStore<T>  {
         if (
             settings.notifyOnDelete && act == action.Delete
             || settings.notifyOnGet && act == action.Get
+            || settings.notifyOnGet && act == action.Query
             || settings.notifyOnInsert && act == action.Insert
             || settings.notifyOnUpdate && act == action.Update
         ) {

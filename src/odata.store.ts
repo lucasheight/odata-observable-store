@@ -342,8 +342,8 @@ export abstract class ODataStore<T>  {
 
     }
 
-    /**Determines if string key should be sigle quoted .
-     * @description The main usecase for this method is to determine if the key is a guid.
+    /**Determines if string key should be single quoted .
+     * @description The main use case for this method is to determine if the key is a guid.
      * If so, do not quote the string.
     */
    private quoteKey = (id: any): string => {

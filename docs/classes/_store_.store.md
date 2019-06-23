@@ -42,7 +42,7 @@
 
 ⊕ **new Store**(initialState: *`T`*, settings?: *[IStoreSettings](../interfaces/_istore_.istoresettings.md)*): [Store](_store_.store.md)
 
-*Defined in [store.ts:18](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L18)*
+*Defined in [store.ts:18](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L18)*
 
 **Parameters:**
 
@@ -63,7 +63,7 @@ ___
 
 **● _notifier$**: *`Subject`<[IStoreNotifier](../interfaces/_istore_.istorenotifier.md)<`T`>>* =  new Subject()
 
-*Defined in [store.ts:10](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L10)*
+*Defined in [store.ts:10](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L10)*
 
 ___
 <a id="_state_"></a>
@@ -72,7 +72,7 @@ ___
 
 **● _state$**: *`BehaviorSubject`<`T`>*
 
-*Defined in [store.ts:9](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L9)*
+*Defined in [store.ts:9](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L9)*
 
 ___
 <a id="notifier_"></a>
@@ -81,7 +81,7 @@ ___
 
 **● notifier$**: *`Observable`<[IStoreNotifier](../interfaces/_istore_.istorenotifier.md)<`T`>>* =  this._notifier$.asObservable()
 
-*Defined in [store.ts:11](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L11)*
+*Defined in [store.ts:11](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L11)*
 
 ___
 <a id="settings"></a>
@@ -90,7 +90,7 @@ ___
 
 **● settings**: *[IStoreSettings](../interfaces/_istore_.istoresettings.md)*
 
-*Defined in [store.ts:19](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L19)*
+*Defined in [store.ts:19](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L19)*
 
 ___
 <a id="state_"></a>
@@ -99,7 +99,7 @@ ___
 
 **● state$**: *`Observable`<`T`>*
 
-*Defined in [store.ts:8](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L8)*
+*Defined in [store.ts:8](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L8)*
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **dispatchNotifier**(act: *[action](../enums/_action_enum_.action.md)*, state?: *`T`*): `void`
 
-*Defined in [store.ts:33](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L33)*
+*Defined in [store.ts:33](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L33)*
 
 **Parameters:**
 
@@ -129,7 +129,7 @@ ___
 
 ▸ **getState**(): `T`
 
-*Defined in [store.ts:27](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L27)*
+*Defined in [store.ts:27](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L27)*
 
 **Returns:** `T`
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **setState**(val: *`T`*): `void`
 
-*Defined in [store.ts:30](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L30)*
+*Defined in [store.ts:30](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L30)*
 
 **Parameters:**
 
@@ -160,7 +160,7 @@ ___
 
 **_settings**: *`object`*
 
-*Defined in [store.ts:12](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L12)*
+*Defined in [store.ts:12](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L12)*
 
 <a id="_settings.notifyondelete"></a>
 
@@ -168,7 +168,7 @@ ___
 
 **● notifyOnDelete**: *`true`* = true
 
-*Defined in [store.ts:14](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L14)*
+*Defined in [store.ts:14](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L14)*
 
 ___
 <a id="_settings.notifyonget"></a>
@@ -177,7 +177,7 @@ ___
 
 **● notifyOnGet**: *`false`* = false
 
-*Defined in [store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L15)*
+*Defined in [store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L15)*
 
 ___
 <a id="_settings.notifyoninsert"></a>
@@ -186,7 +186,7 @@ ___
 
 **● notifyOnInsert**: *`true`* = true
 
-*Defined in [store.ts:16](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L16)*
+*Defined in [store.ts:16](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L16)*
 
 ___
 <a id="_settings.notifyonupdate"></a>
@@ -195,7 +195,7 @@ ___
 
 **● notifyOnUpdate**: *`true`* = true
 
-*Defined in [store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/store.ts#L17)*
+*Defined in [store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/store.ts#L17)*
 
 ___
 

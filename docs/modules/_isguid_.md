@@ -22,7 +22,7 @@
 
 **● GuidPattern**: *`RegExp`* =  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
-*Defined in [IsGuid.ts:1](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IsGuid.ts#L1)*
+*Defined in [IsGuid.ts:1](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IsGuid.ts#L1)*
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 ▸ **IsGuid**(value: *`string`*): `boolean`
 
-*Defined in [IsGuid.ts:2](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IsGuid.ts#L2)*
+*Defined in [IsGuid.ts:2](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IsGuid.ts#L2)*
 
 **Parameters:**
 

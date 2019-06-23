@@ -25,7 +25,7 @@
 
 **● notifyOnDelete**: *`boolean`*
 
-*Defined in [IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IStore.ts#L12)*
+*Defined in [IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IStore.ts#L12)*
 
 ___
 <a id="notifyonget"></a>
@@ -34,7 +34,7 @@ ___
 
 **● notifyOnGet**: *`boolean`*
 
-*Defined in [IStore.ts:9](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IStore.ts#L9)*
+*Defined in [IStore.ts:9](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IStore.ts#L9)*
 
 ___
 <a id="notifyoninsert"></a>
@@ -43,7 +43,7 @@ ___
 
 **● notifyOnInsert**: *`boolean`*
 
-*Defined in [IStore.ts:10](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IStore.ts#L10)*
+*Defined in [IStore.ts:10](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IStore.ts#L10)*
 
 ___
 <a id="notifyonupdate"></a>
@@ -52,7 +52,7 @@ ___
 
 **● notifyOnUpdate**: *`boolean`*
 
-*Defined in [IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IStore.ts#L11)*
+*Defined in [IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IStore.ts#L11)*
 
 ___
 

@@ -26,7 +26,7 @@
 
 **● action**: *[action](../enums/_action_enum_.action.md)*
 
-*Defined in [IStore.ts:4](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IStore.ts#L4)*
+*Defined in [IStore.ts:4](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IStore.ts#L4)*
 
 ___
 <a id="message"></a>
@@ -35,7 +35,7 @@ ___
 
 **● message**: *`string`*
 
-*Defined in [IStore.ts:6](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IStore.ts#L6)*
+*Defined in [IStore.ts:6](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IStore.ts#L6)*
 
 ___
 <a id="state"></a>
@@ -44,7 +44,7 @@ ___
 
 **● state**: *`T`*
 
-*Defined in [IStore.ts:5](https://github.com/lucasheight/odata-observable-store/blob/e8bdbc6/src/IStore.ts#L5)*
+*Defined in [IStore.ts:5](https://github.com/lucasheight/odata-observable-store/blob/51c3dfe/src/IStore.ts#L5)*
 
 ___
 

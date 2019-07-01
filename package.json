@@ -23,7 +23,7 @@
     "angular",
     "rxjs"
   ],
-  "author": "Lynden Garrett",
+  "author":{"name": "Lynden Garrett", "url": "https://github.com/lucasheight","email": "lyndengarrett@gmail.com"},
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lucasheight/odata-observable-store/issues"

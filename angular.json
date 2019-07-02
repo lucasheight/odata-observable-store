@@ -24,6 +24,7 @@
               "projects/example/src/assets"
             ],
             "styles": [
+              "node_modules/@progress/kendo-theme-default/dist/all.css",
               "projects/example/src/styles.css"
             ],
             "scripts": []

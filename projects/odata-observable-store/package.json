@@ -1,9 +1,28 @@
 {
-  "name": "odata-observable-store",
-  "version": "0.0.1",
+  "name": "@lucasheight/odata-observable-store",
+  "version": "1.0.15",
+  "description": "OData observable store pattern. ",
+  "keywords": [
+    "odata",
+    "v4",
+    "store",
+    "observable store",
+    "angular",
+    "rxjs"
+  ],
+  "author": {
+    "name": "Lynden Garrett",
+    "url": "https://github.com/lucasheight",
+    "email": "lyndengarrett@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucasheight/odata-observable-store/issues"
+  },
+  "homepage": "https://github.com/lucasheight/odata-observable-store#readme",
   "peerDependencies": {
     "@angular/common": "^8.0.1",
     "@angular/core": "^8.0.1",
-    "rxjs":"^6.5.2"
+    "rxjs": "^6.5.2"
   }
 }

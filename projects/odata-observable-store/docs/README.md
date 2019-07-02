@@ -1,7 +1,10 @@
+> **[@lucasheight/odata-observable-store](README.md)**
+
+[Globals](globals.md) /
+
 ## OData Observable Store - State management for Angular Odata services
 
 OData Observable Store is a simple state management library that implements the observable store pattern for odata api's within Angular.
-
 
 The library provides public methods for query, get, update, patch, insert and remove while maintaining state on the service.
 

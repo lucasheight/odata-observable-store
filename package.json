@@ -1,5 +1,5 @@
 {
-  "name": "odata-observable-store",
+  "name": "@lucasheight/odata-observable-store",
   "version": "1.0.13",
   "description": "OData observable store pattern. ",
   "keywords": [
@@ -26,7 +26,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "docs": "rmdir /s /q projects\\odata-observable-store\\docs && typedoc --out projects/odata-observable-store/docs  --theme markdown projects/odata-observable-store/src",
+    "dist":"npm run docs && ng build odata-observable-store",
+    "patch":"cd dist/odata-observable-store && npm version patch",
+    "publish":"npm run dist && npm run patch && cd dist/odata-observable-store && npm publish"
   },
   "private": true,
   "dependencies": {
@@ -51,6 +55,7 @@
     "@progress/kendo-angular-popup": "^3.0.0",
     "@progress/kendo-data-query": "^1.5.1",
     "@progress/kendo-drawing": "^1.5.12",
+    "@progress/kendo-theme-default": "^3.7.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -77,6 +82,9 @@
     "ts-node": "~7.0.0",
     "tsickle": "^0.35.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "jsdoc-to-markdown": "^5.0.0",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-markdown": "^2.0.5",
+    "typescript": "^3.4.5"
   }
 }

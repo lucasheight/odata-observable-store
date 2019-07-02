@@ -7,7 +7,7 @@ The library provides public methods for query, get, update, patch, insert and re
 
 Generally for most CRUD odata services, all that is required is to extend the `ODataStore` and provide the `baseUrl` field.
 
-### [API Documentation](docs/README.md)
+### [API Documentation](docs/)
 
 ### Dependencies
 Rxjs, Angular

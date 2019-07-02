@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PeopleService } from '../services/people.service';
 import { map, switchMap, shareReplay, takeUntil } from 'rxjs/operators';
 import { OperatorFunction, Observable, Subject } from 'rxjs';
-import { IOdataCollection } from '../../../../odata-observable-store/src/public-api';
+import { IOdataCollection } from '@lucasheight/odata-observable-store'
 import { GridDataResult, DataStateChangeEvent, GridComponent, EditEvent, CancelEvent, RemoveEvent, SaveEvent, AddEvent } from '@progress/kendo-angular-grid';
 import { State, toODataString } from '@progress/kendo-data-query';
 import { IPeople } from '../services/IPeople';

@@ -29,8 +29,8 @@
     "e2e": "ng e2e",
     "docs": "rmdir /s /q projects\\odata-observable-store\\docs && typedoc --out projects/odata-observable-store/docs  --theme markdown projects/odata-observable-store/src",
     "dist": "npm run docs && ng build odata-observable-store",
-    "patch": "cd dist/odata-observable-store && npm version patch",
-    "publish": "npm run dist && npm run patch && cd dist/odata-observable-store && npm publish"
+    "patch": "cd projects/odata-observable-store && npm version patch",
+    "publish": "npm run patch && npm run dist && cd dist/odata-observable-store && npm publish"
   },
   "private": true,
   "dependencies": {

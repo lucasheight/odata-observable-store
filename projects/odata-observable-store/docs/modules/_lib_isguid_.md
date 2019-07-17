@@ -20,7 +20,7 @@
 
 • **GuidPattern**: *`RegExp`* =  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
-*Defined in [lib/IsGuid.ts:1](https://github.com/lucasheight/odata-observable-store/blob/2314778/projects/odata-observable-store/src/lib/IsGuid.ts#L1)*
+*Defined in [lib/IsGuid.ts:1](https://github.com/lucasheight/odata-observable-store/blob/da4614b/projects/odata-observable-store/src/lib/IsGuid.ts#L1)*
 
 ## Functions
 
@@ -28,7 +28,7 @@
 
 ▸ **IsGuid**(`value`: string): *boolean*
 
-*Defined in [lib/IsGuid.ts:2](https://github.com/lucasheight/odata-observable-store/blob/2314778/projects/odata-observable-store/src/lib/IsGuid.ts#L2)*
+*Defined in [lib/IsGuid.ts:2](https://github.com/lucasheight/odata-observable-store/blob/da4614b/projects/odata-observable-store/src/lib/IsGuid.ts#L2)*
 
 **Parameters:**
 

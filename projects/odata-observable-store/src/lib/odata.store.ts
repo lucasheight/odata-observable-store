@@ -24,7 +24,7 @@ export abstract class ODataStore<T>  {
      */
     public state$: Observable<IOdataCollection<T>> = this._state$.asObservable().pipe(filter(f => typeof f === "object"));/* only get objects not the default state */
     private _notifier$: Subject<IStoreNotifier<T>> = new Subject();
-   
+
     /**Current notifier Observable state */
     public notifier$: Observable<IStoreNotifier<T>> = this._notifier$.asObservable();
     private _response$: Subject<HttpResponse<IOdataCollection<T>>> = new Subject();
@@ -35,7 +35,8 @@ export abstract class ODataStore<T>  {
         notifyOnDelete: true,
         notifyOnGet: false,
         notifyOnInsert: true,
-        notifyOnUpdate: true
+        notifyOnUpdate: true,
+        use$countOnQuery: true
     };
     /**
      * constructor
@@ -60,7 +61,10 @@ export abstract class ODataStore<T>  {
         if (queryString) {
             segments.push(...queryString.split('&'))
         }
-       // segments.push("$count=true");
+        if (this._settings.use$countOnQuery) {
+            segments.push("$count=true");
+        }
+
         //prepend the ? if there are segments
         let query: string = segments.length > 0 ? `?${segments.join('&')}` : "";
 
@@ -128,7 +132,7 @@ export abstract class ODataStore<T>  {
    * @returns void
    */
     public update = <K extends keyof T>(item: T, keys: K | K[] = null, queryString: string = null, method: "put" | "post" = "put"): void => {
-    
+
         let segments: string[] = [];
         if (queryString) { segments.push(...queryString.split('&')) }
         let query: string = segments.length > 0 ? `?${segments.join('&')}` : "";
@@ -199,16 +203,16 @@ export abstract class ODataStore<T>  {
         }
         );
     }
-  /**
-   * Deletes an item from the odata backend and removes item from the observable store
-   * @param item The object to update
-   * @param keys The key or keys to the property(ies) that identify the primary key('s)
-   * @param method The http method to use for the update.
-   * @example delete(item,"Id")
-   * @example delete(item,["Id","CategoryId"], "post")
-   * @returns void
-   */
-    public remove = <K extends keyof T>(item: T, keys: K | K[] = null, method: "delete" | "post" = "delete"):void => {
+    /**
+     * Deletes an item from the odata backend and removes item from the observable store
+     * @param item The object to update
+     * @param keys The key or keys to the property(ies) that identify the primary key('s)
+     * @param method The http method to use for the update.
+     * @example delete(item,"Id")
+     * @example delete(item,["Id","CategoryId"], "post")
+     * @returns void
+     */
+    public remove = <K extends keyof T>(item: T, keys: K | K[] = null, method: "delete" | "post" = "delete"): void => {
 
         let id: string;
         if (Array.isArray(keys)) {
@@ -346,7 +350,7 @@ export abstract class ODataStore<T>  {
      * @description The main use case for this method is to determine if the key is a guid.
      * If so, do not quote the string.
     */
-   private quoteKey = (id: any): string => {
+    private quoteKey = (id: any): string => {
 
         let quotes: string = "";
         if (typeof id === "string" && !IsGuid(id)) {

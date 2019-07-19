@@ -10,4 +10,5 @@ export interface IStoreSettings {
     notifyOnInsert?: boolean;
     notifyOnUpdate?: boolean;
     notifyOnDelete?: boolean;
+    use$countOnQuery?:boolean;
 }

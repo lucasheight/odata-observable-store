@@ -257,15 +257,12 @@ export abstract class ODataStore<T>  {
                 if (Array.isArray(keys)) {
                     //use reduce to find items to remove
                     let removed = keys.reduce((acc, curr) => {
+                        let itemKey = item[curr as string];
+                        let isItemKeyDate = itemKey instanceof Date;
                         acc = acc.filter(f => {
-                            let a = f[curr as string];
-                            let b = item[curr as string]
-                            if (a instanceof Date && b instanceof Date) {
-                                return a.getTime() === b.getTime();
-                            }
-                            else {
-                                return a === b;
-                            }
+                            let currItem = f[curr as string];
+                            //check if key is Date and compare with getTime()
+                            return isItemKeyDate ? (itemKey as Date).getTime() === (currItem as Date).getTime() : itemKey === currItem;
                         });
                         return acc;
                     }, _store.value)
@@ -292,16 +289,12 @@ export abstract class ODataStore<T>  {
                 let foundIdx: number;
                 if (Array.isArray(keys)) {
                     values = keys.reduce((acc, curr) => {
+                        let itemKey = item[curr as string];
+                        let isItemKeyDate = itemKey instanceof Date;
                         acc = acc.filter(f => {
-                            let a = f[curr as string];
-                            let b = item[curr as string]
-                            if (a instanceof Date && b instanceof Date) {
-                                return a.getTime() === b.getTime();
-                            }
-                            else {
-                                return a === b;
-                            }
-
+                            let currItem = f[curr as string];
+                            //check if key is Date and compare with getTime()
+                            return isItemKeyDate ? (itemKey as Date).getTime() === (currItem as Date).getTime() : itemKey === currItem;
                         })
                         return acc;
                     }, _store.value);

@@ -162,7 +162,7 @@ Current Observable store state
 
 ▸ **dispatchNotifier**(`act`: [action](../enums/_lib_action_enum_.action.md), `state`: `T`): *void*
 
-Defined in lib/odata.store.ts:329
+Defined in lib/odata.store.ts:341
 
 Dispatches the notifier$ observable
 
@@ -183,7 +183,7 @@ ___
 
 ▸ **fillStore**(`odata`: [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹*`T`*›): *void*
 
-Defined in lib/odata.store.ts:319
+Defined in lib/odata.store.ts:331
 
 Fill the observable store state$ with an OData Collection
 
@@ -297,7 +297,7 @@ ___
 
 ▸ **quoteKey**(`id`: any): *string*
 
-Defined in lib/odata.store.ts:368
+Defined in lib/odata.store.ts:380
 
 Determines if string key should be single quoted .
 

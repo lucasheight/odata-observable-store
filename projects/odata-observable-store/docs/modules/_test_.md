@@ -4,9 +4,9 @@
 
 # External module: "test"
 
-### Index
+## Index
 
-#### Variables
+### Variables
 
 * [context](_test_.md#const-context)
 * [require](_test_.md#const-require)
@@ -17,7 +17,7 @@
 
 • **context**: *any* =  require.context('./', true, /\.spec\.ts$/)
 
-*Defined in [test.ts:19](https://github.com/lucasheight/odata-observable-store/blob/88663fd/projects/odata-observable-store/src/test.ts#L19)*
+Defined in test.ts:19
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 • **require**: *any*
 
-*Defined in [test.ts:11](https://github.com/lucasheight/odata-observable-store/blob/88663fd/projects/odata-observable-store/src/test.ts#L11)*
+Defined in test.ts:11

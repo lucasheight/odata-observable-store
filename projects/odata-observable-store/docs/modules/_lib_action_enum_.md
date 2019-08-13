@@ -4,8 +4,8 @@
 
 # External module: "lib/action.enum"
 
-### Index
+## Index
 
-#### Enumerations
+### Enumerations
 
 * [action](../enums/_lib_action_enum_.action.md)

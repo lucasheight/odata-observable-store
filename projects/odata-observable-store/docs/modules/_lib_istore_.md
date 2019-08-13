@@ -4,9 +4,9 @@
 
 # External module: "lib/IStore"
 
-### Index
+## Index
 
-#### Interfaces
+### Interfaces
 
 * [IStoreNotifier](../interfaces/_lib_istore_.istorenotifier.md)
 * [IStoreSettings](../interfaces/_lib_istore_.istoresettings.md)

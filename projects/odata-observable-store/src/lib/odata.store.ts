@@ -260,11 +260,19 @@ export abstract class ODataStore<T>  {
                         acc = acc.filter(f => f[curr as string] == item[curr as string])
                         return acc;
                     }, _store.value)
+                    if (removed.length == 0) {
+                        throw "Update odata stored failed: Keys provided cannot be found.";
+                    }
                     //then filter from original array
                     values = _store.value.filter(f => removed.indexOf(f));
                 }
                 else {
+                    const found = _store.value.some(f => f[keys as string] == item[keys]);
+                    if (!found) {
+                        throw "Update odata stored failed: Key provided cannot be found.";
+                    }
                     values = _store.value.filter(f => f[keys as string] != item[keys]);
+
                 }
                 newState = { "@odata.count": values.length, value: values }
                 this.fillStore(newState);
@@ -278,10 +286,17 @@ export abstract class ODataStore<T>  {
                         acc = acc.filter(f => f[curr as string] == item[curr as string])
                         return acc;
                     }, _store.value);
+                    if (values.length == 0) {
+                        throw "Update odata stored failed: Keys provided cannot be found.";
+                    }
                     foundIdx = res.value.findIndex(f => f == values[0]);
+
                 }
                 else {
                     foundIdx = res.value.findIndex(f => f[keys as string] == item[keys as string]);
+                    if (foundIdx == -1) {
+                        throw "Update odata stored failed: Key provided cannot be found.";
+                    }
                 }
 
                 let updated = Object.assign({}, res.value[foundIdx], item);

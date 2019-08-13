@@ -4,9 +4,9 @@
 
 # @lucasheight/odata-observable-store
 
-### Index
+## Index
 
-#### External modules
+### External modules
 
 * ["lib/IOdataCollection"](modules/_lib_iodatacollection_.md)
 * ["lib/IStore"](modules/_lib_istore_.md)

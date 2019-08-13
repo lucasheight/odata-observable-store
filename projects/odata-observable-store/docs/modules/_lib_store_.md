@@ -4,8 +4,8 @@
 
 # External module: "lib/store"
 
-### Index
+## Index
 
-#### Classes
+### Classes
 
 * [Store](../classes/_lib_store_.store.md)

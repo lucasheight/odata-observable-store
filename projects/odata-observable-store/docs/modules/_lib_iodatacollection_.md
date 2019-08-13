@@ -4,8 +4,8 @@
 
 # External module: "lib/IOdataCollection"
 
-### Index
+## Index
 
-#### Interfaces
+### Interfaces
 
 * [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)

@@ -4,8 +4,8 @@
 
 # External module: "lib/odata.store"
 
-### Index
+## Index
 
-#### Classes
+### Classes
 
 * [ODataStore](../classes/_lib_odata_store_.odatastore.md)

@@ -257,7 +257,16 @@ export abstract class ODataStore<T>  {
                 if (Array.isArray(keys)) {
                     //use reduce to find items to remove
                     let removed = keys.reduce((acc, curr) => {
-                        acc = acc.filter(f => f[curr as string] == item[curr as string])
+                        acc = acc.filter(f => {
+                            let a = f[curr as string];
+                            let b = item[curr as string]
+                            if (a instanceof Date && b instanceof Date) {
+                                return a.getTime() === b.getTime();
+                            }
+                            else {
+                                return a === b;
+                            }
+                        });
                         return acc;
                     }, _store.value)
                     if (removed.length == 0) {
@@ -283,7 +292,17 @@ export abstract class ODataStore<T>  {
                 let foundIdx: number;
                 if (Array.isArray(keys)) {
                     values = keys.reduce((acc, curr) => {
-                        acc = acc.filter(f => f[curr as string] == item[curr as string])
+                        acc = acc.filter(f => {
+                            let a = f[curr as string];
+                            let b = item[curr as string]
+                            if (a instanceof Date && b instanceof Date) {
+                                return a.getTime() === b.getTime();
+                            }
+                            else {
+                                return a === b;
+                            }
+
+                        })
                         return acc;
                     }, _store.value);
                     if (values.length == 0) {

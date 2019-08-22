@@ -13,7 +13,7 @@ import { IOdataCollection } from './IOdataCollection';
  *In cases where public methods are not suffient use the protected methods, fillStore, updateStore and dispatchNotifier
  */
 export abstract class ODataStore<T>  {
-    private _initState: IOdataCollection<T> = { "@odata.count": undefined, value: <T[]>[{}] }
+    private _initState: IOdataCollection<T> = { "@odata.count": undefined, value: <T[]>[] }
     /**
      * The base url for the odata service
      */

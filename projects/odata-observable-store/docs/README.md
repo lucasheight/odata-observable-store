@@ -1,6 +1,6 @@
-> **[@lucasheight/odata-observable-store](README.md)**
+**[@lucasheight/odata-observable-store](README.md)**
 
-[Globals](globals.md) /
+[Globals](globals.md)
 
 # OData Observable Store - State management for Angular Odata services
 

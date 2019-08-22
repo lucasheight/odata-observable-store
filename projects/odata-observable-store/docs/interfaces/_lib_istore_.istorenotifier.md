@@ -1,6 +1,6 @@
-> **[@lucasheight/odata-observable-store](../README.md)**
+**[@lucasheight/odata-observable-store](../README.md)**
 
-[Globals](../globals.md) / ["lib/IStore"](../modules/_lib_istore_.md) / [IStoreNotifier](_lib_istore_.istorenotifier.md) /
+[Globals](../globals.md) › ["lib/IStore"](../modules/_lib_istore_.md) › [IStoreNotifier](_lib_istore_.istorenotifier.md)
 
 # Interface: IStoreNotifier <**T**>
 
@@ -26,7 +26,7 @@
 
 • **action**: *[action](../enums/_lib_action_enum_.action.md)*
 
-Defined in lib/IStore.ts:4
+*Defined in [lib/IStore.ts:4](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/IStore.ts#L4)*
 
 ___
 
@@ -34,12 +34,12 @@ ___
 
 • **message**? : *string*
 
-Defined in lib/IStore.ts:6
+*Defined in [lib/IStore.ts:6](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/IStore.ts#L6)*
 
 ___
 
 ### `Optional` state
 
-• **state**? : *`T`*
+• **state**? : *T*
 
-Defined in lib/IStore.ts:5
+*Defined in [lib/IStore.ts:5](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/IStore.ts#L5)*

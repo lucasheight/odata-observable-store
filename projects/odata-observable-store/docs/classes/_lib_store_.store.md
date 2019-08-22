@@ -1,6 +1,6 @@
-> **[@lucasheight/odata-observable-store](../README.md)**
+**[@lucasheight/odata-observable-store](../README.md)**
 
-[Globals](../globals.md) / ["lib/store"](../modules/_lib_store_.md) / [Store](_lib_store_.store.md) /
+[Globals](../globals.md) › ["lib/store"](../modules/_lib_store_.md) › [Store](_lib_store_.store.md)
 
 # Class: Store <**T**>
 
@@ -40,15 +40,15 @@
 
 ###  constructor
 
-\+ **new Store**(`initialState`: `T`, `settings`: [IStoreSettings](../interfaces/_lib_istore_.istoresettings.md)): *[Store](_lib_store_.store.md)*
+\+ **new Store**(`initialState`: T, `settings`: [IStoreSettings](../interfaces/_lib_istore_.istoresettings.md)): *[Store](_lib_store_.store.md)*
 
-Defined in lib/store.ts:18
+*Defined in [lib/store.ts:18](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L18)*
 
 **Parameters:**
 
 Name | Type | Default |
 ------ | ------ | ------ |
-`initialState` | `T` | - |
+`initialState` | T | - |
 `settings` | [IStoreSettings](../interfaces/_lib_istore_.istoresettings.md) |  null |
 
 **Returns:** *[Store](_lib_store_.store.md)*
@@ -57,25 +57,25 @@ Name | Type | Default |
 
 ### `Protected` _notifier$
 
-• **_notifier$**: *`Subject<IStoreNotifier<T>>`* =  new Subject()
+• **_notifier$**: *Subject‹[IStoreNotifier](../interfaces/_lib_istore_.istorenotifier.md)‹T››* =  new Subject()
 
-Defined in lib/store.ts:10
+*Defined in [lib/store.ts:10](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L10)*
 
 ___
 
 ### `Protected` _state$
 
-• **_state$**: *`BehaviorSubject<T>`*
+• **_state$**: *BehaviorSubject‹T›*
 
-Defined in lib/store.ts:9
+*Defined in [lib/store.ts:9](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L9)*
 
 ___
 
 ###  notifier$
 
-• **notifier$**: *`Observable<IStoreNotifier<T>>`* =  this._notifier$.asObservable()
+• **notifier$**: *Observable‹[IStoreNotifier](../interfaces/_lib_istore_.istorenotifier.md)‹T››* =  this._notifier$.asObservable()
 
-Defined in lib/store.ts:11
+*Defined in [lib/store.ts:11](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L11)*
 
 ___
 
@@ -83,30 +83,30 @@ ___
 
 • **settings**: *[IStoreSettings](../interfaces/_lib_istore_.istoresettings.md)*
 
-Defined in lib/store.ts:19
+*Defined in [lib/store.ts:19](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L19)*
 
 ___
 
 ###  state$
 
-• **state$**: *`Observable<T>`*
+• **state$**: *Observable‹T›*
 
-Defined in lib/store.ts:8
+*Defined in [lib/store.ts:8](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L8)*
 
 ## Methods
 
 ### `Protected` dispatchNotifier
 
-▸ **dispatchNotifier**(`act`: [action](../enums/_lib_action_enum_.action.md), `state`: `T`): *void*
+▸ **dispatchNotifier**(`act`: [action](../enums/_lib_action_enum_.action.md), `state`: T): *void*
 
-Defined in lib/store.ts:33
+*Defined in [lib/store.ts:33](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L33)*
 
 **Parameters:**
 
 Name | Type | Default |
 ------ | ------ | ------ |
 `act` | [action](../enums/_lib_action_enum_.action.md) | - |
-`state` | `T` |  null |
+`state` | T |  null |
 
 **Returns:** *void*
 
@@ -114,25 +114,25 @@ ___
 
 ### `Protected` getState
 
-▸ **getState**(): *`T`*
+▸ **getState**(): *T*
 
-Defined in lib/store.ts:27
+*Defined in [lib/store.ts:27](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L27)*
 
-**Returns:** *`T`*
+**Returns:** *T*
 
 ___
 
 ### `Protected` setState
 
-▸ **setState**(`val`: `T`): *void*
+▸ **setState**(`val`: T): *void*
 
-Defined in lib/store.ts:30
+*Defined in [lib/store.ts:30](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L30)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`val` | `T` |
+`val` | T |
 
 **Returns:** *void*
 
@@ -142,28 +142,28 @@ Name | Type |
 
 ### ▪ **_settings**: *object*
 
-Defined in lib/store.ts:12
+*Defined in [lib/store.ts:12](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L12)*
 
 ###  notifyOnDelete
 
 • **notifyOnDelete**: *true* = true
 
-Defined in lib/store.ts:14
+*Defined in [lib/store.ts:14](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L14)*
 
 ###  notifyOnGet
 
 • **notifyOnGet**: *false* = false
 
-Defined in lib/store.ts:15
+*Defined in [lib/store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L15)*
 
 ###  notifyOnInsert
 
 • **notifyOnInsert**: *true* = true
 
-Defined in lib/store.ts:16
+*Defined in [lib/store.ts:16](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L16)*
 
 ###  notifyOnUpdate
 
 • **notifyOnUpdate**: *true* = true
 
-Defined in lib/store.ts:17
+*Defined in [lib/store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/store.ts#L17)*

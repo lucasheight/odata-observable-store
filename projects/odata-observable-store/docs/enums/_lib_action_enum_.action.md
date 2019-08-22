@@ -1,6 +1,6 @@
-> **[@lucasheight/odata-observable-store](../README.md)**
+**[@lucasheight/odata-observable-store](../README.md)**
 
-[Globals](../globals.md) / ["lib/action.enum"](../modules/_lib_action_enum_.md) / [action](_lib_action_enum_.action.md) /
+[Globals](../globals.md) › ["lib/action.enum"](../modules/_lib_action_enum_.md) › [action](_lib_action_enum_.action.md)
 
 # Enumeration: action
 
@@ -20,7 +20,7 @@
 
 • **Delete**:
 
-Defined in lib/action.enum.ts:2
+*Defined in [lib/action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/action.enum.ts#L2)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **Get**:
 
-Defined in lib/action.enum.ts:2
+*Defined in [lib/action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/action.enum.ts#L2)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **Insert**:
 
-Defined in lib/action.enum.ts:2
+*Defined in [lib/action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/action.enum.ts#L2)*
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 • **Query**:
 
-Defined in lib/action.enum.ts:2
+*Defined in [lib/action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/action.enum.ts#L2)*
 
 ___
 
@@ -52,4 +52,4 @@ ___
 
 • **Update**:
 
-Defined in lib/action.enum.ts:2
+*Defined in [lib/action.enum.ts:2](https://github.com/lucasheight/odata-observable-store/blob/b38547bd/projects/odata-observable-store/src/lib/action.enum.ts#L2)*

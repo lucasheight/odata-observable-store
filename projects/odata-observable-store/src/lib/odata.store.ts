@@ -240,8 +240,14 @@ export abstract class ODataStore<T>  {
      * @returns void
      */
     protected updateStore = <K extends keyof T>(item: T, operation: "insert" | "update" | "delete", keys: K | K[] = null): void => {
-
+    
         let _store = Object.assign({}, this._initState, this._state$.getValue());
+        if (_store.value.length === 0) {
+            //prevent store updating if it has not been previously populated.
+            const k = Object.keys(action).find(f => f.toLowerCase() == operation.toLowerCase());
+            this.dispatchNotifier(action[k])
+            return;
+        }
         let newState: IOdataCollection<T>;
         let values: T[];
         switch (operation) {

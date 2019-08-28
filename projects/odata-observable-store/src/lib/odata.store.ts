@@ -286,7 +286,7 @@ export abstract class ODataStore<T>  {
                     values = _store.value.filter(f => f[keys as string] != item[keys]);
 
                 }
-                newState = { "@odata.count": values.length, value: values }
+                newState = { "@odata.count": _store["@odata.count"] - 1, value: values }
                 this.fillStore(newState);
                 this.dispatchNotifier(action.Delete, item);
                 break;

@@ -49,7 +49,7 @@
     "@progress/kendo-angular-dateinputs": "^4.0.1",
     "@progress/kendo-angular-dropdowns": "^4.0.0",
     "@progress/kendo-angular-excel-export": "^3.0.1",
-    "@progress/kendo-angular-grid": "^4.1.1",
+    "@progress/kendo-angular-grid": "^4.2.0",
     "@progress/kendo-angular-inputs": "^6.1.1",
     "@progress/kendo-angular-intl": "^2.0.0",
     "@progress/kendo-angular-l10n": "^2.0.0",

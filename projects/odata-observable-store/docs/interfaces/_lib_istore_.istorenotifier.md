@@ -24,9 +24,9 @@
 
 ###  action
 
-• **action**: *[action](../enums/_lib_action_enum_.action.md)*
+• **action**: *[action](_lib_istore_.istorenotifier.md#action)*
 
-*Defined in [lib/IStore.ts:4](https://github.com/lucasheight/odata-observable-store/blob/5598b34d/projects/odata-observable-store/src/lib/IStore.ts#L4)*
+Defined in lib/IStore.ts:4
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 • **message**? : *string*
 
-*Defined in [lib/IStore.ts:6](https://github.com/lucasheight/odata-observable-store/blob/5598b34d/projects/odata-observable-store/src/lib/IStore.ts#L6)*
+Defined in lib/IStore.ts:6
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 • **state**? : *T*
 
-*Defined in [lib/IStore.ts:5](https://github.com/lucasheight/odata-observable-store/blob/5598b34d/projects/odata-observable-store/src/lib/IStore.ts#L5)*
+Defined in lib/IStore.ts:5

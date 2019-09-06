@@ -3,7 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { tap, map, filter } from 'rxjs/operators';
 import { IsGuid } from './IsGuid';
 import { IStoreNotifier, IStoreSettings } from './IStore';
-import { action } from './action.enum';
+import { action } from './action.type';
 import { IOdataCollection } from './IOdataCollection';
 
 
@@ -75,7 +75,7 @@ export abstract class ODataStore<T>  {
                 currentState["@odata.count"] = s.body["@odata.count"];
                 currentState.value = s.body.value;
                 this.fillStore(currentState);
-                this.dispatchNotifier(action.Query)
+                this.dispatchNotifier("Query")
             })
 
     }
@@ -100,7 +100,7 @@ export abstract class ODataStore<T>  {
             id = this.quoteKey(value[keys as string]);
         }
 
-        let getObs = this.http.get<T>(`${this.baseUrl}(${id})${query}`, { observe: "response" }).pipe(tap(t => { this._response$.next(t); this.dispatchNotifier(action.Get) }), map(m => m.body));
+        let getObs = this.http.get<T>(`${this.baseUrl}(${id})${query}`, { observe: "response" }).pipe(tap(t => { this._response$.next(t); this.dispatchNotifier("Get") }), map(m => m.body));
         return getObs;
 
     }
@@ -117,7 +117,7 @@ export abstract class ODataStore<T>  {
         let query: string = segments.length > 0 ? `?${segments.join('&')}` : "";
         this.http.post<T>(`${this.baseUrl}${query}`, item, { observe: "response" }).subscribe(s => {
             this._response$.next(s);
-            this.updateStore(s.body, "insert");
+            this.updateStore(s.body, "Insert");
         })
     }
     /**
@@ -157,7 +157,7 @@ export abstract class ODataStore<T>  {
 
         operation.subscribe(s => {
             this._response$.next(s);
-            this.updateStore(item, "update", keys)
+            this.updateStore(item, "Update", keys)
         }
         );
     }
@@ -199,7 +199,7 @@ export abstract class ODataStore<T>  {
         //this.http.patch(url, item, { observe: "response" })
         operation.subscribe(s => {
             this._response$.next(s);
-            this.updateStore(item, "update", keys)
+            this.updateStore(item, "Update", keys)
         }
         );
     }
@@ -226,7 +226,7 @@ export abstract class ODataStore<T>  {
         let operation = method == "delete" ? this.http.delete(url, { observe: "response" }) : this.http.post<T>(url, item, { observe: "response" });
         operation.subscribe(s => {
             this._response$.next(s);
-            this.updateStore(item, "delete", keys)
+            this.updateStore(item, "Delete", keys)
         }
         )
     }
@@ -239,26 +239,26 @@ export abstract class ODataStore<T>  {
      * @example updateStore(item,"update","Id");
      * @returns void
      */
-    protected updateStore = <K extends keyof T>(item: T, operation: "insert" | "update" | "delete", keys: K | K[] = null): void => {
+    protected updateStore = <K extends keyof T>(item: T, operation: action, keys: K | K[] = null): void => {
     
         let _store = Object.assign({}, this._initState, this._state$.getValue());
-        if (_store.value.length === 0 && (operation==="update" || operation==="delete")) {
+        if (_store.value.length === 0 && (operation==="Update" || operation==="Delete")) {
             //prevent store updating if it has not been previously populated for updates and deletes
-            const k = Object.keys(action).find(f => f.toLowerCase() == operation.toLowerCase());
-            this.dispatchNotifier(action[k])
+            //const k = Object.keys(action).find(f => f.toLowerCase() == operation.toLowerCase());
+            this.dispatchNotifier(operation)
             return;
         }
         let newState: IOdataCollection<T>;
         let values: T[];
         switch (operation) {
-            case "insert":
+            case "Insert":
                 values = [item, ..._store.value];
                 newState = { "@odata.count": _store["@odata.count"] + 1, value: values };
                 this.fillStore(newState);
-                this.dispatchNotifier(action.Insert, item);
+                this.dispatchNotifier("Insert", item);
 
                 break;
-            case "delete":
+            case "Delete":
                 let id: string;
                 if (Array.isArray(keys)) {
                     //use reduce to find items to remove
@@ -288,9 +288,9 @@ export abstract class ODataStore<T>  {
                 }
                 newState = { "@odata.count": _store["@odata.count"] - 1, value: values }
                 this.fillStore(newState);
-                this.dispatchNotifier(action.Delete, item);
+                this.dispatchNotifier("Delete", item);
                 break;
-            case "update":
+            case "Update":
                 let res = Object.assign({}, this._initState, this._state$.getValue());
                 let foundIdx: number;
                 if (Array.isArray(keys)) {
@@ -321,7 +321,7 @@ export abstract class ODataStore<T>  {
                 values = [...res.value.slice(0, foundIdx), updated, ...res.value.slice(foundIdx + 1)];
                 newState = { "@odata.count": res["@odata.count"], value: values };
                 this.fillStore(newState);
-                this.dispatchNotifier(action.Update, item);
+                this.dispatchNotifier("Update", item);
                 break;
 
             default:
@@ -349,30 +349,30 @@ export abstract class ODataStore<T>  {
         let note: IStoreNotifier<T> = { action: act, state: state }
         let store = this._state$.getValue();
         switch (act) {
-            case action.Query:
+            case "Query":
                 note.message = `Query returned ${store ? store.value ? store.value.length : 0 : 0} records.`;
                 break;
-            case action.Get:
+            case "Get":
                 note.message = `Get action completed`;
                 break;
-            case action.Delete:
+            case "Delete":
                 note.message = `Record deleted`;
                 break;
-            case action.Insert:
+            case "Insert":
                 note.message = `New record inserted`;
                 break;
-            case action.Update:
+            case "Update":
                 note.message = `Record updated`;
                 break;
             default:
                 break;
         }
         if (
-            settings.notifyOnDelete && act == action.Delete
-            || settings.notifyOnGet && act == action.Get
-            || settings.notifyOnGet && act == action.Query
-            || settings.notifyOnInsert && act == action.Insert
-            || settings.notifyOnUpdate && act == action.Update
+            settings.notifyOnDelete && act == "Delete"
+            || settings.notifyOnGet && act == "Get"
+            || settings.notifyOnGet && act == "Query"
+            || settings.notifyOnInsert && act == "Insert"
+            || settings.notifyOnUpdate && act == "Update"
         ) {
             this._notifier$.next(note);
         }

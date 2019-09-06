@@ -1,4 +1,4 @@
-import { action } from "./action.enum";
+import { action } from "./action.type";
 
 export interface IStoreNotifier<T> {
     action: action;

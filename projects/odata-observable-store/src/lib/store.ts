@@ -1,6 +1,6 @@
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { IStoreNotifier, IStoreSettings } from './IStore';
-import { action } from './action.enum';
+import { action } from './action.type';
 
 
 
@@ -35,30 +35,30 @@ export abstract class Store<T> {
         let note: IStoreNotifier<T> = { action: act, state: state }
         let store = this._state$.getValue();
         switch (act) {
-            case action.Query:
+            case "Query":
                 note.message = `Query completed.`;
                 break;
-            case action.Get:
+            case "Get":
                 note.message = `Get action completed`;
                 break;
-            case action.Delete:
+            case "Delete":
                 note.message = `Record deleted`;
                 break;
-            case action.Insert:
+            case "Insert":
                 note.message = `New record inserted`;
                 break;
-            case action.Update:
+            case "Update":
                 note.message = `Record updated`;
                 break;
             default:
                 break;
         }
         if (
-            settings.notifyOnDelete && act == action.Delete
-            || settings.notifyOnGet && act == action.Get
-            || settings.notifyOnGet && act == action.Query
-            || settings.notifyOnInsert && act == action.Insert
-            || settings.notifyOnUpdate && act == action.Update
+            settings.notifyOnDelete && act == "Delete"
+            || settings.notifyOnGet && act == "Get"
+            || settings.notifyOnGet && act == "Query"
+            || settings.notifyOnInsert && act == "Insert"
+            || settings.notifyOnUpdate && act == "Update"
         ) {
             this._notifier$.next(note);
         }

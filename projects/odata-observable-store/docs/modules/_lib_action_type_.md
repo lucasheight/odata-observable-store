@@ -16,4 +16,4 @@
 
 Ƭ **action**: *"Query" | "Get" | "Update" | "Insert" | "Delete"*
 
-Defined in lib/action.type.ts:1
+*Defined in [lib/action.type.ts:1](https://github.com/lucasheight/odata-observable-store/blob/5213ef9e/projects/odata-observable-store/src/lib/action.type.ts#L1)*

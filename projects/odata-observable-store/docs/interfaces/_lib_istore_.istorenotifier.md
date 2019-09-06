@@ -26,7 +26,7 @@
 
 • **action**: *[action](_lib_istore_.istorenotifier.md#action)*
 
-Defined in lib/IStore.ts:4
+*Defined in [lib/IStore.ts:4](https://github.com/lucasheight/odata-observable-store/blob/5213ef9e/projects/odata-observable-store/src/lib/IStore.ts#L4)*
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 • **message**? : *string*
 
-Defined in lib/IStore.ts:6
+*Defined in [lib/IStore.ts:6](https://github.com/lucasheight/odata-observable-store/blob/5213ef9e/projects/odata-observable-store/src/lib/IStore.ts#L6)*
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 • **state**? : *T*
 
-Defined in lib/IStore.ts:5
+*Defined in [lib/IStore.ts:5](https://github.com/lucasheight/odata-observable-store/blob/5213ef9e/projects/odata-observable-store/src/lib/IStore.ts#L5)*

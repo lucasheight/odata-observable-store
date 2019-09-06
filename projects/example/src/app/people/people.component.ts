@@ -40,7 +40,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
       takeUntil(this.destroy$),
 
     );
-    this.message$.pipe(takeUntil(this.destroy$), filter(f => f.action === action.Delete)).subscribe(s => {
+    this.message$.pipe(takeUntil(this.destroy$), filter(f => f.action === "Delete")).subscribe(s => {
       //clear the edit form after a delete
       this.resetForm();
     })

@@ -1,8 +1,7 @@
-**[@lucasheight/odata-observable-store](../README.md)**
-
-[Globals](../globals.md) › ["test"](_test_.md)
+[@lucasheight/odata-observable-store](../README.md) › [Globals](../globals.md) › ["test"](_test_.md)
 
 # External module: "test"
+
 
 ## Index
 
@@ -17,7 +16,7 @@
 
 • **context**: *any* =  require.context('./', true, /\.spec\.ts$/)
 
-*Defined in [test.ts:19](https://github.com/lucasheight/odata-observable-store/blob/5213ef9e/projects/odata-observable-store/src/test.ts#L19)*
+*Defined in [test.ts:19](https://github.com/lucasheight/odata-observable-store/blob/5ece78ca/projects/odata-observable-store/src/test.ts#L19)*
 
 ___
 
@@ -25,4 +24,4 @@ ___
 
 • **require**: *any*
 
-*Defined in [test.ts:11](https://github.com/lucasheight/odata-observable-store/blob/5213ef9e/projects/odata-observable-store/src/test.ts#L11)*
+*Defined in [test.ts:11](https://github.com/lucasheight/odata-observable-store/blob/5ece78ca/projects/odata-observable-store/src/test.ts#L11)*

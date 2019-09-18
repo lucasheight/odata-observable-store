@@ -1,8 +1,7 @@
-**[@lucasheight/odata-observable-store](../README.md)**
-
-[Globals](../globals.md) › ["lib/store"](_lib_store_.md)
+[@lucasheight/odata-observable-store](../README.md) › [Globals](../globals.md) › ["lib/store"](_lib_store_.md)
 
 # External module: "lib/store"
+
 
 ## Index
 

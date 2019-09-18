@@ -1,10 +1,11 @@
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, PartialObserver, Observer, Subscriber, Subscription, Notification } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { tap, map, filter } from 'rxjs/operators';
+import { tap, map, filter, finalize, catchError } from 'rxjs/operators';
 import { IsGuid } from './IsGuid';
 import { IStoreNotifier, IStoreSettings } from './IStore';
 import { action } from './action.type';
 import { IOdataCollection } from './IOdataCollection';
+
 
 
 /**
@@ -27,9 +28,20 @@ export abstract class ODataStore<T>  {
 
     /**Current notifier Observable state */
     public notifier$: Observable<IStoreNotifier<T>> = this._notifier$.asObservable();
+    //public Notifier: Notifier<T>;
     private _response$: Subject<HttpResponse<IOdataCollection<T>>> = new Subject();
     /**Current response observable state */
     public response$: Observable<HttpResponse<IOdataCollection<T>>> = this._response$.asObservable();
+
+    protected responseObserver$: PartialObserver<HttpResponse<T | IOdataCollection<T>>>;
+    public complete: Function = () => { };
+    public error: Function = (err: any) => { };
+
+    //  Observer<HttpResponse<T>> = {
+    //     next: (val) => { console.log("next", val) },
+    //     complete: () => console.log("complete"),
+    //     error: (err) => { }
+    // };
     private _settings: IStoreSettings = {
         //default store settings
         notifyOnDelete: true,
@@ -46,6 +58,10 @@ export abstract class ODataStore<T>  {
     constructor(protected http: HttpClient, protected settings: IStoreSettings = null) {
         if (settings) {
             this._settings = Object.assign({}, this._settings, settings);
+        }
+        this.responseObserver$ = {
+            complete: () => { this.complete() },//fire the complete callback,
+            error: (err) => { this.error(err) }
         }
 
     }
@@ -68,15 +84,17 @@ export abstract class ODataStore<T>  {
         //prepend the ? if there are segments
         let query: string = segments.length > 0 ? `?${segments.join('&')}` : "";
 
+        this.responseObserver$.next = (s) => {
+            this._response$.next(s);
+            let currentState = Object.assign({}, this._state$.getValue(), this._initState);
+            currentState["@odata.count"] = s.body["@odata.count"];
+            currentState.value = (s.body as IOdataCollection<T>).value;
+            this.fillStore(currentState);
+            this.dispatchNotifier("Query")
+        }
+
         this.http.get<IOdataCollection<T>>(`${this.baseUrl}${query}`, { observe: "response" })
-            .subscribe(s => {
-                this._response$.next(s);
-                let currentState = Object.assign({}, this._state$.getValue(), this._initState);
-                currentState["@odata.count"] = s.body["@odata.count"];
-                currentState.value = s.body.value;
-                this.fillStore(currentState);
-                this.dispatchNotifier("Query")
-            })
+            .subscribe(this.responseObserver$)
 
     }
     /**
@@ -100,7 +118,13 @@ export abstract class ODataStore<T>  {
             id = this.quoteKey(value[keys as string]);
         }
 
-        let getObs = this.http.get<T>(`${this.baseUrl}(${id})${query}`, { observe: "response" }).pipe(tap(t => { this._response$.next(t); this.dispatchNotifier("Get") }), map(m => m.body));
+        let getObs = this.http.get<T>(`${this.baseUrl}(${id})${query}`, { observe: "response" })
+            .pipe(
+                tap(t => { this._response$.next(t); this.dispatchNotifier("Get") }),
+                map(m => m.body),
+
+                finalize(()=>this.responseObserver$.complete())
+            );
         return getObs;
 
     }
@@ -115,10 +139,16 @@ export abstract class ODataStore<T>  {
         let segments: string[] = [];
         if (queryString) { segments.push(...queryString.split('&')) }
         let query: string = segments.length > 0 ? `?${segments.join('&')}` : "";
-        this.http.post<T>(`${this.baseUrl}${query}`, item, { observe: "response" }).subscribe(s => {
+
+
+        this.responseObserver$.next = (s) => {
             this._response$.next(s);
-            this.updateStore(s.body, "Insert");
-        })
+            this.updateStore(s.body as T, "Insert")
+        }
+
+        this.http.post<T>(`${this.baseUrl}${query}`, item, { observe: "response" }).subscribe(
+            this.responseObserver$
+        )
     }
     /**
    * Updates an item to the odata backend and updates the observable store with the new value
@@ -132,7 +162,6 @@ export abstract class ODataStore<T>  {
    * @returns void
    */
     public update = <K extends keyof T>(item: T, keys: K | K[] = null, queryString: string = null, method: "put" | "post" = "put"): void => {
-
         let segments: string[] = [];
         if (queryString) { segments.push(...queryString.split('&')) }
         let query: string = segments.length > 0 ? `?${segments.join('&')}` : "";
@@ -144,22 +173,23 @@ export abstract class ODataStore<T>  {
             id = this.quoteKey(item[keys as string]);
         }
         let url = keys != null ? `${this.baseUrl}(${id})${query}` : `${this.baseUrl}${query}`;
-        let operation: Observable<HttpResponse<Object>>;
+        let operation: Observable<HttpResponse<T>>;
         switch (method) {
             case "post":
-                operation = this.http.post(url, item, { observe: "response" });
+                operation = this.http.post<T>(url, item, { observe: "response" });
                 break;
             default:
-                operation = this.http.put(url, item, { observe: "response" });
+                operation = this.http.put<T>(url, item, { observe: "response" });
 
                 break;
         }
-
-        operation.subscribe(s => {
-            this._response$.next(s);
-            this.updateStore(item, "Update", keys)
-        }
-        );
+     
+            this.responseObserver$.next = (s) => {
+                this._response$.next(s);
+                this.updateStore(item, "Update", keys)
+            }
+        
+        operation.subscribe(this.responseObserver$);
     }
     /**
    * Patches an item to the odata backend and updates the observable store with the new value
@@ -196,12 +226,14 @@ export abstract class ODataStore<T>  {
                 operation = this.http.patch(url, item, { observe: "response" });
                 break;
         }
-        //this.http.patch(url, item, { observe: "response" })
-        operation.subscribe(s => {
-            this._response$.next(s);
-            this.updateStore(item, "Update", keys)
-        }
-        );
+
+   
+            this.responseObserver$.next = (val) => {
+                this._response$.next(val);
+                this.updateStore(item, "Update", keys)
+            }
+        
+        operation.subscribe(this.responseObserver$);
     }
     /**
      * Deletes an item from the odata backend and removes item from the observable store
@@ -224,11 +256,13 @@ export abstract class ODataStore<T>  {
 
         let url: string = keys != null ? `${this.baseUrl}(${id})` : `${this.baseUrl}`;
         let operation = method == "delete" ? this.http.delete(url, { observe: "response" }) : this.http.post<T>(url, item, { observe: "response" });
-        operation.subscribe(s => {
-            this._response$.next(s);
-            this.updateStore(item, "Delete", keys)
-        }
-        )
+ 
+            this.responseObserver$.next = (s) => {
+                this._response$.next(s);
+                this.updateStore(item, "Delete", keys)
+            }
+        
+        operation.subscribe(this.responseObserver$)
     }
 
     /**
@@ -240,9 +274,9 @@ export abstract class ODataStore<T>  {
      * @returns void
      */
     protected updateStore = <K extends keyof T>(item: T, operation: action, keys: K | K[] = null): void => {
-    
+
         let _store = Object.assign({}, this._initState, this._state$.getValue());
-        if (_store.value.length === 0 && (operation==="Update" || operation==="Delete")) {
+        if (_store.value.length === 0 && (operation === "Update" || operation === "Delete")) {
             //prevent store updating if it has not been previously populated for updates and deletes
             //const k = Object.keys(action).find(f => f.toLowerCase() == operation.toLowerCase());
             this.dispatchNotifier(operation)

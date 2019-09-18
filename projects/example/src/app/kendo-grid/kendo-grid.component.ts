@@ -45,10 +45,7 @@ export class KendoGridComponent implements OnInit, OnDestroy {
     this.data$ = this.count$.pipe(switchMap(count => this.peopleService.state$
       .pipe(gridMap(count))
     ));
-    this.peopleService.notifier$.pipe(takeUntil(this.destroy$))
-      .subscribe(s => {
-        this.loading = false;
-      })
+    this.peopleService.complete = () => { this.loading = false }
     this.onStateChange(this.gridState as DataStateChangeEvent);
 
   }

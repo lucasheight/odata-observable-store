@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { IPeople } from './IPeople';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ODataStore, IStoreSettings } from "@lucasheight/odata-observable-store"
+import { ODataStore } from 'projects/odata-observable-store/src/lib/odata.store';
+
+
+
+//import { ODataStore, IStoreSettings } from "@lucasheight/odata-observable-store"
 
 @Injectable({
   providedIn: 'root'

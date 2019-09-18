@@ -4,12 +4,14 @@ import { Subject, Observable, fromEvent } from 'rxjs';
 import { IPeople } from '../services/IPeople';
 import { takeUntil, map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { action, IStoreNotifier } from '@lucasheight/odata-observable-store'
+import { IStoreNotifier } from 'projects/odata-observable-store/src/lib/IStore';
+
+//import { action, IStoreNotifier } from '@lucasheight/odata-observable-store'
 
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
-  providers:[PeopleService],
+  providers: [PeopleService],
   styles: [
     "div.wrapper{width:100%;padding:1em}",
     "div.people{border:1px solid lightgrey; width:45%;float:left;margin:4px;padding:5px}",
@@ -40,6 +42,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
       takeUntil(this.destroy$),
 
     );
+    
     this.message$.pipe(takeUntil(this.destroy$), filter(f => f.action === "Delete")).subscribe(s => {
       //clear the edit form after a delete
       this.resetForm();

@@ -1,8 +1,7 @@
-**[@lucasheight/odata-observable-store](README.md)**
-
-[Globals](globals.md)
+[@lucasheight/odata-observable-store](README.md) › [Globals](globals.md)
 
 # @lucasheight/odata-observable-store
+
 
 ## Index
 

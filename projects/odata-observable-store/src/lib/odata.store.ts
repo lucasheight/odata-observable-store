@@ -279,7 +279,7 @@ export abstract class ODataStore<T>  {
         if (_store.value.length === 0 && (operation === "Update" || operation === "Delete")) {
             //prevent store updating if it has not been previously populated for updates and deletes
             //const k = Object.keys(action).find(f => f.toLowerCase() == operation.toLowerCase());
-            this.dispatchNotifier(operation)
+            this.dispatchNotifier(operation,item)
             return;
         }
         let newState: IOdataCollection<T>;

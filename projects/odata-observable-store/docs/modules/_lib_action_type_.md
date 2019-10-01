@@ -15,4 +15,4 @@
 
 Ƭ **action**: *"Query" | "Get" | "Update" | "Insert" | "Delete"*
 
-*Defined in [lib/action.type.ts:1](https://github.com/lucasheight/odata-observable-store/blob/5ece78ca/projects/odata-observable-store/src/lib/action.type.ts#L1)*
+*Defined in [lib/action.type.ts:1](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/lib/action.type.ts#L1)*

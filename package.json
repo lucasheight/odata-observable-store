@@ -56,7 +56,7 @@
     "@progress/kendo-angular-pdf-export": "^2.0.0",
     "@progress/kendo-angular-popup": "^3.0.1",
     "@progress/kendo-data-query": "^1.5.2",
-    "@progress/kendo-drawing": "^1.5.12",
+    "@progress/kendo-drawing": "^1.6.0",
     "@progress/kendo-theme-default": "^4.3.3",
     "rxjs": "^6.5.3",
     "tslib": "^1.10.0",

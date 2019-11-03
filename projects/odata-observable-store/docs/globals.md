@@ -2,7 +2,6 @@
 
 # @lucasheight/odata-observable-store
 
-
 ## Index
 
 ### External modules

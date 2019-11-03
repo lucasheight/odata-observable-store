@@ -2,7 +2,6 @@
 
 # External module: "test"
 
-
 ## Index
 
 ### Variables
@@ -14,9 +13,9 @@
 
 ### `Const` context
 
-• **context**: *any* =  require.context('./', true, /\.spec\.ts$/)
+• **context**: *any* =  require.context("./", true, /\.spec\.ts$/)
 
-*Defined in [test.ts:19](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/test.ts#L19)*
+*Defined in [test.ts:20](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/test.ts#L20)*
 
 ___
 
@@ -24,4 +23,4 @@ ___
 
 • **require**: *any*
 
-*Defined in [test.ts:11](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/test.ts#L11)*
+*Defined in [test.ts:12](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/test.ts#L12)*

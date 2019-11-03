@@ -2,7 +2,6 @@
 
 # External module: "lib/store"
 
-
 ## Index
 
 ### Classes

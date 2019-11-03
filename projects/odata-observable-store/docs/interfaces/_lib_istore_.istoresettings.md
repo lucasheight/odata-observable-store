@@ -2,7 +2,6 @@
 
 # Interface: IStoreSettings
 
-
 ## Hierarchy
 
 * **IStoreSettings**
@@ -23,7 +22,7 @@
 
 • **notifyOnDelete**? : *boolean*
 
-*Defined in [lib/IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/lib/IStore.ts#L12)*
+*Defined in [lib/IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IStore.ts#L12)*
 
 ___
 
@@ -31,7 +30,7 @@ ___
 
 • **notifyOnGet**? : *boolean*
 
-*Defined in [lib/IStore.ts:9](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/lib/IStore.ts#L9)*
+*Defined in [lib/IStore.ts:9](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IStore.ts#L9)*
 
 ___
 
@@ -39,7 +38,7 @@ ___
 
 • **notifyOnInsert**? : *boolean*
 
-*Defined in [lib/IStore.ts:10](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/lib/IStore.ts#L10)*
+*Defined in [lib/IStore.ts:10](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IStore.ts#L10)*
 
 ___
 
@@ -47,7 +46,7 @@ ___
 
 • **notifyOnUpdate**? : *boolean*
 
-*Defined in [lib/IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/lib/IStore.ts#L11)*
+*Defined in [lib/IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IStore.ts#L11)*
 
 ___
 
@@ -55,4 +54,4 @@ ___
 
 • **use$countOnQuery**? : *boolean*
 
-*Defined in [lib/IStore.ts:13](https://github.com/lucasheight/odata-observable-store/blob/0481e3e1/projects/odata-observable-store/src/lib/IStore.ts#L13)*
+*Defined in [lib/IStore.ts:13](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IStore.ts#L13)*

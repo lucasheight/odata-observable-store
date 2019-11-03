@@ -2,7 +2,6 @@
 
 # External module: "lib/odata.store"
 
-
 ## Index
 
 ### Classes

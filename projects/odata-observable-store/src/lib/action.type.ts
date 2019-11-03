@@ -1,1 +1,1 @@
-export type action= "Query"| "Get"| "Update"| "Insert"| "Delete";
+export type action = "Query" | "Get" | "Update" | "Insert" | "Delete";

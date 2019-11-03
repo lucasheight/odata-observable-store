@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serviceUrl:'https://services.odata.org/TripPinRESTierService'
+  serviceUrl: "https://services.odata.org/TripPinRESTierService"
 };

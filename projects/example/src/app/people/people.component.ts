@@ -1,16 +1,29 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, RendererStyleFlags2 } from '@angular/core';
-import { PeopleService } from '../services/people.service';
-import { Subject, Observable, fromEvent } from 'rxjs';
-import { IPeople } from '../services/IPeople';
-import { takeUntil, map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IStoreNotifier } from 'projects/odata-observable-store/src/lib/IStore';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef,
+  AfterViewInit
+} from "@angular/core";
+import { PeopleService } from "../services/people.service";
+import { Subject, Observable, fromEvent } from "rxjs";
+import { IPeople } from "../services/IPeople";
+import {
+  takeUntil,
+  map,
+  debounceTime,
+  distinctUntilChanged,
+  filter
+} from "rxjs/operators";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { IStoreNotifier } from "projects/odata-observable-store/src/lib/IStore";
 
 //import { action, IStoreNotifier } from '@lucasheight/odata-observable-store'
 
 @Component({
-  selector: 'app-people',
-  templateUrl: './people.component.html',
+  selector: "app-people",
+  templateUrl: "./people.component.html",
   providers: [PeopleService],
   styles: [
     "div.wrapper{width:100%;padding:1em}",
@@ -34,71 +47,76 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
   isNew: boolean = true;
   @ViewChild("search", { static: false }) searchCtr: ElementRef;
 
-  constructor(private peopleService: PeopleService, private fb: FormBuilder) { }
+  constructor(private peopleService: PeopleService, private fb: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.resetForm();
-    this.message$ = this.peopleService.notifier$.pipe(
+    this.message$ = this.peopleService.notifier$.pipe(takeUntil(this.destroy$));
+
+    this.message$
+      .pipe(
+        takeUntil(this.destroy$),
+        filter(f => f.action === "Delete")
+      )
+      .subscribe(() => {
+        //clear the edit form after a delete
+        this.resetForm();
+      });
+
+    this.people$ = this.peopleService.state$.pipe(
       takeUntil(this.destroy$),
-
+      map(m => m.value)
     );
-    
-    this.message$.pipe(takeUntil(this.destroy$), filter(f => f.action === "Delete")).subscribe(s => {
-      //clear the edit form after a delete
-      this.resetForm();
-    })
-
-    this.people$ = this.peopleService.state$.pipe(takeUntil(this.destroy$), map(m => m.value));
     this.peopleService.query();
-
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy$.next();
   }
-  ngAfterViewInit() {
-
+  ngAfterViewInit(): void {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fromEvent<any>(this.searchCtr.nativeElement, "input")
-      .pipe(takeUntil(this.destroy$), debounceTime(300), distinctUntilChanged())
+      .pipe(
+        takeUntil(this.destroy$),
+        debounceTime(300),
+        distinctUntilChanged()
+      )
       .subscribe(s => {
-        let val: string = s.target.value;
+        const val: string = s.target.value;
         if (val.length > 0) {
           this.peopleService.queryByFirstName(val);
           //could have done this as well:
           //this.peopleService.query(`$filter=contains(FirstName, '${val}')`)
-        }
-        else {
+        } else {
           this.peopleService.query();
         }
-
-      }
-      )
+      });
   }
   public onPerson = (username: string): void => {
-    this.peopleService.get(<IPeople>{ UserName: username }, "UserName")
+    this.peopleService
+      .get({ UserName: username } as IPeople, "UserName")
       .subscribe(s => {
         this.isNew = false;
-        this.formGroup.setValue(
-          {
-            UserName: s.UserName,
-            FirstName: s.FirstName,
-            LastName: s.LastName,
-            MiddleName: s.MiddleName
-          });
+        this.formGroup.setValue({
+          UserName: s.UserName,
+          FirstName: s.FirstName,
+          LastName: s.LastName,
+          MiddleName: s.MiddleName
+        });
         this.formGroup.get("UserName").disable();
-      })
-  }
+      });
+  };
   public onSave = (): void => {
-    let item: IPeople = this.formGroup.value;
+    const item: IPeople = this.formGroup.value;
     item.UserName = this.formGroup.getRawValue().UserName;
-    console.log(this.isNew ? "Insert" : "Update", item)
-    this.isNew ? this.peopleService.insert(item) : this.peopleService.patch(item, "UserName");
-  }
+    console.log(this.isNew ? "Insert" : "Update", item);
+    this.isNew
+      ? this.peopleService.insert(item)
+      : this.peopleService.patch(item, "UserName");
+  };
   public onRemove = (userName: string): void => {
     console.log("remove", userName);
-    this.peopleService.remove(<IPeople>{ UserName: userName }, "UserName");
-
-
-  }
+    this.peopleService.remove({ UserName: userName } as IPeople, "UserName");
+  };
   public onCancel = (): void => this.resetForm();
 
   private resetForm(): void {

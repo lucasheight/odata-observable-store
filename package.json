@@ -88,7 +88,7 @@
     "ng-packagr": "^5.7.1",
     "prettier": "^1.19.1",
     "protractor": "~5.4.0",
-    "ts-node": "~8.5.0",
+    "ts-node": "~8.5.2",
     "tsickle": "^0.37.0",
     "typedoc": "^0.15.2",
     "typedoc-plugin-markdown": "^2.2.11",

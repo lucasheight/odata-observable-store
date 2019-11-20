@@ -54,7 +54,7 @@
     "@progress/kendo-angular-intl": "^2.0.0",
     "@progress/kendo-angular-l10n": "^2.0.0",
     "@progress/kendo-angular-pdf-export": "^2.0.0",
-    "@progress/kendo-angular-popup": "^3.0.1",
+    "@progress/kendo-angular-popup": "^3.0.3",
     "@progress/kendo-data-query": "^1.5.2",
     "@progress/kendo-drawing": "^1.6.0",
     "@progress/kendo-theme-default": "^4.6.0",

@@ -45,7 +45,7 @@
     "@angular/router": "^8.2.13",
     "@lucasheight/odata-observable-store": "^1.1.7",
     "@progress/kendo-angular-buttons": "^5.0.1",
-    "@progress/kendo-angular-common": "^1.1.4",
+    "@progress/kendo-angular-common": "^1.2.1",
     "@progress/kendo-angular-dateinputs": "^4.1.0",
     "@progress/kendo-angular-dropdowns": "^4.2.2",
     "@progress/kendo-angular-excel-export": "^3.0.1",

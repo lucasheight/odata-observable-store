@@ -25,7 +25,7 @@
 
 • **@odata.context**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:2](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IOdataCollection.ts#L2)*
+*Defined in [lib/IOdataCollection.ts:2](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L2)*
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 • **@odata.count**? : *number | undefined*
 
-*Defined in [lib/IOdataCollection.ts:4](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IOdataCollection.ts#L4)*
+*Defined in [lib/IOdataCollection.ts:4](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L4)*
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **@odata.type**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:3](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IOdataCollection.ts#L3)*
+*Defined in [lib/IOdataCollection.ts:3](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L3)*
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 • **value**? : *T[]*
 
-*Defined in [lib/IOdataCollection.ts:5](https://github.com/lucasheight/odata-observable-store/blob/de4f0a11/projects/odata-observable-store/src/lib/IOdataCollection.ts#L5)*
+*Defined in [lib/IOdataCollection.ts:5](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L5)*

@@ -8,7 +8,9 @@
 
 ## Hierarchy
 
-* **IOdataCollection**
+* [IOdataBase](_lib_iodatacollection_.iodatabase.md)
+
+  ↳ **IOdataCollection**
 
 ## Index
 
@@ -25,7 +27,9 @@
 
 • **@odata.context**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:2](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L2)*
+*Inherited from [IOdataBase](_lib_iodatacollection_.iodatabase.md).[@odata.context](_lib_iodatacollection_.iodatabase.md#optional-@odata.context)*
+
+*Defined in [lib/IOdataCollection.ts:7](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L7)*
 
 ___
 
@@ -33,7 +37,7 @@ ___
 
 • **@odata.count**? : *number | undefined*
 
-*Defined in [lib/IOdataCollection.ts:4](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L4)*
+*Defined in [lib/IOdataCollection.ts:2](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L2)*
 
 ___
 
@@ -41,7 +45,9 @@ ___
 
 • **@odata.type**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:3](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L3)*
+*Inherited from [IOdataBase](_lib_iodatacollection_.iodatabase.md).[@odata.type](_lib_iodatacollection_.iodatabase.md#optional-@odata.type)*
+
+*Defined in [lib/IOdataCollection.ts:8](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L8)*
 
 ___
 
@@ -49,4 +55,4 @@ ___
 
 • **value**? : *T[]*
 
-*Defined in [lib/IOdataCollection.ts:5](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L5)*
+*Defined in [lib/IOdataCollection.ts:3](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L3)*

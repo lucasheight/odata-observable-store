@@ -15,7 +15,7 @@
 
 • **context**: *any* =  require.context("./", true, /\.spec\.ts$/)
 
-*Defined in [test.ts:20](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/test.ts#L20)*
+*Defined in [test.ts:20](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/test.ts#L20)*
 
 ___
 
@@ -23,4 +23,4 @@ ___
 
 • **require**: *any*
 
-*Defined in [test.ts:12](https://github.com/lucasheight/odata-observable-store/blob/e88d55f9/projects/odata-observable-store/src/test.ts#L12)*
+*Defined in [test.ts:12](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/test.ts#L12)*

@@ -6,4 +6,6 @@
 
 ### Interfaces
 
+* [IOdataBase](../interfaces/_lib_iodatacollection_.iodatabase.md)
 * [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)
+* [IOdataResult](../interfaces/_lib_iodatacollection_.iodataresult.md)

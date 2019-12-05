@@ -51,8 +51,8 @@ export abstract class ODataStore<T> {
   protected responseObserver$: PartialObserver<
     HttpResponse<T | IOdataCollection<T>>
   >;
-  public complete: Function = () => { };
-  public error: Function = () => { };
+  public complete: Function = () => {};
+  public error: Function = () => {};
 
   //  Observer<HttpResponse<T>> = {
   //     next: (val) => { console.log("next", val) },
@@ -378,14 +378,18 @@ export abstract class ODataStore<T> {
             return acc;
           }, _store.value);
           if (removed.length == 0) {
-            console.warn("Update odata stored failed: Keys provided cannot be found.");
+            console.warn(
+              "Update odata stored failed: Keys provided cannot be found."
+            );
           }
           //then filter from original array
           values = _store.value.filter(f => removed.indexOf(f));
         } else {
           const found = _store.value.some(f => f[keys as string] == item[keys]);
           if (!found) {
-            console.warn("Update odata stored failed: Key provided cannot be found.");
+            console.warn(
+              "Update odata stored failed: Key provided cannot be found."
+            );
           }
           values = _store.value.filter(f => f[keys as string] != item[keys]);
         }
@@ -413,7 +417,9 @@ export abstract class ODataStore<T> {
             return acc;
           }, _store.value);
           if (values.length == 0) {
-            console.warn("Update odata stored failed: Keys provided cannot be found.");
+            console.warn(
+              "Update odata stored failed: Keys provided cannot be found."
+            );
           }
           foundIdx = res.value.findIndex(f => f == values[0]);
         } else {
@@ -421,7 +427,9 @@ export abstract class ODataStore<T> {
             f => f[keys as string] == item[keys as string]
           );
           if (foundIdx == -1) {
-            console.warn("Update odata stored failed: Key provided cannot be found.");
+            console.warn(
+              "Update odata stored failed: Key provided cannot be found."
+            );
           }
         }
 
@@ -463,7 +471,7 @@ export abstract class ODataStore<T> {
       case "Query":
         note.message = `Query returned ${
           store ? (store.value ? store.value.length : 0) : 0
-          } records.`;
+        } records.`;
         break;
       case "Get":
         note.message = `Get action completed`;

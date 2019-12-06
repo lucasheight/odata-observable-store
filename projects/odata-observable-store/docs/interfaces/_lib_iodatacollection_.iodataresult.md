@@ -28,7 +28,7 @@
 
 *Inherited from [IOdataBase](_lib_iodatacollection_.iodatabase.md).[@odata.context](_lib_iodatacollection_.iodatabase.md#optional-@odata.context)*
 
-*Defined in [lib/IOdataCollection.ts:7](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L7)*
+*Defined in [lib/IOdataCollection.ts:7](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L7)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 *Inherited from [IOdataBase](_lib_iodatacollection_.iodatabase.md).[@odata.type](_lib_iodatacollection_.iodatabase.md#optional-@odata.type)*
 
-*Defined in [lib/IOdataCollection.ts:8](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L8)*
+*Defined in [lib/IOdataCollection.ts:8](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L8)*
 
 ___
 
@@ -46,4 +46,4 @@ ___
 
 • **value**? : *T*
 
-*Defined in [lib/IOdataCollection.ts:12](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L12)*
+*Defined in [lib/IOdataCollection.ts:12](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L12)*

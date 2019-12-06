@@ -51,7 +51,9 @@ export abstract class ODataStore<T> {
   protected responseObserver$: PartialObserver<
     HttpResponse<T | IOdataCollection<T>>
   >;
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public complete: Function = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public error: Function = () => {};
 
   //  Observer<HttpResponse<T>> = {
@@ -65,7 +67,8 @@ export abstract class ODataStore<T> {
     notifyOnGet: false,
     notifyOnInsert: true,
     notifyOnUpdate: true,
-    use$countOnQuery: true
+    use$countOnQuery: true,
+    prependInserts: true
   };
   /**
    * constructor
@@ -353,7 +356,12 @@ export abstract class ODataStore<T> {
     let values: T[];
     switch (operation) {
       case "Insert":
-        values = [item, ..._store.value];
+        if (this._settings.prependInserts) {
+          values = [item, ..._store.value];
+        } else {
+          values = [..._store.value, item];
+        }
+
         newState = {
           "@odata.count": _store["@odata.count"] + 1,
           value: values

@@ -23,7 +23,7 @@
 
 • **@odata.context**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:7](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L7)*
+*Defined in [lib/IOdataCollection.ts:7](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L7)*
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 • **@odata.type**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:8](https://github.com/lucasheight/odata-observable-store/blob/9dbc11ca/projects/odata-observable-store/src/lib/IOdataCollection.ts#L8)*
+*Defined in [lib/IOdataCollection.ts:8](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/IOdataCollection.ts#L8)*

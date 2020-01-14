@@ -44,7 +44,7 @@
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
     "@lucasheight/odata-observable-store": "^1.1.10",
-    "@progress/kendo-angular-buttons": "^5.0.1",
+    "@progress/kendo-angular-buttons": "^5.2.0",
     "@progress/kendo-angular-common": "^1.2.1",
     "@progress/kendo-angular-dateinputs": "^4.2.0",
     "@progress/kendo-angular-dropdowns": "^4.2.3",

@@ -9,7 +9,7 @@ import { IOdataCollection } from "./IOdataCollection";
 /**
  * Creates an Odata service store that follows the observable store pattern.
  *@description Provides default odata rest methods the handle the most common odata use.
- *In cases where public methods are not suffient use the protected methods, fillStore, updateStore and dispatchNotifier
+ *In cases where public methods are not sufficient use the protected methods, fillStore, updateStore and dispatchNotifier
  */
 export abstract class ODataStore<T> {
   private _initState: IOdataCollection<T> = {
@@ -94,7 +94,7 @@ export abstract class ODataStore<T> {
   /**
    * Method to return an OData collection
    * @param  queryString The additional query string without the ?.
-   *This can be used to send in addtional odata parameters e.g $filter, $expand $select
+   *This can be used to send in additional odata parameters e.g $filter, $expand $select
    *@example query("$filter=Firstname eq 'john'&$expand=Address")
    * @returns void
    */
@@ -134,7 +134,7 @@ export abstract class ODataStore<T> {
    * @param value The object to located the key or keys
    * @param keys The key or keys to the property(ies) that identify the primary key('s)
    * @param  queryString The additional query string without the ?.
-   *This can be used to send in addtional odata parameters e.g $filter, $expand $select
+   *This can be used to send in additional odata parameters e.g $filter, $expand $select
    *@example get(item,"Id","$expand=Address")
    * @returns Observable<t>
    */
@@ -172,7 +172,7 @@ export abstract class ODataStore<T> {
    * Posts a new item to the odata backend and appends the observable store with the new value
    * @param item The object to post
    * @param  queryString The additional query string without the ?.
-   *This can be used to send in addtional odata parameters e.g. $filter, $expand $select
+   *This can be used to send in additional odata parameters e.g. $filter, $expand $select
    * @returns void
    */
   public insert = (item: T, queryString: string = null): void => {
@@ -196,7 +196,7 @@ export abstract class ODataStore<T> {
    * @param item The object to update
    * @param keys The key or keys to the property(ies) that identify the primary key('s)
    * @param  queryString The additional query string without the ?.
-   * This can be used to send in addtional odata parameters e.g. $filter, $expand $select
+   * This can be used to send in additional odata parameters e.g. $filter, $expand $select
    * @param method The http method to use for the update.
    * @example update(item,"Id")
    * @example update(item,["Id","CategoryId"], null,"post")
@@ -246,7 +246,7 @@ export abstract class ODataStore<T> {
    * @param item The object to patch
    * @param keys The key or keys to the property(ies) that identify the primary key('s)
    * @param  queryString The additional query string without the ?.
-   * This can be used to send in addtional odata parameters e.g. $filter, $expand $select
+   * This can be used to send in additional odata parameters e.g. $filter, $expand $select
    * @param method The http method to use for the update.
    * @example patch(item,"Id")
    * @example patch(item,["Id","CategoryId"], null,"post")

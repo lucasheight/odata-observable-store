@@ -45,7 +45,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     MiddleName: [""]
   });
   isNew: boolean = true;
-  @ViewChild("search", { static: false }) searchCtr: ElementRef;
+  @ViewChild("search") searchCtr: ElementRef;
 
   constructor(private peopleService: PeopleService, private fb: FormBuilder) {}
 

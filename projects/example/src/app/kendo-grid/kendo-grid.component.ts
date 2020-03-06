@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { PeopleService } from "../services/people.service";
 import { map, switchMap, shareReplay } from "rxjs/operators";
 import { OperatorFunction, Observable, Subject } from "rxjs";
-import { IOdataCollection } from "@lucasheight/odata-observable-store";
+import { IOdataCollection } from "odata-observable-store";
 import {
   GridDataResult,
   DataStateChangeEvent,

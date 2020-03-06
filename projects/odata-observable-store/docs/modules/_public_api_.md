@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store](../README.md) › [Globals](../globals.md) › ["public-api"](_public_api_.md)
+[@lucasheight/odata-observable-store - v1.1.12](../README.md) › [Globals](../globals.md) › ["public-api"](_public_api_.md)
 
 # External module: "public-api"
 

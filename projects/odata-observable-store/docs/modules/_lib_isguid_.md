@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store](../README.md) › [Globals](../globals.md) › ["lib/IsGuid"](_lib_isguid_.md)
+[@lucasheight/odata-observable-store - v1.1.12](../README.md) › [Globals](../globals.md) › ["lib/IsGuid"](_lib_isguid_.md)
 
 # External module: "lib/IsGuid"
 
@@ -18,7 +18,7 @@
 
 • **GuidPattern**: *RegExp* =  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
-*Defined in [lib/IsGuid.ts:1](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/IsGuid.ts#L1)*
+*Defined in [lib/IsGuid.ts:1](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/IsGuid.ts#L1)*
 
 ## Functions
 
@@ -26,7 +26,7 @@
 
 ▸ **IsGuid**(`value`: string): *boolean*
 
-*Defined in [lib/IsGuid.ts:2](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/IsGuid.ts#L2)*
+*Defined in [lib/IsGuid.ts:2](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/IsGuid.ts#L2)*
 
 **Parameters:**
 

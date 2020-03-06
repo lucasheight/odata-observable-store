@@ -1,11 +1,11 @@
-[@lucasheight/odata-observable-store](../README.md) › [Globals](../globals.md) › ["lib/odata.store"](../modules/_lib_odata_store_.md) › [ODataStore](_lib_odata_store_.odatastore.md)
+[@lucasheight/odata-observable-store - v1.1.12](../README.md) › [Globals](../globals.md) › ["lib/odata.store"](../modules/_lib_odata_store_.md) › [ODataStore](_lib_odata_store_.odatastore.md)
 
 # Class: ODataStore <**T**>
 
 Creates an Odata service store that follows the observable store pattern.
 
 **`description`** Provides default odata rest methods the handle the most common odata use.
-In cases where public methods are not suffient use the protected methods, fillStore, updateStore and dispatchNotifier
+In cases where public methods are not sufficient use the protected methods, fillStore, updateStore and dispatchNotifier
 
 ## Type parameters
 
@@ -23,16 +23,16 @@ In cases where public methods are not suffient use the protected methods, fillSt
 
 ### Properties
 
-* [_notifier$](_lib_odata_store_.odatastore.md#private-_notifier$)
-* [_response$](_lib_odata_store_.odatastore.md#private-_response$)
-* [_state$](_lib_odata_store_.odatastore.md#private-_state$)
+* [_notifier$](_lib_odata_store_.odatastore.md#private-_notifier)
+* [_response$](_lib_odata_store_.odatastore.md#private-_response)
+* [_state$](_lib_odata_store_.odatastore.md#private-_state)
 * [baseUrl](_lib_odata_store_.odatastore.md#abstract-baseurl)
 * [http](_lib_odata_store_.odatastore.md#protected-http)
-* [notifier$](_lib_odata_store_.odatastore.md#notifier$)
-* [response$](_lib_odata_store_.odatastore.md#response$)
-* [responseObserver$](_lib_odata_store_.odatastore.md#protected-responseobserver$)
+* [notifier$](_lib_odata_store_.odatastore.md#notifier)
+* [response$](_lib_odata_store_.odatastore.md#response)
+* [responseObserver$](_lib_odata_store_.odatastore.md#protected-responseobserver)
 * [settings](_lib_odata_store_.odatastore.md#protected-settings)
-* [state$](_lib_odata_store_.odatastore.md#state$)
+* [state$](_lib_odata_store_.odatastore.md#state)
 
 ### Methods
 
@@ -60,7 +60,7 @@ In cases where public methods are not suffient use the protected methods, fillSt
 
 \+ **new ODataStore**(`http`: HttpClient, `settings`: [IStoreSettings](../interfaces/_lib_istore_.istoresettings.md)): *[ODataStore](_lib_odata_store_.odatastore.md)*
 
-*Defined in [lib/odata.store.ts:72](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L72)*
+*Defined in [lib/odata.store.ts:72](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L72)*
 
 constructor
 
@@ -79,7 +79,7 @@ Name | Type | Default | Description |
 
 • **_notifier$**: *Subject‹[IStoreNotifier](../interfaces/_lib_istore_.istorenotifier.md)‹T››* =  new Subject()
 
-*Defined in [lib/odata.store.ts:36](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L36)*
+*Defined in [lib/odata.store.ts:36](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L36)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • **_response$**: *Subject‹HttpResponse‹[IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›››* =  new Subject()
 
-*Defined in [lib/odata.store.ts:43](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L43)*
+*Defined in [lib/odata.store.ts:43](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L43)*
 
 ___
 
@@ -97,7 +97,7 @@ ___
     undefined
   )
 
-*Defined in [lib/odata.store.ts:23](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L23)*
+*Defined in [lib/odata.store.ts:23](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L23)*
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 • **baseUrl**: *string*
 
-*Defined in [lib/odata.store.ts:22](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L22)*
+*Defined in [lib/odata.store.ts:22](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L22)*
 
 The base url for the odata service
 
@@ -115,7 +115,7 @@ ___
 
 • **http**: *HttpClient*
 
-*Defined in [lib/odata.store.ts:79](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L79)*
+*Defined in [lib/odata.store.ts:79](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L79)*
 
 HttpClient
 
@@ -125,7 +125,7 @@ ___
 
 • **notifier$**: *Observable‹[IStoreNotifier](../interfaces/_lib_istore_.istorenotifier.md)‹T››* =  this._notifier$.asObservable()
 
-*Defined in [lib/odata.store.ts:39](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L39)*
+*Defined in [lib/odata.store.ts:39](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L39)*
 
 Current notifier Observable state
 
@@ -135,7 +135,7 @@ ___
 
 • **response$**: *Observable‹HttpResponse‹[IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›››* =  this._response$.asObservable()
 
-*Defined in [lib/odata.store.ts:47](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L47)*
+*Defined in [lib/odata.store.ts:47](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L47)*
 
 Current response observable state
 
@@ -145,7 +145,7 @@ ___
 
 • **responseObserver$**: *PartialObserver‹HttpResponse‹T | [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›››*
 
-*Defined in [lib/odata.store.ts:51](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L51)*
+*Defined in [lib/odata.store.ts:51](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L51)*
 
 ___
 
@@ -153,7 +153,7 @@ ___
 
 • **settings**: *[IStoreSettings](../interfaces/_lib_istore_.istoresettings.md)*
 
-*Defined in [lib/odata.store.ts:80](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L80)*
+*Defined in [lib/odata.store.ts:80](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L80)*
 
 IStoreSettings
 
@@ -167,7 +167,7 @@ ___
       filter(f => typeof f === "object")
     )
 
-*Defined in [lib/odata.store.ts:29](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L29)*
+*Defined in [lib/odata.store.ts:29](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L29)*
 
 Current Observable store state
 
@@ -177,7 +177,7 @@ Current Observable store state
 
 ▸ **complete**(): *void*
 
-*Defined in [lib/odata.store.ts:55](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L55)*
+*Defined in [lib/odata.store.ts:55](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L55)*
 
 **Returns:** *void*
 
@@ -187,7 +187,7 @@ ___
 
 ▸ **dispatchNotifier**(`act`: [action](../modules/_lib_action_type_.md#action), `state`: T): *void*
 
-*Defined in [lib/odata.store.ts:474](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L474)*
+*Defined in [lib/odata.store.ts:474](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L474)*
 
 Dispatches the notifier$ observable
 
@@ -208,7 +208,7 @@ ___
 
 ▸ **error**(): *void*
 
-*Defined in [lib/odata.store.ts:57](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L57)*
+*Defined in [lib/odata.store.ts:57](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L57)*
 
 **Returns:** *void*
 
@@ -218,7 +218,7 @@ ___
 
 ▸ **fillStore**(`odata`: [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›): *void*
 
-*Defined in [lib/odata.store.ts:464](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L464)*
+*Defined in [lib/odata.store.ts:464](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L464)*
 
 Fill the observable store state$ with an OData Collection
 
@@ -238,7 +238,7 @@ ___
 
 ▸ **get**<**K**>(`value`: T, `keys`: K | K[], `queryString`: string): *Observable‹T›*
 
-*Defined in [lib/odata.store.ts:141](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L141)*
+*Defined in [lib/odata.store.ts:141](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L141)*
 
 Gets a single result of T
 
@@ -252,7 +252,7 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `value` | T | - | The object to located the key or keys |
 `keys` | K &#124; K[] |  null | The key or keys to the property(ies) that identify the primary key('s) |
-`queryString` | string |  null | The additional query string without the ?. This can be used to send in addtional odata parameters e.g $filter, $expand $select |
+`queryString` | string |  null | The additional query string without the ?. This can be used to send in additional odata parameters e.g $filter, $expand $select |
 
 **Returns:** *Observable‹T›*
 
@@ -264,7 +264,7 @@ ___
 
 ▸ **insert**(`item`: T, `queryString`: string): *void*
 
-*Defined in [lib/odata.store.ts:178](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L178)*
+*Defined in [lib/odata.store.ts:178](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L178)*
 
 Posts a new item to the odata backend and appends the observable store with the new value
 
@@ -273,7 +273,7 @@ Posts a new item to the odata backend and appends the observable store with the 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `item` | T | - | The object to post |
-`queryString` | string |  null | The additional query string without the ?. This can be used to send in addtional odata parameters e.g. $filter, $expand $select |
+`queryString` | string |  null | The additional query string without the ?. This can be used to send in additional odata parameters e.g. $filter, $expand $select |
 
 **Returns:** *void*
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **patch**<**K**>(`item`: T, `keys`: K | K[], `queryString`: string, `method`: "patch" | "put" | "post"): *void*
 
-*Defined in [lib/odata.store.ts:255](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L255)*
+*Defined in [lib/odata.store.ts:255](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L255)*
 
 Patches an item to the odata backend and updates the observable store with the new value
 
@@ -299,7 +299,7 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `item` | T | - | The object to patch |
 `keys` | K &#124; K[] |  null | The key or keys to the property(ies) that identify the primary key('s) |
-`queryString` | string |  null | The additional query string without the ?. This can be used to send in addtional odata parameters e.g. $filter, $expand $select |
+`queryString` | string |  null | The additional query string without the ?. This can be used to send in additional odata parameters e.g. $filter, $expand $select |
 `method` | "patch" &#124; "put" &#124; "post" | "patch" | The http method to use for the update. |
 
 **Returns:** *void*
@@ -312,7 +312,7 @@ ___
 
 ▸ **query**(`queryString`: string): *void*
 
-*Defined in [lib/odata.store.ts:101](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L101)*
+*Defined in [lib/odata.store.ts:101](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L101)*
 
 Method to return an OData collection
 
@@ -320,7 +320,7 @@ Method to return an OData collection
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`queryString` | string |  null | The additional query string without the ?. This can be used to send in addtional odata parameters e.g $filter, $expand $select |
+`queryString` | string |  null | The additional query string without the ?. This can be used to send in additional odata parameters e.g $filter, $expand $select |
 
 **Returns:** *void*
 
@@ -332,7 +332,7 @@ ___
 
 ▸ **quoteKey**(`id`: string | number): *string*
 
-*Defined in [lib/odata.store.ts:514](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L514)*
+*Defined in [lib/odata.store.ts:514](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L514)*
 
 Determines if string key should be single quoted .
 
@@ -350,7 +350,7 @@ ___
 
 ▸ **remove**<**K**>(`item`: T, `keys`: K | K[], `method`: "delete" | "post"): *void*
 
-*Defined in [lib/odata.store.ts:305](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L305)*
+*Defined in [lib/odata.store.ts:305](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L305)*
 
 Deletes an item from the odata backend and removes item from the observable store
 
@@ -376,7 +376,7 @@ ___
 
 ▸ **update**<**K**>(`item`: T, `keys`: K | K[], `queryString`: string, `method`: "put" | "post"): *void*
 
-*Defined in [lib/odata.store.ts:205](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L205)*
+*Defined in [lib/odata.store.ts:205](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L205)*
 
 Updates an item to the odata backend and updates the observable store with the new value
 
@@ -390,7 +390,7 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `item` | T | - | The object to update |
 `keys` | K &#124; K[] |  null | The key or keys to the property(ies) that identify the primary key('s) |
-`queryString` | string |  null | The additional query string without the ?. This can be used to send in addtional odata parameters e.g. $filter, $expand $select |
+`queryString` | string |  null | The additional query string without the ?. This can be used to send in additional odata parameters e.g. $filter, $expand $select |
 `method` | "put" &#124; "post" | "put" | The http method to use for the update. |
 
 **Returns:** *void*
@@ -403,7 +403,7 @@ ___
 
 ▸ **updateStore**<**K**>(`item`: T, `operation`: [action](../modules/_lib_action_type_.md#action), `keys`: K | K[]): *void*
 
-*Defined in [lib/odata.store.ts:340](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L340)*
+*Defined in [lib/odata.store.ts:340](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L340)*
 
 Updates Observable store $state and dispatches notifier$
 
@@ -429,19 +429,19 @@ void
 
 ### ▪ **_initState**: *object*
 
-*Defined in [lib/odata.store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L15)*
+*Defined in [lib/odata.store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L15)*
 
 ###  @odata.count
 
 • **@odata.count**: *undefined* =  undefined
 
-*Defined in [lib/odata.store.ts:16](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L16)*
+*Defined in [lib/odata.store.ts:16](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L16)*
 
 ###  value
 
 • **value**: *T[]* =  [] as T[]
 
-*Defined in [lib/odata.store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L17)*
+*Defined in [lib/odata.store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L17)*
 
 ___
 
@@ -449,40 +449,40 @@ ___
 
 ### ▪ **_settings**: *object*
 
-*Defined in [lib/odata.store.ts:64](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L64)*
+*Defined in [lib/odata.store.ts:64](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L64)*
 
 ###  notifyOnDelete
 
 • **notifyOnDelete**: *true* = true
 
-*Defined in [lib/odata.store.ts:66](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L66)*
+*Defined in [lib/odata.store.ts:66](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L66)*
 
 ###  notifyOnGet
 
 • **notifyOnGet**: *false* = false
 
-*Defined in [lib/odata.store.ts:67](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L67)*
+*Defined in [lib/odata.store.ts:67](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L67)*
 
 ###  notifyOnInsert
 
 • **notifyOnInsert**: *true* = true
 
-*Defined in [lib/odata.store.ts:68](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L68)*
+*Defined in [lib/odata.store.ts:68](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L68)*
 
 ###  notifyOnUpdate
 
 • **notifyOnUpdate**: *true* = true
 
-*Defined in [lib/odata.store.ts:69](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L69)*
+*Defined in [lib/odata.store.ts:69](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L69)*
 
 ###  prependInserts
 
 • **prependInserts**: *true* = true
 
-*Defined in [lib/odata.store.ts:71](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L71)*
+*Defined in [lib/odata.store.ts:71](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L71)*
 
 ###  use$countOnQuery
 
 • **use$countOnQuery**: *true* = true
 
-*Defined in [lib/odata.store.ts:70](https://github.com/lucasheight/odata-observable-store/blob/d68e06c9/projects/odata-observable-store/src/lib/odata.store.ts#L70)*
+*Defined in [lib/odata.store.ts:70](https://github.com/lucasheight/odata-observable-store/blob/1be1e3b5/projects/odata-observable-store/src/lib/odata.store.ts#L70)*

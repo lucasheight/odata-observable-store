@@ -1,6 +1,6 @@
-[@lucasheight/odata-observable-store](README.md) › [Globals](globals.md)
+[@lucasheight/odata-observable-store - v1.1.12](README.md) › [Globals](globals.md)
 
-# @lucasheight/odata-observable-store
+# @lucasheight/odata-observable-store - v1.1.12
 
 # OData Observable Store - State management for Angular Odata services
 

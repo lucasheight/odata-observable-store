@@ -1,6 +1,6 @@
-[@lucasheight/odata-observable-store - v1.1.12](README.md) › [Globals](globals.md)
+[@lucasheight/odata-observable-store - v1.1.13](README.md) › [Globals](globals.md)
 
-# @lucasheight/odata-observable-store - v1.1.12
+# @lucasheight/odata-observable-store - v1.1.13
 
 ## Index
 

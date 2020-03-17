@@ -1,8 +1,9 @@
 import { action } from "./action.type";
+import { IOdataCollection } from "./IOdataCollection";
 
 export interface IStoreNotifier<T> {
   action: action;
-  state?: T;
+  state?: T | IOdataCollection<T>;
   message?: string;
 }
 export interface IStoreSettings {

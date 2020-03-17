@@ -1,12 +1,11 @@
 import { Observable, BehaviorSubject, Subject, PartialObserver } from "rxjs";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { tap, map, filter, finalize } from "rxjs/operators";
-import { IsGuid } from "./IsGuid";
 import { IStoreNotifier, IStoreSettings } from "./IStore";
 import { StoreSettings } from "./StoreSettings";
 import { action } from "./action.type";
 import { IOdataCollection } from "./IOdataCollection";
-
+import { Helpers } from "./helpers";
 /**
  * Creates an Odata service store that follows the observable store pattern.
  *@description Provides default odata rest methods the handle the most common odata use.
@@ -99,17 +98,21 @@ export abstract class ODataStore<T> {
    * @returns void
    */
   public query = (queryString: string = null): void => {
-    const segments: string[] = [];
-    if (queryString) {
-      segments.push(...queryString.split("&"));
-    }
-    if (this._settings.use$countOnQuery) {
-      segments.push("$count=true");
-    }
+    // const segments: string[] = [];
+    // if (queryString) {
+    //   segments.push(...queryString.split("&"));
+    // }
+    // const additional: string[] = [];
+    // if (this._settings.use$countOnQuery) {
+    //   additional.push("$count=true");
+    // }
 
     //prepend the ? if there are segments
-    const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
-
+    //const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    const query: string = Helpers.queryParser(
+      queryString,
+      this._settings.use$countOnQuery ? ["$count=true"] : []
+    );
     this.responseObserver$.next = (s): void => {
       this._response$.next(s);
       const currentState = Object.assign(
@@ -120,7 +123,7 @@ export abstract class ODataStore<T> {
       currentState["@odata.count"] = s.body["@odata.count"];
       currentState.value = (s.body as IOdataCollection<T>).value;
       this.fillStore(currentState);
-      this.dispatchNotifier("Query");
+      this.dispatchNotifier("Query", s.body);
     };
 
     this.http
@@ -132,16 +135,20 @@ export abstract class ODataStore<T> {
   public query$ = (
     queryString: string = null
   ): Observable<IOdataCollection<T>> => {
-    const segments: string[] = [];
-    if (queryString) {
-      segments.push(...queryString.split("&"));
-    }
-    if (this._settings.use$countOnQuery) {
-      segments.push("$count=true");
-    }
+    const query: string = Helpers.queryParser(
+      queryString,
+      this._settings.use$countOnQuery ? ["$count=true"] : []
+    );
+    // const segments: string[] = [];
+    // if (queryString) {
+    //   segments.push(...queryString.split("&"));
+    // }
+    // if (this._settings.use$countOnQuery) {
+    //   segments.push("$count=true");
+    // }
 
-    //prepend the ? if there are segments
-    const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    // //prepend the ? if there are segments
+    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     return this.http
       .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
         observe: "response"
@@ -157,7 +164,7 @@ export abstract class ODataStore<T> {
           currentState["@odata.count"] = s.body["@odata.count"];
           currentState.value = (s.body as IOdataCollection<T>).value;
           this.fillStore(currentState);
-          this.dispatchNotifier("Query");
+          this.dispatchNotifier("Query", s.body);
         }),
         map(m => m.body)
       );
@@ -176,16 +183,17 @@ export abstract class ODataStore<T> {
     keys: K | K[] = null,
     queryString: string = null
   ): Observable<T> => {
-    const segments: string[] = [];
-    if (queryString) {
-      segments.push(...queryString.split("&"));
-    }
-    const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    // const segments: string[] = [];
+    // if (queryString) {
+    //   segments.push(...queryString.split("&"));
+    // }
+    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    const query: string = Helpers.queryParser(queryString);
     let id: string;
     if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${this.quoteKey(value[m as string])}`).join();
+      id = keys.map(m => `${m}=${Helpers.quoteKey(value[m as string])}`).join();
     } else {
-      id = this.quoteKey(value[keys as string]);
+      id = Helpers.quoteKey(value[keys as string]);
     }
 
     const getObs = this.http
@@ -209,12 +217,12 @@ export abstract class ODataStore<T> {
    * @returns void
    */
   public insert = (item: T, queryString: string = null): void => {
-    const segments: string[] = [];
-    if (queryString) {
-      segments.push(...queryString.split("&"));
-    }
-    const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
-
+    // const segments: string[] = [];
+    // if (queryString) {
+    //   segments.push(...queryString.split("&"));
+    // }
+    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    const query: string = Helpers.queryParser(queryString);
     this.responseObserver$.next = (s): void => {
       this._response$.next(s);
       this.updateStore(s.body as T, "Insert");
@@ -241,16 +249,17 @@ export abstract class ODataStore<T> {
     queryString: string = null,
     method: "put" | "post" = "put"
   ): void => {
-    const segments: string[] = [];
-    if (queryString) {
-      segments.push(...queryString.split("&"));
-    }
-    const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    // const segments: string[] = [];
+    // if (queryString) {
+    //   segments.push(...queryString.split("&"));
+    // }
+    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    const query: string = Helpers.queryParser(queryString);
     let id: string;
     if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${this.quoteKey(item[m as string])}`).join();
+      id = keys.map(m => `${m}=${Helpers.quoteKey(item[m as string])}`).join();
     } else {
-      id = this.quoteKey(item[keys as string]);
+      id = Helpers.quoteKey(item[keys as string]);
     }
     const url =
       keys != null
@@ -291,16 +300,17 @@ export abstract class ODataStore<T> {
     queryString: string = null,
     method: "patch" | "put" | "post" = "patch"
   ): void => {
-    const segments: string[] = [];
-    if (queryString) {
-      segments.push(...queryString.split("&"));
-    }
-    const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    // const segments: string[] = [];
+    // if (queryString) {
+    //   segments.push(...queryString.split("&"));
+    // }
+    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    const query: string = Helpers.queryParser(queryString);
     let id: string;
     if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${this.quoteKey(item[m as string])}`).join();
+      id = keys.map(m => `${m}=${Helpers.quoteKey(item[m as string])}`).join();
     } else {
-      id = this.quoteKey(item[keys as string]);
+      id = Helpers.quoteKey(item[keys as string]);
     }
     const url =
       keys != null
@@ -342,9 +352,9 @@ export abstract class ODataStore<T> {
   ): void => {
     let id: string;
     if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${this.quoteKey(item[m as string])}`).join();
+      id = keys.map(m => `${m}=${Helpers.quoteKey(item[m as string])}`).join();
     } else {
-      id = this.quoteKey(item[keys as string]);
+      id = Helpers.quoteKey(item[keys as string]);
     }
 
     const url: string =
@@ -504,7 +514,10 @@ export abstract class ODataStore<T> {
    * @param act {action} action enum
    * @param state {T} the current state
    */
-  protected dispatchNotifier = (act: action, state: T = null): void => {
+  protected dispatchNotifier = (
+    act: action,
+    state: T | IOdataCollection<T> = null
+  ): void => {
     const settings = this._settings;
     const note: IStoreNotifier<T> = { action: act, state: state };
     const store = this._state$.getValue();
@@ -538,17 +551,5 @@ export abstract class ODataStore<T> {
     ) {
       this._notifier$.next(note);
     }
-  };
-
-  /**Determines if string key should be single quoted .
-   * @description The main use case for this method is to determine if the key is a guid.
-   * If so, do not quote the string.
-   */
-  private quoteKey = (id: string | number): string => {
-    let quotes: string = "";
-    if (typeof id === "string" && !IsGuid(id)) {
-      quotes = "'";
-    }
-    return `${quotes}${id}${quotes}`;
   };
 }

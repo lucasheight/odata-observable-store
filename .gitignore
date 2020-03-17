@@ -1,5 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
+/samples/angular/node_modules
+/samples/angular
+/samples
 # compiled output
 /dist
 /tmp

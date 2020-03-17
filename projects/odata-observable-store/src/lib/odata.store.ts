@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from "@angular/common/http";
 import { tap, map, filter, finalize } from "rxjs/operators";
 import { IsGuid } from "./IsGuid";
 import { IStoreNotifier, IStoreSettings } from "./IStore";
+import { StoreSettings } from "./StoreSettings";
 import { action } from "./action.type";
 import { IOdataCollection } from "./IOdataCollection";
 
@@ -56,20 +57,19 @@ export abstract class ODataStore<T> {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   public error: Function = () => {};
 
-  //  Observer<HttpResponse<T>> = {
-  //     next: (val) => { console.log("next", val) },
-  //     complete: () => console.log("complete"),
-  //     error: (err) => { }
+  /**
+   * @Defaults: notifyOnDelete: true
+   */
+  private _settings: IStoreSettings = new StoreSettings();
+  // {
+  //   //default store settings
+  //   notifyOnDelete: true,
+  //   notifyOnGet: false,
+  //   notifyOnInsert: true,
+  //   notifyOnUpdate: true,
+  //   use$countOnQuery: true,
+  //   prependInserts: true
   // };
-  private _settings: IStoreSettings = {
-    //default store settings
-    notifyOnDelete: true,
-    notifyOnGet: false,
-    notifyOnInsert: true,
-    notifyOnUpdate: true,
-    use$countOnQuery: true,
-    prependInserts: true
-  };
   /**
    * constructor
    * @param http HttpClient
@@ -77,7 +77,7 @@ export abstract class ODataStore<T> {
    */
   constructor(
     protected http: HttpClient,
-    protected settings: IStoreSettings = null
+    protected settings: StoreSettings = null
   ) {
     if (settings) {
       this._settings = Object.assign({}, this._settings, settings);
@@ -128,6 +128,39 @@ export abstract class ODataStore<T> {
         observe: "response"
       })
       .subscribe(this.responseObserver$);
+  };
+  public query$ = (
+    queryString: string = null
+  ): Observable<IOdataCollection<T>> => {
+    const segments: string[] = [];
+    if (queryString) {
+      segments.push(...queryString.split("&"));
+    }
+    if (this._settings.use$countOnQuery) {
+      segments.push("$count=true");
+    }
+
+    //prepend the ? if there are segments
+    const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
+    return this.http
+      .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
+        observe: "response"
+      })
+      .pipe(
+        tap(s => {
+          this._response$.next(s);
+          const currentState = Object.assign(
+            {},
+            this._state$.getValue(),
+            this._initState
+          );
+          currentState["@odata.count"] = s.body["@odata.count"];
+          currentState.value = (s.body as IOdataCollection<T>).value;
+          this.fillStore(currentState);
+          this.dispatchNotifier("Query");
+        }),
+        map(m => m.body)
+      );
   };
   /**
    * Gets a single result of T

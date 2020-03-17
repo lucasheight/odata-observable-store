@@ -43,7 +43,7 @@
     "@angular/platform-browser": "^9.0.6",
     "@angular/platform-browser-dynamic": "^9.0.6",
     "@angular/router": "^9.0.6",
-    "@progress/kendo-angular-buttons": "^5.2.3",
+    "@progress/kendo-angular-buttons": "^5.3.0",
     "@progress/kendo-angular-common": "^1.2.2",
     "@progress/kendo-angular-dateinputs": "^4.2.2",
     "@progress/kendo-angular-dropdowns": "^4.2.5",

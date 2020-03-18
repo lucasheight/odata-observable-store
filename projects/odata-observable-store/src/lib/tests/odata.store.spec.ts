@@ -168,4 +168,70 @@ describe("OData Store Tests", () => {
     req.flush(item);
     httpTestingController.verify();
   });
+  it("Store patch$ method should update record with new props", () => {
+    // fill backing store with test data
+    store.fill({
+      "@odata.count": TestData.length,
+      value: TestData
+    } as IOdataCollection<ITestData>);
+    //updated item
+    const item: ITestData = {
+      Id: 1,
+      Name: "Patched",
+      LastUpdatedDT: new Date()
+    };
+
+    store.notifier$.subscribe(s => {
+      expect(s.action).toEqual("Update");
+    });
+    store.patch$(item, "Id").subscribe(s => {
+      store.state$.subscribe(s => {
+        expect(s["@odata.count"] > 0).toBe(true);
+        const found = s.value.find(f => f.Id == 1).Name;
+        expect(found).toEqual("Patched");
+      });
+      expect(s.Name).toEqual("Patched");
+    });
+    let req = httpTestingController.expectOne("/data(1)");
+    // Assert that the request is a GET.
+    expect(req.request.method).toEqual("PATCH");
+
+    // Respond with mock data, causing Observable to resolve.
+    // Subscribe callback asserts that correct data was returned.
+    req.flush(item);
+    httpTestingController.verify();
+  });
+  it("Store remove$ method should remove record", () => {
+    // fill backing store with test data
+    store.fill({
+      "@odata.count": TestData.length,
+      value: TestData
+    } as IOdataCollection<ITestData>);
+    //updated item
+    const item: ITestData = {
+      Id: 1,
+      Name: "Patched",
+      LastUpdatedDT: new Date()
+    };
+
+    store.notifier$.subscribe(s => {
+      expect(s.action).toEqual("Delete");
+    });
+    store.remove$(item, "Id").subscribe(s => {
+      store.state$.subscribe(s => {
+        expect(s["@odata.count"] > 0).toBe(true);
+        expect(s["@odata.count"] == 4).toBe(true);
+        const found = s.value.find(f => f.Id == 1);
+        expect(found).toBeUndefined();
+      });
+    });
+    let req = httpTestingController.expectOne("/data(1)");
+    // Assert that the request is a GET.
+    expect(req.request.method).toEqual("DELETE");
+
+    // Respond with mock data, causing Observable to resolve.
+    // Subscribe callback asserts that correct data was returned.
+    req.flush(item);
+    httpTestingController.verify();
+  });
 });

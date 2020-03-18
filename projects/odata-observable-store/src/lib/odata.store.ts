@@ -328,16 +328,16 @@ export abstract class ODataStore<T> {
       keys != null
         ? `${this.baseUrl}(${id})${query}`
         : `${this.baseUrl}${query}`;
-    let operation: Observable<HttpResponse<{}>>;
+    let operation: Observable<HttpResponse<T>>;
     switch (method) {
       case "put":
-        operation = this.http.put(url, item, { observe: "response" });
+        operation = this.http.put<T>(url, item, { observe: "response" });
         break;
       case "post":
-        operation = this.http.post(url, item, { observe: "response" });
+        operation = this.http.post<T>(url, item, { observe: "response" });
         break;
       default:
-        operation = this.http.patch(url, item, { observe: "response" });
+        operation = this.http.patch<T>(url, item, { observe: "response" });
         break;
     }
 
@@ -347,6 +347,50 @@ export abstract class ODataStore<T> {
     };
 
     operation.subscribe(this.responseObserver$);
+  };
+  /**
+   * Patches an item to the odata backend and updates the observable store with the new value
+   * @param item The object to patch
+   * @param keys The key or keys to the property(ies) that identify the primary key('s)
+   * @param  queryString The additional query string without the ?.
+   * This can be used to send in additional odata parameters e.g. $filter, $expand $select
+   * @param method The http method to use for the update.
+   * @example patch(item,"Id")
+   * @example patch(item,["Id","CategoryId"], null,"post")
+   * @returns Observable<T>
+   */
+  public patch$ = <K extends keyof T>(
+    item: T,
+    keys: K | K[] = null,
+    queryString: string = null,
+    method: "patch" | "put" | "post" = "patch"
+  ): Observable<T> => {
+    const query: string = Helpers.queryParser(queryString);
+    const id: string = this.makeId(item, keys);
+
+    const url =
+      keys != null
+        ? `${this.baseUrl}(${id})${query}`
+        : `${this.baseUrl}${query}`;
+    let operation: Observable<HttpResponse<T>>;
+    switch (method) {
+      case "put":
+        operation = this.http.put<T>(url, item, { observe: "response" });
+        break;
+      case "post":
+        operation = this.http.post<T>(url, item, { observe: "response" });
+        break;
+      default:
+        operation = this.http.patch<T>(url, item, { observe: "response" });
+        break;
+    }
+    return operation.pipe(
+      tap(() => {
+        this.updateStore(item, "Update", keys);
+      }),
+      map(m => m.body),
+      finalize(() => this.responseObserver$.complete())
+    );
   };
   /**
    * Deletes an item from the odata backend and removes item from the observable store
@@ -377,7 +421,36 @@ export abstract class ODataStore<T> {
 
     operation.subscribe(this.responseObserver$);
   };
-
+  /**
+   * Deletes an item from the odata backend and removes item from the observable store
+   * @param item The object to update
+   * @param keys The key or keys to the property(ies) that identify the primary key('s)
+   * @param method The http method to use for the update.
+   * @example delete(item,"Id")
+   * @example delete(item,["Id","CategoryId"], "post")
+   * @returns Observable<void|Object>
+   */
+  public remove$ = <K extends keyof T>(
+    item: T,
+    keys: K | K[] = null,
+    method: "delete" | "post" = "delete"
+    // eslint-disable-next-line @typescript-eslint/ban-types
+  ): Observable<void | Object> => {
+    const id: string = this.makeId(item, keys);
+    const url: string =
+      keys != null ? `${this.baseUrl}(${id})` : `${this.baseUrl}`;
+    const operation =
+      method == "delete"
+        ? this.http.delete(url, { observe: "response" })
+        : this.http.post<T>(url, item, { observe: "response" });
+    return operation.pipe(
+      tap(() => {
+        this.updateStore(item, "Delete", keys);
+      }),
+      map(m => m.body),
+      finalize(() => this.responseObserver$.complete())
+    );
+  };
   /**
    * Updates Observable store $state and dispatches notifier$
    * @param item {T} The item to update

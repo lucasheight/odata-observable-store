@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store - v1.2.0](../README.md) › [Globals](../globals.md) › ["lib/IStore"](../modules/_lib_istore_.md) › [IStoreSettings](_lib_istore_.istoresettings.md)
+[@lucasheight/odata-observable-store - v1.2.1](../README.md) › [Globals](../globals.md) › ["lib/IStore"](../modules/_lib_istore_.md) › [IStoreSettings](_lib_istore_.istoresettings.md)
 
 # Interface: IStoreSettings
 
@@ -27,7 +27,7 @@
 
 • **notifyOnDelete**? : *boolean*
 
-*Defined in [lib/IStore.ts:13](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IStore.ts#L13)*
+*Defined in [lib/IStore.ts:13](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/IStore.ts#L13)*
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 • **notifyOnGet**? : *boolean*
 
-*Defined in [lib/IStore.ts:10](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IStore.ts#L10)*
+*Defined in [lib/IStore.ts:10](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/IStore.ts#L10)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 • **notifyOnInsert**? : *boolean*
 
-*Defined in [lib/IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IStore.ts#L11)*
+*Defined in [lib/IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/IStore.ts#L11)*
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 • **notifyOnUpdate**? : *boolean*
 
-*Defined in [lib/IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IStore.ts#L12)*
+*Defined in [lib/IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/IStore.ts#L12)*
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 • **prependInserts**? : *boolean*
 
-*Defined in [lib/IStore.ts:15](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IStore.ts#L15)*
+*Defined in [lib/IStore.ts:15](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/IStore.ts#L15)*
 
 ___
 
@@ -67,4 +67,4 @@ ___
 
 • **use$countOnQuery**? : *boolean*
 
-*Defined in [lib/IStore.ts:14](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IStore.ts#L14)*
+*Defined in [lib/IStore.ts:14](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/IStore.ts#L14)*

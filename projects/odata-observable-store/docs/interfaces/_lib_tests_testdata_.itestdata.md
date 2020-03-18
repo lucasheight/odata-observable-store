@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store - v1.2.0](../README.md) › [Globals](../globals.md) › ["lib/tests/testData"](../modules/_lib_tests_testdata_.md) › [ITestData](_lib_tests_testdata_.itestdata.md)
+[@lucasheight/odata-observable-store - v1.2.1](../README.md) › [Globals](../globals.md) › ["lib/tests/testData"](../modules/_lib_tests_testdata_.md) › [ITestData](_lib_tests_testdata_.itestdata.md)
 
 # Interface: ITestData
 
@@ -20,7 +20,7 @@
 
 • **Id**: *number*
 
-*Defined in [lib/tests/testData.ts:2](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/tests/testData.ts#L2)*
+*Defined in [lib/tests/testData.ts:2](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/tests/testData.ts#L2)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **LastUpdatedDT**: *Date*
 
-*Defined in [lib/tests/testData.ts:4](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/tests/testData.ts#L4)*
+*Defined in [lib/tests/testData.ts:4](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/tests/testData.ts#L4)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **Name**: *string*
 
-*Defined in [lib/tests/testData.ts:3](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/tests/testData.ts#L3)*
+*Defined in [lib/tests/testData.ts:3](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/tests/testData.ts#L3)*

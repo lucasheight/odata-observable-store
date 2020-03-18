@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store - v1.2.0](../README.md) › [Globals](../globals.md) › ["lib/IOdataCollection"](_lib_iodatacollection_.md)
+[@lucasheight/odata-observable-store - v1.2.1](../README.md) › [Globals](../globals.md) › ["lib/IOdataCollection"](_lib_iodatacollection_.md)
 
 # External module: "lib/IOdataCollection"
 

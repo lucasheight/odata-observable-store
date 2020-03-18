@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store - v1.2.0](../README.md) › [Globals](../globals.md) › ["lib/odata.store"](../modules/_lib_odata_store_.md) › [ODataStore](_lib_odata_store_.odatastore.md)
+[@lucasheight/odata-observable-store - v1.2.1](../README.md) › [Globals](../globals.md) › ["lib/odata.store"](../modules/_lib_odata_store_.md) › [ODataStore](_lib_odata_store_.odatastore.md)
 
 # Class: ODataStore <**T**>
 
@@ -67,7 +67,7 @@ In cases where public methods are not sufficient use the protected methods, fill
 
 \+ **new ODataStore**(`http`: HttpClient, `settings`: [StoreSettings](_lib_storesettings_.storesettings.md)): *[ODataStore](_lib_odata_store_.odatastore.md)*
 
-*Defined in [lib/odata.store.ts:62](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L62)*
+*Defined in [lib/odata.store.ts:62](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L62)*
 
 constructor
 
@@ -86,7 +86,7 @@ Name | Type | Default | Description |
 
 • **_notifier$**: *Subject‹[IStoreNotifier](../interfaces/_lib_istore_.istorenotifier.md)‹T››* =  new Subject()
 
-*Defined in [lib/odata.store.ts:36](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L36)*
+*Defined in [lib/odata.store.ts:36](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L36)*
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 • **_response$**: *Subject‹HttpResponse‹[IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›››* =  new Subject()
 
-*Defined in [lib/odata.store.ts:43](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L43)*
+*Defined in [lib/odata.store.ts:43](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L43)*
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 • **_settings**: *[IStoreSettings](../interfaces/_lib_istore_.istoresettings.md)* =  new StoreSettings()
 
-*Defined in [lib/odata.store.ts:62](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L62)*
+*Defined in [lib/odata.store.ts:62](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L62)*
 
 **`defaults:`** notifyOnDelete: true
 
@@ -114,7 +114,7 @@ ___
     undefined
   )
 
-*Defined in [lib/odata.store.ts:23](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L23)*
+*Defined in [lib/odata.store.ts:23](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L23)*
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 • **baseUrl**: *string*
 
-*Defined in [lib/odata.store.ts:22](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L22)*
+*Defined in [lib/odata.store.ts:22](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L22)*
 
 The base url for the odata service
 
@@ -132,7 +132,7 @@ ___
 
 • **http**: *HttpClient*
 
-*Defined in [lib/odata.store.ts:69](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L69)*
+*Defined in [lib/odata.store.ts:69](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L69)*
 
 HttpClient
 
@@ -142,7 +142,7 @@ ___
 
 • **notifier$**: *Observable‹[IStoreNotifier](../interfaces/_lib_istore_.istorenotifier.md)‹T››* =  this._notifier$.asObservable()
 
-*Defined in [lib/odata.store.ts:39](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L39)*
+*Defined in [lib/odata.store.ts:39](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L39)*
 
 Current notifier Observable state
 
@@ -152,7 +152,7 @@ ___
 
 • **response$**: *Observable‹HttpResponse‹[IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›››* =  this._response$.asObservable()
 
-*Defined in [lib/odata.store.ts:47](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L47)*
+*Defined in [lib/odata.store.ts:47](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L47)*
 
 Current response observable state
 
@@ -162,7 +162,7 @@ ___
 
 • **responseObserver$**: *PartialObserver‹HttpResponse‹T | [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›››*
 
-*Defined in [lib/odata.store.ts:51](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L51)*
+*Defined in [lib/odata.store.ts:51](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L51)*
 
 ___
 
@@ -170,7 +170,7 @@ ___
 
 • **settings**: *[StoreSettings](_lib_storesettings_.storesettings.md)*
 
-*Defined in [lib/odata.store.ts:70](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L70)*
+*Defined in [lib/odata.store.ts:70](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L70)*
 
 IStoreSettings
 
@@ -184,7 +184,7 @@ ___
       filter(f => typeof f === "object")
     )
 
-*Defined in [lib/odata.store.ts:29](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L29)*
+*Defined in [lib/odata.store.ts:29](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L29)*
 
 Current Observable store state
 
@@ -194,7 +194,7 @@ Current Observable store state
 
 ▸ **complete**(): *void*
 
-*Defined in [lib/odata.store.ts:55](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L55)*
+*Defined in [lib/odata.store.ts:55](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L55)*
 
 **Returns:** *void*
 
@@ -204,7 +204,7 @@ ___
 
 ▸ **dispatchNotifier**(`act`: [action](../modules/_lib_action_type_.md#action), `state`: T | [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›): *void*
 
-*Defined in [lib/odata.store.ts:596](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L596)*
+*Defined in [lib/odata.store.ts:596](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L596)*
 
 Dispatches the notifier$ observable
 
@@ -225,7 +225,7 @@ ___
 
 ▸ **error**(): *void*
 
-*Defined in [lib/odata.store.ts:57](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L57)*
+*Defined in [lib/odata.store.ts:57](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L57)*
 
 **Returns:** *void*
 
@@ -235,7 +235,7 @@ ___
 
 ▸ **fillStore**(`odata`: [IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T›): *void*
 
-*Defined in [lib/odata.store.ts:586](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L586)*
+*Defined in [lib/odata.store.ts:586](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L586)*
 
 Fill the observable store state$ with an OData Collection
 
@@ -255,7 +255,7 @@ ___
 
 ▸ **get**<**K**>(`value`: T, `keys`: K | K[], `queryString`: string): *Observable‹T›*
 
-*Defined in [lib/odata.store.ts:163](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L163)*
+*Defined in [lib/odata.store.ts:163](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L163)*
 
 Gets a single result of T
 
@@ -281,7 +281,7 @@ ___
 
 ▸ **insert**(`item`: T, `queryString`: string): *void*
 
-*Defined in [lib/odata.store.ts:190](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L190)*
+*Defined in [lib/odata.store.ts:190](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L190)*
 
 Posts a new item to the odata backend and appends the observable store with the new value
 
@@ -302,7 +302,7 @@ ___
 
 ▸ **insert$**(`item`: T, `queryString`: string): *Observable‹T›*
 
-*Defined in [lib/odata.store.ts:208](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L208)*
+*Defined in [lib/odata.store.ts:208](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L208)*
 
 Posts a new item to the odata backend and appends the observable store with the new value
 
@@ -323,7 +323,7 @@ ___
 
 ▸ **makeId**<**K**>(`value`: T, `keys`: K | K[]): *string*
 
-*Defined in [lib/odata.store.ts:640](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L640)*
+*Defined in [lib/odata.store.ts:640](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L640)*
 
 Formats the key or keys
 
@@ -348,7 +348,7 @@ ___
 
 ▸ **patch**<**K**>(`item`: T, `keys`: K | K[], `queryString`: string, `method`: "patch" | "put" | "post"): *void*
 
-*Defined in [lib/odata.store.ts:318](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L318)*
+*Defined in [lib/odata.store.ts:318](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L318)*
 
 Patches an item to the odata backend and updates the observable store with the new value
 
@@ -375,7 +375,7 @@ ___
 
 ▸ **patch$**<**K**>(`item`: T, `keys`: K | K[], `queryString`: string, `method`: "patch" | "put" | "post"): *Observable‹T›*
 
-*Defined in [lib/odata.store.ts:362](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L362)*
+*Defined in [lib/odata.store.ts:362](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L362)*
 
 Patches an item to the odata backend and updates the observable store with the new value
 
@@ -402,7 +402,7 @@ ___
 
 ▸ **query**(`queryString`: string): *void*
 
-*Defined in [lib/odata.store.ts:91](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L91)*
+*Defined in [lib/odata.store.ts:91](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L91)*
 
 Method to hydrate the store
 
@@ -422,7 +422,7 @@ ___
 
 ▸ **query$**(`queryString`: string): *Observable‹[IOdataCollection](../interfaces/_lib_iodatacollection_.iodatacollection.md)‹T››*
 
-*Defined in [lib/odata.store.ts:124](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L124)*
+*Defined in [lib/odata.store.ts:124](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L124)*
 
 Method to query the odata API and hydrate the store
 
@@ -442,7 +442,7 @@ ___
 
 ▸ **remove**<**K**>(`item`: T, `keys`: K | K[], `method`: "delete" | "post"): *void*
 
-*Defined in [lib/odata.store.ts:404](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L404)*
+*Defined in [lib/odata.store.ts:404](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L404)*
 
 Deletes an item from the odata backend and removes item from the observable store
 
@@ -468,7 +468,7 @@ ___
 
 ▸ **remove$**<**K**>(`item`: T, `keys`: K | K[], `method`: "delete" | "post"): *Observable‹void | Object›*
 
-*Defined in [lib/odata.store.ts:433](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L433)*
+*Defined in [lib/odata.store.ts:433](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L433)*
 
 Deletes an item from the odata backend and removes item from the observable store
 
@@ -494,7 +494,7 @@ ___
 
 ▸ **update**<**K**>(`item`: T, `keys`: K | K[], `queryString`: string, `method`: "put" | "post"): *void*
 
-*Defined in [lib/odata.store.ts:235](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L235)*
+*Defined in [lib/odata.store.ts:235](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L235)*
 
 Updates an item to the odata backend and updates the observable store with the new value
 
@@ -521,7 +521,7 @@ ___
 
 ▸ **update$**<**K**>(`item`: T, `keys`: K | K[], `queryString`: string, `method`: "put" | "post"): *Observable‹T›*
 
-*Defined in [lib/odata.store.ts:276](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L276)*
+*Defined in [lib/odata.store.ts:276](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L276)*
 
 Updates an item to the odata backend and updates the observable store with the new value
 
@@ -548,7 +548,7 @@ ___
 
 ▸ **updateStore**<**K**>(`item`: T, `operation`: [action](../modules/_lib_action_type_.md#action), `keys`: K | K[]): *void*
 
-*Defined in [lib/odata.store.ts:462](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L462)*
+*Defined in [lib/odata.store.ts:462](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L462)*
 
 Updates Observable store $state and dispatches notifier$
 
@@ -574,16 +574,16 @@ void
 
 ### ▪ **_initState**: *object*
 
-*Defined in [lib/odata.store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L15)*
+*Defined in [lib/odata.store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L15)*
 
 ###  @odata.count
 
 • **@odata.count**: *undefined* =  undefined
 
-*Defined in [lib/odata.store.ts:16](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L16)*
+*Defined in [lib/odata.store.ts:16](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L16)*
 
 ###  value
 
 • **value**: *T[]* =  [] as T[]
 
-*Defined in [lib/odata.store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/odata.store.ts#L17)*
+*Defined in [lib/odata.store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/b97261dd/projects/odata-observable-store/src/lib/odata.store.ts#L17)*

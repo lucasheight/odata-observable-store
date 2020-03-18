@@ -60,15 +60,6 @@ export abstract class ODataStore<T> {
    * @Defaults: notifyOnDelete: true
    */
   private _settings: IStoreSettings = new StoreSettings();
-  // {
-  //   //default store settings
-  //   notifyOnDelete: true,
-  //   notifyOnGet: false,
-  //   notifyOnInsert: true,
-  //   notifyOnUpdate: true,
-  //   use$countOnQuery: true,
-  //   prependInserts: true
-  // };
   /**
    * constructor
    * @param http HttpClient
@@ -91,22 +82,13 @@ export abstract class ODataStore<T> {
     };
   }
   /**
-   * Method to return an OData collection
+   * Method to hydrate the store
    * @param  queryString The additional query string without the ?.
    *This can be used to send in additional odata parameters e.g $filter, $expand $select
    *@example query("$filter=Firstname eq 'john'&$expand=Address")
    * @returns void
    */
   public query = (queryString: string = null): void => {
-    // const segments: string[] = [];
-    // if (queryString) {
-    //   segments.push(...queryString.split("&"));
-    // }
-    // const additional: string[] = [];
-    // if (this._settings.use$countOnQuery) {
-    //   additional.push("$count=true");
-    // }
-
     //prepend the ? if there are segments
     //const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     const query: string = Helpers.queryParser(
@@ -132,6 +114,13 @@ export abstract class ODataStore<T> {
       })
       .subscribe(this.responseObserver$);
   };
+  /**
+   * Method to query the odata API and hydrate the store
+   * @param  queryString The additional query string without the ?.
+   *This can be used to send in additional odata parameters e.g $filter, $expand $select
+   *@example query("$filter=Firstname eq 'john'&$expand=Address")
+   * @returns Observable<IOdataCollection<T>>
+   */
   public query$ = (
     queryString: string = null
   ): Observable<IOdataCollection<T>> => {
@@ -139,16 +128,6 @@ export abstract class ODataStore<T> {
       queryString,
       this._settings.use$countOnQuery ? ["$count=true"] : []
     );
-    // const segments: string[] = [];
-    // if (queryString) {
-    //   segments.push(...queryString.split("&"));
-    // }
-    // if (this._settings.use$countOnQuery) {
-    //   segments.push("$count=true");
-    // }
-
-    // //prepend the ? if there are segments
-    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     return this.http
       .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
         observe: "response"
@@ -166,9 +145,12 @@ export abstract class ODataStore<T> {
           this.fillStore(currentState);
           this.dispatchNotifier("Query", s.body);
         }),
-        map(m => m.body)
+        map(m => m.body),
+        //call the complete callback
+        finalize(() => this.responseObserver$.complete())
       );
   };
+
   /**
    * Gets a single result of T
    * @param value The object to located the key or keys
@@ -183,19 +165,8 @@ export abstract class ODataStore<T> {
     keys: K | K[] = null,
     queryString: string = null
   ): Observable<T> => {
-    // const segments: string[] = [];
-    // if (queryString) {
-    //   segments.push(...queryString.split("&"));
-    // }
-    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     const query: string = Helpers.queryParser(queryString);
-    let id: string;
-    if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${Helpers.quoteKey(value[m as string])}`).join();
-    } else {
-      id = Helpers.quoteKey(value[keys as string]);
-    }
-
+    const id: string = this.makeId(value, keys);
     const getObs = this.http
       .get<T>(`${this.baseUrl}(${id})${query}`, { observe: "response" })
       .pipe(
@@ -204,7 +175,7 @@ export abstract class ODataStore<T> {
           this.dispatchNotifier("Get");
         }),
         map(m => m.body),
-
+        //call the complete callback
         finalize(() => this.responseObserver$.complete())
       );
     return getObs;
@@ -217,11 +188,6 @@ export abstract class ODataStore<T> {
    * @returns void
    */
   public insert = (item: T, queryString: string = null): void => {
-    // const segments: string[] = [];
-    // if (queryString) {
-    //   segments.push(...queryString.split("&"));
-    // }
-    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     const query: string = Helpers.queryParser(queryString);
     this.responseObserver$.next = (s): void => {
       this._response$.next(s);
@@ -231,6 +197,29 @@ export abstract class ODataStore<T> {
     this.http
       .post<T>(`${this.baseUrl}${query}`, item, { observe: "response" })
       .subscribe(this.responseObserver$);
+  };
+  /**
+   * Posts a new item to the odata backend and appends the observable store with the new value
+   * @param item The object to post
+   * @param  queryString The additional query string without the ?.
+   *This can be used to send in additional odata parameters e.g. $filter, $expand $select
+   * @returns Observable<T>
+   */
+  public insert$ = (item: T, queryString: string = null): Observable<T> => {
+    const query: string = Helpers.queryParser(queryString);
+    return this.http
+      .post<T>(`${this.baseUrl}${query}`, item, {
+        observe: "response"
+      })
+      .pipe(
+        tap(t => {
+          this._response$.next(t);
+          this.updateStore(t.body, "Insert");
+        }),
+        map(m => m.body),
+        finalize(() => this.responseObserver$.complete())
+      );
+    //.subscribe(this.responseObserver$);
   };
   /**
    * Updates an item to the odata backend and updates the observable store with the new value
@@ -249,18 +238,8 @@ export abstract class ODataStore<T> {
     queryString: string = null,
     method: "put" | "post" = "put"
   ): void => {
-    // const segments: string[] = [];
-    // if (queryString) {
-    //   segments.push(...queryString.split("&"));
-    // }
-    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     const query: string = Helpers.queryParser(queryString);
-    let id: string;
-    if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${Helpers.quoteKey(item[m as string])}`).join();
-    } else {
-      id = Helpers.quoteKey(item[keys as string]);
-    }
+    const id: string = this.makeId(item, keys);
     const url =
       keys != null
         ? `${this.baseUrl}(${id})${query}`
@@ -284,6 +263,48 @@ export abstract class ODataStore<T> {
     operation.subscribe(this.responseObserver$);
   };
   /**
+   * Updates an item to the odata backend and updates the observable store with the new value
+   * @param item The object to update
+   * @param keys The key or keys to the property(ies) that identify the primary key('s)
+   * @param  queryString The additional query string without the ?.
+   * This can be used to send in additional odata parameters e.g. $filter, $expand $select
+   * @param method The http method to use for the update.
+   * @example update(item,"Id")
+   * @example update(item,["Id","CategoryId"], null,"post")
+   * @returns Observable<Empty> | Observable<T>
+   */
+  public update$ = <K extends keyof T>(
+    item: T,
+    keys: K | K[] = null,
+    queryString: string = null,
+    method: "put" | "post" = "put"
+  ): Observable<T> => {
+    const query: string = Helpers.queryParser(queryString);
+    const id: string = this.makeId(item, keys);
+    const url =
+      keys != null
+        ? `${this.baseUrl}(${id})${query}`
+        : `${this.baseUrl}${query}`;
+    let operation: Observable<HttpResponse<T>>;
+    switch (method) {
+      case "post":
+        operation = this.http.post<T>(url, item, { observe: "response" });
+        break;
+      default:
+        operation = this.http.put<T>(url, item, { observe: "response" });
+
+        break;
+    }
+
+    return operation.pipe(
+      tap(() => {
+        this.updateStore(item, "Update", keys);
+      }),
+      map(m => m.body),
+      finalize(() => this.responseObserver$.complete())
+    );
+  };
+  /**
    * Patches an item to the odata backend and updates the observable store with the new value
    * @param item The object to patch
    * @param keys The key or keys to the property(ies) that identify the primary key('s)
@@ -300,18 +321,9 @@ export abstract class ODataStore<T> {
     queryString: string = null,
     method: "patch" | "put" | "post" = "patch"
   ): void => {
-    // const segments: string[] = [];
-    // if (queryString) {
-    //   segments.push(...queryString.split("&"));
-    // }
-    // const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     const query: string = Helpers.queryParser(queryString);
-    let id: string;
-    if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${Helpers.quoteKey(item[m as string])}`).join();
-    } else {
-      id = Helpers.quoteKey(item[keys as string]);
-    }
+    const id: string = this.makeId(item, keys);
+
     const url =
       keys != null
         ? `${this.baseUrl}(${id})${query}`
@@ -350,13 +362,7 @@ export abstract class ODataStore<T> {
     keys: K | K[] = null,
     method: "delete" | "post" = "delete"
   ): void => {
-    let id: string;
-    if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${Helpers.quoteKey(item[m as string])}`).join();
-    } else {
-      id = Helpers.quoteKey(item[keys as string]);
-    }
-
+    const id: string = this.makeId(item, keys);
     const url: string =
       keys != null ? `${this.baseUrl}(${id})` : `${this.baseUrl}`;
     const operation =
@@ -406,7 +412,7 @@ export abstract class ODataStore<T> {
         }
 
         newState = {
-          "@odata.count": _store["@odata.count"] + 1,
+          "@odata.count": (_store["@odata.count"] ?? 0) + 1,
           value: values
         };
         this.fillStore(newState);
@@ -551,5 +557,20 @@ export abstract class ODataStore<T> {
     ) {
       this._notifier$.next(note);
     }
+  };
+  /**
+   * Formats the key or keys
+   * @returns string
+   * @param value T
+   * @param keys K or K[]
+   */
+  private makeId = <K extends keyof T>(value: T, keys: K | K[]): string => {
+    let id: string;
+    if (Array.isArray(keys)) {
+      id = keys.map(m => `${m}=${Helpers.quoteKey(value[m as string])}`).join();
+    } else {
+      id = Helpers.quoteKey(value[keys as string]);
+    }
+    return id;
   };
 }

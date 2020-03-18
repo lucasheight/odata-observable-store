@@ -9,5 +9,5 @@ export class TestDataService extends ODataStore<ITestData> {
   constructor(protected http: HttpClient) {
     super(http, { notifyOnGet: true });
   }
-  fill = (odata: IOdataCollection<ITestData>) => this.fillStore(odata);
+  fill = (odata: IOdataCollection<ITestData>): void => this.fillStore(odata);
 }

@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store - v1.1.13](../README.md) › [Globals](../globals.md) › ["lib/IOdataCollection"](../modules/_lib_iodatacollection_.md) › [IOdataBase](_lib_iodatacollection_.iodatabase.md)
+[@lucasheight/odata-observable-store - v1.2.0](../README.md) › [Globals](../globals.md) › ["lib/IOdataCollection"](../modules/_lib_iodatacollection_.md) › [IOdataBase](_lib_iodatacollection_.iodatabase.md)
 
 # Interface: IOdataBase
 
@@ -23,7 +23,7 @@
 
 • **@odata.context**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:7](https://github.com/lucasheight/odata-observable-store/blob/c16a520b/projects/odata-observable-store/src/lib/IOdataCollection.ts#L7)*
+*Defined in [lib/IOdataCollection.ts:7](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IOdataCollection.ts#L7)*
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 • **@odata.type**? : *string*
 
-*Defined in [lib/IOdataCollection.ts:8](https://github.com/lucasheight/odata-observable-store/blob/c16a520b/projects/odata-observable-store/src/lib/IOdataCollection.ts#L8)*
+*Defined in [lib/IOdataCollection.ts:8](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/IOdataCollection.ts#L8)*

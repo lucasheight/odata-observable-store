@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { PeopleService } from "../services/people.service";
 import { map, switchMap, shareReplay } from "rxjs/operators";
 import { OperatorFunction, Observable, Subject } from "rxjs";
-import { IOdataCollection } from "odata-observable-store";
 import {
   GridDataResult,
   DataStateChangeEvent,
@@ -16,6 +15,7 @@ import {
 import { State, toODataString } from "@progress/kendo-data-query";
 import { IPeople } from "../services/IPeople";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { IOdataCollection } from "projects/odata-observable-store/src/lib/IOdataCollection";
 
 /**Maps an array or IOdataCollection to a kendo GridDataResult
  * @param count {number} overides the count from the array length or odata.count returned from request

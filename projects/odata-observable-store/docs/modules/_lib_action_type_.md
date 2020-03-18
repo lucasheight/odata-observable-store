@@ -1,4 +1,4 @@
-[@lucasheight/odata-observable-store - v1.1.13](../README.md) › [Globals](../globals.md) › ["lib/action.type"](_lib_action_type_.md)
+[@lucasheight/odata-observable-store - v1.2.0](../README.md) › [Globals](../globals.md) › ["lib/action.type"](_lib_action_type_.md)
 
 # External module: "lib/action.type"
 
@@ -14,4 +14,4 @@
 
 Ƭ **action**: *"Query" | "Get" | "Update" | "Insert" | "Delete"*
 
-*Defined in [lib/action.type.ts:1](https://github.com/lucasheight/odata-observable-store/blob/c16a520b/projects/odata-observable-store/src/lib/action.type.ts#L1)*
+*Defined in [lib/action.type.ts:1](https://github.com/lucasheight/odata-observable-store/blob/bc2359f4/projects/odata-observable-store/src/lib/action.type.ts#L1)*

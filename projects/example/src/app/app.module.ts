@@ -5,19 +5,17 @@ import { AppComponent } from "./app.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { PeopleComponent } from "./people/people.component";
 import { OdataInterceptorService } from "./services/odata-interceptor.service";
-import { KendoGridComponent } from "./kendo-grid/kendo-grid.component";
-import { GridModule } from "@progress/kendo-angular-grid";
 
 @NgModule({
-  declarations: [AppComponent, PeopleComponent, KendoGridComponent],
-  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule, GridModule],
+  declarations: [AppComponent, PeopleComponent],
+  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: OdataInterceptorService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

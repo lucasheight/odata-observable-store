@@ -4,7 +4,7 @@ import {
   OnDestroy,
   ViewChild,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
 } from "@angular/core";
 import { PeopleService } from "../services/people.service";
 import { Subject, Observable, fromEvent } from "rxjs";
@@ -14,7 +14,7 @@ import {
   map,
   debounceTime,
   distinctUntilChanged,
-  filter
+  filter,
 } from "rxjs/operators";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IStoreNotifier } from "projects/odata-observable-store/src/lib/IStore";
@@ -30,8 +30,8 @@ import { IStoreNotifier } from "projects/odata-observable-store/src/lib/IStore";
     "div.people{border:1px solid lightgrey; width:45%;float:left;margin:4px;padding:5px}",
     "div.people form label{display:inline-block;width:100px; text-align:right}",
     "div.people form div {margin-bottom:5px}",
-    "div.buttons{margin-top:2em;text-align:center}"
-  ]
+    "div.buttons{margin-top:2em;text-align:center}",
+  ],
 })
 export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
   destroy$: Subject<void> = new Subject();
@@ -42,7 +42,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     UserName: ["", Validators.required],
     FirstName: ["", Validators.required],
     LastName: ["", Validators.required],
-    MiddleName: [""]
+    MiddleName: [""],
   });
   isNew: boolean = true;
   @ViewChild("search") searchCtr: ElementRef;
@@ -56,7 +56,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     this.message$
       .pipe(
         takeUntil(this.destroy$),
-        filter(f => f.action === "Delete")
+        filter((f) => f.action === "Delete")
       )
       .subscribe(() => {
         //clear the edit form after a delete
@@ -65,7 +65,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.people$ = this.peopleService.state$.pipe(
       takeUntil(this.destroy$),
-      map(m => m.value)
+      map((m) => m.value)
     );
     this.peopleService.query();
   }
@@ -75,12 +75,8 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fromEvent<any>(this.searchCtr.nativeElement, "input")
-      .pipe(
-        takeUntil(this.destroy$),
-        debounceTime(300),
-        distinctUntilChanged()
-      )
-      .subscribe(s => {
+      .pipe(takeUntil(this.destroy$), debounceTime(300), distinctUntilChanged())
+      .subscribe((s) => {
         const val: string = s.target.value;
         if (val.length > 0) {
           this.peopleService.queryByFirstName(val);
@@ -94,13 +90,13 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
   public onPerson = (username: string): void => {
     this.peopleService
       .get({ UserName: username } as IPeople, "UserName")
-      .subscribe(s => {
+      .subscribe((s) => {
         this.isNew = false;
         this.formGroup.setValue({
           UserName: s.UserName,
           FirstName: s.FirstName,
           LastName: s.LastName,
-          MiddleName: s.MiddleName
+          MiddleName: s.MiddleName,
         });
         this.formGroup.get("UserName").disable();
       });
@@ -125,7 +121,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
       UserName: "",
       FirstName: "",
       LastName: "",
-      MiddleName: ""
+      MiddleName: "",
     });
     this.formGroup.get("UserName").enable();
   }

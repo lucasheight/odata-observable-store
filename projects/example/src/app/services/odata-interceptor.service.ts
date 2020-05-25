@@ -5,7 +5,7 @@ import {
   HttpHandler,
   HttpClient,
   HttpEvent,
-  HttpResponse
+  HttpResponse,
 } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Observable } from "rxjs";
@@ -27,11 +27,11 @@ export class OdataInterceptorService implements HttpInterceptor {
       req.url
     }`;
     const credReq = req.clone({
-      url: newUrl
+      url: newUrl,
     });
 
     return next.handle(credReq).pipe(
-      tap(event => {
+      tap((event) => {
         //get service key if undefined (https://www.odata.org/odata-services/service-usages/request-key-tutorial/)
         if (this.key === undefined && event instanceof HttpResponse) {
           //extract the key and store it

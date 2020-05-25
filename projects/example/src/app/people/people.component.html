@@ -6,48 +6,66 @@
       <thead>
         <tr>
           <th>UserName</th>
-          <th>FirstName<br>
+          <th>
+            FirstName<br />
             <input #search type="search" />
           </th>
           <th>MiddleName</th>
           <th>LastName</th>
           <th>Gender</th>
-
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let p of people$ |async">
+        <ng-container *ngFor="let p of people$ | async">
           <tr>
-            <td><a href="#" (click)="onPerson(p.UserName)">{{p.UserName}}</a></td>
-            <td>{{p.FirstName}}</td>
-            <td>{{p.MiddleName}}</td>
-            <td>{{p.LastName}}</td>
-            <td>{{p.Gender}}</td>
+            <td>
+              <a href="#" (click)="onPerson(p.UserName)">{{ p.UserName }}</a>
+            </td>
+            <td>{{ p.FirstName }}</td>
+            <td>{{ p.MiddleName }}</td>
+            <td>{{ p.LastName }}</td>
+            <td>{{ p.Gender }}</td>
           </tr>
         </ng-container>
-
       </tbody>
     </table>
   </div>
   <div class="people">
     <h3>People Details</h3>
     <form [formGroup]="formGroup" (ngSubmit)="onSave()">
-      <div><label for="UserName">UserName</label>: <input formControlName="UserName" id="UserName" type="text" /></div>
-      <div><label for="FirstName">FirstName</label>: <input formControlName="FirstName" id="FirstName" type="text" />
+      <div>
+        <label for="UserName">UserName</label>:
+        <input formControlName="UserName" id="UserName" type="text" />
       </div>
-      <div><label for="MiddleName">MiddleName</label>: <input formControlName="MiddleName" id="MiddleName"
-          type="text" /></div>
-      <div><label for="LastName">LastName</label>: <input formControlName="LastName" id="LastName" type="text" /></div>
+      <div>
+        <label for="FirstName">FirstName</label>:
+        <input formControlName="FirstName" id="FirstName" type="text" />
+      </div>
+      <div>
+        <label for="MiddleName">MiddleName</label>:
+        <input formControlName="MiddleName" id="MiddleName" type="text" />
+      </div>
+      <div>
+        <label for="LastName">LastName</label>:
+        <input formControlName="LastName" id="LastName" type="text" />
+      </div>
       <div class="buttons">
         <button type="submit" [disabled]="!formGroup.valid">Save</button> |
         <button type="button" (click)="onCancel()">Cancel/Reset</button>
-        <span *ngIf="formGroup.get('UserName').value"> |
-          <button type="button" (click)="onRemove(formGroup.get('UserName').value)">Remove</button></span>
+        <span *ngIf="formGroup.get('UserName').value">
+          |
+          <button
+            type="button"
+            (click)="onRemove(formGroup.get('UserName').value)"
+          >
+            Remove
+          </button></span
+        >
       </div>
     </form>
     <div *ngIf="message$ | async as msg">
       <h5>Messages</h5>
-      <p> {{msg.message}} </p>
+      <p>{{ msg.message }}</p>
     </div>
   </div>
 </div>

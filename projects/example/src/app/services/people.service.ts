@@ -7,7 +7,7 @@ import { ODataStore } from "projects/odata-observable-store/src/lib/odata.store"
 //import { ODataStore, IStoreSettings } from "@lucasheight/odata-observable-store"
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class PeopleService extends ODataStore<IPeople> {
   baseUrl: string = "/People";

@@ -4,7 +4,7 @@
 import {
   HttpClientTestingModule,
   HttpTestingController,
-  TestRequest
+  TestRequest,
 } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
@@ -31,7 +31,7 @@ describe("OData Store Tests", () => {
   //Tests
   it("test HttpClient Get", () => {
     const testData: ITestData[] = TestData;
-    httpClient.get<ITestData[]>(testUrl).subscribe(data => {
+    httpClient.get<ITestData[]>(testUrl).subscribe((data) => {
       //expect(1).toEqual(1);
       expect(data).toEqual(testData);
       expect(data[0].Id).toEqual(1);
@@ -54,7 +54,7 @@ describe("OData Store Tests", () => {
   it("Store query() should hydrate backing store with test data", () => {
     const testData: ITestData[] = TestData;
 
-    store.state$.subscribe(s => {
+    store.state$.subscribe((s) => {
       expect(s.value.length > 0).toBeTrue();
       expect(s.value.length === 5).toBeTrue();
     });
@@ -75,14 +75,14 @@ describe("OData Store Tests", () => {
   it("Store query()$ method should return test data", () => {
     const testData: IOdataCollection<ITestData> = {
       value: TestData,
-      "@odata.count": TestData.length
+      "@odata.count": TestData.length,
     };
     // store.complete = (): void => {
     //   expect(store.complete).toHaveBeenCalled();
     // };
 
     const obs$ = store.query$();
-    obs$.subscribe(s => {
+    obs$.subscribe((s) => {
       console.log(s);
       expect(s.value.length > 0).toBeTrue();
       expect(s.value.length === 5).toBeTrue();
@@ -91,7 +91,7 @@ describe("OData Store Tests", () => {
     //spyOn(store, "complete").and.returnValue("Fake Complete" as never);
     //store.complete();
 
-    store.state$.subscribe(s => {
+    store.state$.subscribe((s) => {
       expect(s["@odata.count"]).toEqual(5);
       expect(s.value.length).toEqual(5);
     });
@@ -100,7 +100,7 @@ describe("OData Store Tests", () => {
     //   console.log("Complete fired");
     //   expect().nothing();
     // });
-    store.notifier$.subscribe(s => {
+    store.notifier$.subscribe((s) => {
       expect(s.action).toEqual("Query");
     });
     let req = httpTestingController.expectOne("/data?$count=true");
@@ -116,13 +116,13 @@ describe("OData Store Tests", () => {
     const testItem: ITestData = {
       Id: 6,
       Name: "Item 6",
-      LastUpdatedDT: new Date()
+      LastUpdatedDT: new Date(),
     };
-    store.state$.subscribe(s => {
+    store.state$.subscribe((s) => {
       expect(s["@odata.count"] > 0).toBe(true);
       expect(s.value).toContain(testItem);
     });
-    store.notifier$.subscribe(s => {
+    store.notifier$.subscribe((s) => {
       expect(s.action).toEqual("Insert");
     });
     store.insert$(testItem).subscribe();
@@ -139,22 +139,22 @@ describe("OData Store Tests", () => {
     // fill backing store with test data
     store.fill({
       "@odata.count": TestData.length,
-      value: TestData
+      value: TestData,
     } as IOdataCollection<ITestData>);
     //updated item
     const item: ITestData = {
       Id: 1,
       Name: "Updated",
-      LastUpdatedDT: new Date()
+      LastUpdatedDT: new Date(),
     };
 
-    store.notifier$.subscribe(s => {
+    store.notifier$.subscribe((s) => {
       expect(s.action).toEqual("Update");
     });
-    store.update$(item, "Id").subscribe(s => {
-      store.state$.subscribe(s => {
+    store.update$(item, "Id").subscribe((s) => {
+      store.state$.subscribe((s) => {
         expect(s["@odata.count"] > 0).toBe(true);
-        const found = s.value.find(f => f.Id == 1).Name;
+        const found = s.value.find((f) => f.Id == 1).Name;
         expect(found).toEqual("Updated");
       });
       expect(s.Name).toEqual("Updated");
@@ -172,22 +172,22 @@ describe("OData Store Tests", () => {
     // fill backing store with test data
     store.fill({
       "@odata.count": TestData.length,
-      value: TestData
+      value: TestData,
     } as IOdataCollection<ITestData>);
     //updated item
     const item: ITestData = {
       Id: 1,
       Name: "Patched",
-      LastUpdatedDT: new Date()
+      LastUpdatedDT: new Date(),
     };
 
-    store.notifier$.subscribe(s => {
+    store.notifier$.subscribe((s) => {
       expect(s.action).toEqual("Update");
     });
-    store.patch$(item, "Id").subscribe(s => {
-      store.state$.subscribe(s => {
+    store.patch$(item, "Id").subscribe((s) => {
+      store.state$.subscribe((s) => {
         expect(s["@odata.count"] > 0).toBe(true);
-        const found = s.value.find(f => f.Id == 1).Name;
+        const found = s.value.find((f) => f.Id == 1).Name;
         expect(found).toEqual("Patched");
       });
       expect(s.Name).toEqual("Patched");
@@ -205,23 +205,23 @@ describe("OData Store Tests", () => {
     // fill backing store with test data
     store.fill({
       "@odata.count": TestData.length,
-      value: TestData
+      value: TestData,
     } as IOdataCollection<ITestData>);
     //updated item
     const item: ITestData = {
       Id: 1,
       Name: "Patched",
-      LastUpdatedDT: new Date()
+      LastUpdatedDT: new Date(),
     };
 
-    store.notifier$.subscribe(s => {
+    store.notifier$.subscribe((s) => {
       expect(s.action).toEqual("Delete");
     });
-    store.remove$(item, "Id").subscribe(s => {
-      store.state$.subscribe(s => {
+    store.remove$(item, "Id").subscribe((s) => {
+      store.state$.subscribe((s) => {
         expect(s["@odata.count"] > 0).toBe(true);
         expect(s["@odata.count"] == 4).toBe(true);
-        const found = s.value.find(f => f.Id == 1);
+        const found = s.value.find((f) => f.Id == 1);
         expect(found).toBeUndefined();
       });
     });

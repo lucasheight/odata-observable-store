@@ -1,6 +1,6 @@
 {
   "name": "@lucasheight/odata-observable-store",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "OData observable store pattern. ",
   "keywords": [
     "odata",
@@ -24,7 +24,7 @@
     "@angular/common": ">=6",
     "@angular/core": ">=6",
     "rxjs": ">=6"
-  },
+  },
   "dependencies": {
     "tslib": "^2.0.0"
   }

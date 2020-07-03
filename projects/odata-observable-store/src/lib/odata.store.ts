@@ -14,7 +14,7 @@ import { Helpers } from "./helpers";
 export abstract class ODataStore<T> {
   private _initState: IOdataCollection<T> = {
     "@odata.count": undefined,
-    value: [] as T[]
+    value: [] as T[],
   };
   /**
    * The base url for the odata service
@@ -31,7 +31,7 @@ export abstract class ODataStore<T> {
   > = this._state$
     .asObservable()
     .pipe(
-      filter(f => typeof f === "object")
+      filter((f) => typeof f === "object")
     ); /* only get objects not the default state */
   private _notifier$: Subject<IStoreNotifier<T>> = new Subject();
 
@@ -78,7 +78,7 @@ export abstract class ODataStore<T> {
       }, //fire the complete callback,
       error: (err): void => {
         this.error(err);
-      }
+      },
     };
   }
   /**
@@ -110,7 +110,8 @@ export abstract class ODataStore<T> {
 
     this.http
       .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
-        observe: "response"
+        observe: "response",
+        headers: this._settings.getHeaders,
       })
       .subscribe(this.responseObserver$);
   };
@@ -130,10 +131,11 @@ export abstract class ODataStore<T> {
     );
     return this.http
       .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
-        observe: "response"
+        observe: "response",
+        headers: this._settings.getHeaders,
       })
       .pipe(
-        tap(s => {
+        tap((s) => {
           this._response$.next(s);
           const currentState = Object.assign(
             {},
@@ -145,7 +147,7 @@ export abstract class ODataStore<T> {
           this.fillStore(currentState);
           this.dispatchNotifier("Query", s.body);
         }),
-        map(m => m.body),
+        map((m) => m.body),
         //call the complete callback
         finalize(() => this.responseObserver$.complete())
       );
@@ -168,13 +170,16 @@ export abstract class ODataStore<T> {
     const query: string = Helpers.queryParser(queryString);
     const id: string = this.makeId(value, keys);
     const getObs = this.http
-      .get<T>(`${this.baseUrl}(${id})${query}`, { observe: "response" })
+      .get<T>(`${this.baseUrl}(${id})${query}`, {
+        observe: "response",
+        headers: this._settings.getHeaders,
+      })
       .pipe(
-        tap(t => {
+        tap((t) => {
           this._response$.next(t);
           this.dispatchNotifier("Get");
         }),
-        map(m => m.body),
+        map((m) => m.body),
         //call the complete callback
         finalize(() => this.responseObserver$.complete())
       );
@@ -191,11 +196,17 @@ export abstract class ODataStore<T> {
     const query: string = Helpers.queryParser(queryString);
     this.responseObserver$.next = (s): void => {
       this._response$.next(s);
-      this.updateStore(s.body as T, "Insert");
+      this.updateStore(
+        this._settings.insertStoreFromBackend ? (s.body as T) : item,
+        "Insert"
+      );
     };
 
     this.http
-      .post<T>(`${this.baseUrl}${query}`, item, { observe: "response" })
+      .post<T>(`${this.baseUrl}${query}`, item, {
+        observe: "response",
+        headers: this._settings.insertHeaders,
+      })
       .subscribe(this.responseObserver$);
   };
   /**
@@ -209,14 +220,18 @@ export abstract class ODataStore<T> {
     const query: string = Helpers.queryParser(queryString);
     return this.http
       .post<T>(`${this.baseUrl}${query}`, item, {
-        observe: "response"
+        observe: "response",
+        headers: this._settings.insertHeaders,
       })
       .pipe(
-        tap(t => {
+        tap((t) => {
           this._response$.next(t);
-          this.updateStore(t.body, "Insert");
+          this.updateStore(
+            this._settings.insertStoreFromBackend ? (t.body as T) : item,
+            "Insert"
+          );
         }),
-        map(m => m.body),
+        map((m) => m.body),
         finalize(() => this.responseObserver$.complete())
       );
     //.subscribe(this.responseObserver$);
@@ -247,17 +262,27 @@ export abstract class ODataStore<T> {
     let operation: Observable<HttpResponse<T>>;
     switch (method) {
       case "post":
-        operation = this.http.post<T>(url, item, { observe: "response" });
+        operation = this.http.post<T>(url, item, {
+          observe: "response",
+          headers: this._settings.updateHeaders,
+        });
         break;
       default:
-        operation = this.http.put<T>(url, item, { observe: "response" });
+        operation = this.http.put<T>(url, item, {
+          observe: "response",
+          headers: this._settings.updateHeaders,
+        });
 
         break;
     }
 
     this.responseObserver$.next = (s): void => {
       this._response$.next(s);
-      this.updateStore(item, "Update", keys);
+      this.updateStore(
+        this._settings.updateStoreFromBackend ? (s.body as T) : item,
+        "Update",
+        keys
+      );
     };
 
     operation.subscribe(this.responseObserver$);
@@ -288,19 +313,29 @@ export abstract class ODataStore<T> {
     let operation: Observable<HttpResponse<T>>;
     switch (method) {
       case "post":
-        operation = this.http.post<T>(url, item, { observe: "response" });
+        operation = this.http.post<T>(url, item, {
+          observe: "response",
+          headers: this._settings.updateHeaders,
+        });
         break;
       default:
-        operation = this.http.put<T>(url, item, { observe: "response" });
+        operation = this.http.put<T>(url, item, {
+          observe: "response",
+          headers: this._settings.updateHeaders,
+        });
 
         break;
     }
 
     return operation.pipe(
-      tap(() => {
-        this.updateStore(item, "Update", keys);
+      tap((s) => {
+        this.updateStore(
+          this._settings.updateStoreFromBackend ? (s.body as T) : item,
+          "Update",
+          keys
+        );
       }),
-      map(m => m.body),
+      map((m) => m.body),
       finalize(() => this.responseObserver$.complete())
     );
   };
@@ -331,19 +366,32 @@ export abstract class ODataStore<T> {
     let operation: Observable<HttpResponse<T>>;
     switch (method) {
       case "put":
-        operation = this.http.put<T>(url, item, { observe: "response" });
+        operation = this.http.put<T>(url, item, {
+          observe: "response",
+          headers: this._settings.patchHeaders,
+        });
         break;
       case "post":
-        operation = this.http.post<T>(url, item, { observe: "response" });
+        operation = this.http.post<T>(url, item, {
+          observe: "response",
+          headers: this._settings.patchHeaders,
+        });
         break;
       default:
-        operation = this.http.patch<T>(url, item, { observe: "response" });
+        operation = this.http.patch<T>(url, item, {
+          observe: "response",
+          headers: this._settings.patchHeaders,
+        });
         break;
     }
 
     this.responseObserver$.next = (val): void => {
       this._response$.next(val);
-      this.updateStore(item, "Update", keys);
+      this.updateStore(
+        this._settings.patchStoreFromBackend ? (val.body as T) : item,
+        "Update",
+        keys
+      );
     };
 
     operation.subscribe(this.responseObserver$);
@@ -375,20 +423,33 @@ export abstract class ODataStore<T> {
     let operation: Observable<HttpResponse<T>>;
     switch (method) {
       case "put":
-        operation = this.http.put<T>(url, item, { observe: "response" });
+        operation = this.http.put<T>(url, item, {
+          observe: "response",
+          headers: this._settings.patchHeaders,
+        });
         break;
       case "post":
-        operation = this.http.post<T>(url, item, { observe: "response" });
+        operation = this.http.post<T>(url, item, {
+          observe: "response",
+          headers: this._settings.patchHeaders,
+        });
         break;
       default:
-        operation = this.http.patch<T>(url, item, { observe: "response" });
+        operation = this.http.patch<T>(url, item, {
+          observe: "response",
+          headers: this._settings.patchHeaders,
+        });
         break;
     }
     return operation.pipe(
-      tap(() => {
-        this.updateStore(item, "Update", keys);
+      tap((val) => {
+        this.updateStore(
+          this._settings.patchStoreFromBackend ? (val.body as T) : item,
+          "Update",
+          keys
+        );
       }),
-      map(m => m.body),
+      map((m) => m.body),
       finalize(() => this.responseObserver$.complete())
     );
   };
@@ -411,8 +472,14 @@ export abstract class ODataStore<T> {
       keys != null ? `${this.baseUrl}(${id})` : `${this.baseUrl}`;
     const operation =
       method == "delete"
-        ? this.http.delete(url, { observe: "response" })
-        : this.http.post<T>(url, item, { observe: "response" });
+        ? this.http.delete(url, {
+            observe: "response",
+            headers: this._settings.deleteHeaders,
+          })
+        : this.http.post<T>(url, item, {
+            observe: "response",
+            headers: this._settings.deleteHeaders,
+          });
 
     this.responseObserver$.next = (s): void => {
       this._response$.next(s);
@@ -441,13 +508,19 @@ export abstract class ODataStore<T> {
       keys != null ? `${this.baseUrl}(${id})` : `${this.baseUrl}`;
     const operation =
       method == "delete"
-        ? this.http.delete(url, { observe: "response" })
-        : this.http.post<T>(url, item, { observe: "response" });
+        ? this.http.delete(url, {
+            observe: "response",
+            headers: this._settings.deleteHeaders,
+          })
+        : this.http.post<T>(url, item, {
+            observe: "response",
+            headers: this._settings.deleteHeaders,
+          });
     return operation.pipe(
       tap(() => {
         this.updateStore(item, "Delete", keys);
       }),
-      map(m => m.body),
+      map((m) => m.body),
       finalize(() => this.responseObserver$.complete())
     );
   };
@@ -486,7 +559,7 @@ export abstract class ODataStore<T> {
 
         newState = {
           "@odata.count": (_store["@odata.count"] ?? 0) + 1,
-          value: values
+          value: values,
         };
         this.fillStore(newState);
         this.dispatchNotifier("Insert", item);
@@ -498,7 +571,7 @@ export abstract class ODataStore<T> {
           const removed = keys.reduce((acc, curr) => {
             const itemKey = item[curr as string];
             const isItemKeyDate = itemKey instanceof Date;
-            acc = acc.filter(f => {
+            acc = acc.filter((f) => {
               const currItem = f[curr as string];
               //check if key is Date and compare with getTime()
               return isItemKeyDate
@@ -513,19 +586,21 @@ export abstract class ODataStore<T> {
             );
           }
           //then filter from original array
-          values = _store.value.filter(f => removed.indexOf(f));
+          values = _store.value.filter((f) => removed.indexOf(f));
         } else {
-          const found = _store.value.some(f => f[keys as string] == item[keys]);
+          const found = _store.value.some(
+            (f) => f[keys as string] == item[keys]
+          );
           if (!found) {
             console.warn(
               "Update odata stored failed: Key provided cannot be found."
             );
           }
-          values = _store.value.filter(f => f[keys as string] != item[keys]);
+          values = _store.value.filter((f) => f[keys as string] != item[keys]);
         }
         newState = {
           "@odata.count": _store["@odata.count"] - 1,
-          value: values
+          value: values,
         };
         this.fillStore(newState);
         this.dispatchNotifier("Delete", item);
@@ -537,7 +612,7 @@ export abstract class ODataStore<T> {
           values = keys.reduce((acc, curr) => {
             const itemKey = item[curr as string];
             const isItemKeyDate = itemKey instanceof Date;
-            acc = acc.filter(f => {
+            acc = acc.filter((f) => {
               const currItem = f[curr as string];
               //check if key is Date and compare with getTime()
               return isItemKeyDate
@@ -551,10 +626,10 @@ export abstract class ODataStore<T> {
               "Update odata stored failed: Keys provided cannot be found."
             );
           }
-          foundIdx = res.value.findIndex(f => f == values[0]);
+          foundIdx = res.value.findIndex((f) => f == values[0]);
         } else {
           foundIdx = res.value.findIndex(
-            f => f[keys as string] == item[keys as string]
+            (f) => f[keys as string] == item[keys as string]
           );
           if (foundIdx == -1) {
             console.warn(
@@ -567,7 +642,7 @@ export abstract class ODataStore<T> {
         values = [
           ...res.value.slice(0, foundIdx),
           updated,
-          ...res.value.slice(foundIdx + 1)
+          ...res.value.slice(foundIdx + 1),
         ];
         newState = { "@odata.count": res["@odata.count"], value: values };
         this.fillStore(newState);
@@ -640,7 +715,9 @@ export abstract class ODataStore<T> {
   private makeId = <K extends keyof T>(value: T, keys: K | K[]): string => {
     let id: string;
     if (Array.isArray(keys)) {
-      id = keys.map(m => `${m}=${Helpers.quoteKey(value[m as string])}`).join();
+      id = keys
+        .map((m) => `${m}=${Helpers.quoteKey(value[m as string])}`)
+        .join();
     } else {
       id = Helpers.quoteKey(value[keys as string]);
     }

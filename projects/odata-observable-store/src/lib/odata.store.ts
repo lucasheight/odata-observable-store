@@ -1,4 +1,10 @@
-import { Observable, BehaviorSubject, Subject, PartialObserver } from "rxjs";
+import {
+  Observable,
+  BehaviorSubject,
+  Subject,
+  PartialObserver,
+  Subscription,
+} from "rxjs";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { tap, map, filter, finalize } from "rxjs/operators";
 import { IStoreNotifier, IStoreSettings } from "./IStore";
@@ -6,12 +12,16 @@ import { StoreSettings } from "./StoreSettings";
 import { action } from "./action.type";
 import { IOdataCollection } from "./IOdataCollection";
 import { Helpers } from "./helpers";
+type completeCallbackFn = () => void;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type errorCallbackFn = (err: any) => void;
 /**
  * Creates an Odata service store that follows the observable store pattern.
  *@description Provides default odata rest methods the handle the most common odata use.
  *In cases where public methods are not sufficient use the protected methods, fillStore, updateStore and dispatchNotifier
  */
 export abstract class ODataStore<T> {
+  private subs$ = new Subscription();
   private _initState: IOdataCollection<T> = {
     "@odata.count": undefined,
     value: [] as T[],
@@ -52,9 +62,9 @@ export abstract class ODataStore<T> {
     HttpResponse<T | IOdataCollection<T>>
   >;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public complete: Function = () => {};
+  public complete: completeCallbackFn = () => {};
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public error: Function = () => {};
+  public error: errorCallbackFn = () => {};
 
   /**
    * @Defaults: notifyOnDelete: true
@@ -108,12 +118,14 @@ export abstract class ODataStore<T> {
       this.dispatchNotifier("Query", s.body);
     };
 
-    this.http
-      .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
-        observe: "response",
-        headers: this._settings.getHeaders,
-      })
-      .subscribe(this.responseObserver$);
+    this.subs$.add(
+      this.http
+        .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
+          observe: "response",
+          headers: this._settings.getHeaders,
+        })
+        .subscribe(this.responseObserver$)
+    );
   };
   /**
    * Method to query the odata API and hydrate the store
@@ -202,12 +214,14 @@ export abstract class ODataStore<T> {
       );
     };
 
-    this.http
-      .post<T>(`${this.baseUrl}${query}`, item, {
-        observe: "response",
-        headers: this._settings.insertHeaders,
-      })
-      .subscribe(this.responseObserver$);
+    this.subs$.add(
+      this.http
+        .post<T>(`${this.baseUrl}${query}`, item, {
+          observe: "response",
+          headers: this._settings.insertHeaders,
+        })
+        .subscribe(this.responseObserver$)
+    );
   };
   /**
    * Posts a new item to the odata backend and appends the observable store with the new value
@@ -234,7 +248,6 @@ export abstract class ODataStore<T> {
         map((m) => m.body),
         finalize(() => this.responseObserver$.complete())
       );
-    //.subscribe(this.responseObserver$);
   };
   /**
    * Updates an item to the odata backend and updates the observable store with the new value
@@ -285,7 +298,7 @@ export abstract class ODataStore<T> {
       );
     };
 
-    operation.subscribe(this.responseObserver$);
+    this.subs$.add(operation.subscribe(this.responseObserver$));
   };
   /**
    * Updates an item to the odata backend and updates the observable store with the new value
@@ -394,7 +407,7 @@ export abstract class ODataStore<T> {
       );
     };
 
-    operation.subscribe(this.responseObserver$);
+    this.subs$.add(operation.subscribe(this.responseObserver$));
   };
   /**
    * Patches an item to the odata backend and updates the observable store with the new value
@@ -486,7 +499,7 @@ export abstract class ODataStore<T> {
       this.updateStore(item, "Delete", keys);
     };
 
-    operation.subscribe(this.responseObserver$);
+    this.subs$.add(operation.subscribe(this.responseObserver$));
   };
   /**
    * Deletes an item from the odata backend and removes item from the observable store
@@ -652,6 +665,9 @@ export abstract class ODataStore<T> {
       default:
         throw "Invalid data store operation";
     }
+  };
+  protected dispose = (): void => {
+    this.subs$.unsubscribe();
   };
   /**
    * Fill the observable store state$ with an OData Collection

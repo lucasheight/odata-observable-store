@@ -14,7 +14,7 @@ export abstract class Store<T> {
     notifyOnDelete: true,
     notifyOnGet: false,
     notifyOnInsert: true,
-    notifyOnUpdate: true
+    notifyOnUpdate: true,
   };
   constructor(initialState: T, protected settings: IStoreSettings = null) {
     if (settings) {

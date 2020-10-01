@@ -14,4 +14,4 @@
 
 • **testUrl**: *"/data"* = "/data"
 
-*Defined in [projects/odata-observable-store/src/lib/tests/odata.store.spec.ts:15](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/tests/odata.store.spec.ts#L15)*
+*Defined in [projects/odata-observable-store/src/lib/tests/odata.store.spec.ts:15](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/tests/odata.store.spec.ts#L15)*

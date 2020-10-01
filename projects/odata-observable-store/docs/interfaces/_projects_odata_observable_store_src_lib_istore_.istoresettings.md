@@ -35,7 +35,7 @@
 
 • **deleteHeaders**? : *HttpHeaders*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:20](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L20)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:20](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L20)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 • **getHeaders**? : *HttpHeaders*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:21](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L21)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:21](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L21)*
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 • **insertHeaders**? : *HttpHeaders*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:17](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L17)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:17](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L17)*
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 • **insertStoreFromBackend**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:23](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L23)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:23](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L23)*
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 • **notifyOnDelete**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:14](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L14)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:14](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L14)*
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 • **notifyOnGet**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L11)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:11](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L11)*
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 • **notifyOnInsert**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L12)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:12](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L12)*
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 • **notifyOnUpdate**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:13](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L13)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:13](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L13)*
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 • **patchHeaders**? : *HttpHeaders*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:19](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L19)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:19](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L19)*
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 • **patchStoreFromBackend**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:24](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L24)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:24](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L24)*
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 • **prependInserts**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:16](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L16)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:16](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L16)*
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 • **updateHeaders**? : *HttpHeaders*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:18](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L18)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:18](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L18)*
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 • **updateStoreFromBackend**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:22](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L22)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:22](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L22)*
 
 ___
 
@@ -139,4 +139,4 @@ ___
 
 • **use$countOnQuery**? : *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:15](https://github.com/lucasheight/odata-observable-store/blob/1fec3670/projects/odata-observable-store/src/lib/IStore.ts#L15)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:15](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/IStore.ts#L15)*

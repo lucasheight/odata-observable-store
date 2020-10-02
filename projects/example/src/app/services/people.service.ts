@@ -11,7 +11,7 @@ import { ODataStore } from "projects/odata-observable-store/src/lib/odata.store"
 })
 export class PeopleService extends ODataStore<IPeople> {
   baseUrl: string = "/People";
-
+  // private subs$ = new Subscription();
   constructor(protected http: HttpClient) {
     super(http, { notifyOnGet: true, use$countOnQuery: false });
   }

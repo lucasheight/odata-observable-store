@@ -21,7 +21,7 @@ type errorCallbackFn = (err: any) => void;
  *In cases where public methods are not sufficient use the protected methods, fillStore, updateStore and dispatchNotifier
  */
 export abstract class ODataStore<T> {
-  private subs$ = new Subscription();
+  protected readonly subs$: Subscription = new Subscription();
   private _initState: IOdataCollection<T> = {
     "@odata.count": undefined,
     value: [] as T[],

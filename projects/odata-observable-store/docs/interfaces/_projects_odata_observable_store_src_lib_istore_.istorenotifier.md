@@ -24,7 +24,7 @@
 
 • **action**: *[action](_projects_odata_observable_store_src_lib_istore_.istorenotifier.md#action)*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:6](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/IStore.ts#L6)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:6](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/IStore.ts#L6)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **message**? : *string*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:8](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/IStore.ts#L8)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:8](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/IStore.ts#L8)*
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 • **state**? : *T | [IOdataCollection](_projects_odata_observable_store_src_lib_iodatacollection_.iodatacollection.md)‹T›*
 
-*Defined in [projects/odata-observable-store/src/lib/IStore.ts:7](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/IStore.ts#L7)*
+*Defined in [projects/odata-observable-store/src/lib/IStore.ts:7](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/IStore.ts#L7)*

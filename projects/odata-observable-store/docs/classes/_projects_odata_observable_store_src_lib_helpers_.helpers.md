@@ -20,7 +20,7 @@
 
 ▸ **IsGuid**(`value`: string): *boolean*
 
-*Defined in [projects/odata-observable-store/src/lib/helpers.ts:33](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/helpers.ts#L33)*
+*Defined in [projects/odata-observable-store/src/lib/helpers.ts:33](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/helpers.ts#L33)*
 
 **Parameters:**
 
@@ -36,7 +36,7 @@ ___
 
 ▸ **queryParser**(`queryString`: string, `additionalParams`: string[]): *string*
 
-*Defined in [projects/odata-observable-store/src/lib/helpers.ts:7](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/helpers.ts#L7)*
+*Defined in [projects/odata-observable-store/src/lib/helpers.ts:7](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/helpers.ts#L7)*
 
 parses the query string
 
@@ -55,7 +55,7 @@ ___
 
 ▸ **quoteKey**(`id`: string | number): *string*
 
-*Defined in [projects/odata-observable-store/src/lib/helpers.ts:25](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/helpers.ts#L25)*
+*Defined in [projects/odata-observable-store/src/lib/helpers.ts:25](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/helpers.ts#L25)*
 
 Determines if string key should be single quoted .
 

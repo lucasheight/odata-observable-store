@@ -37,7 +37,7 @@
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[deleteHeaders](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-deleteheaders)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:18](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L18)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:18](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L18)*
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[getHeaders](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-getheaders)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:19](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L19)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:19](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L19)*
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[insertHeaders](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-insertheaders)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:16](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L16)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:16](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L16)*
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[insertStoreFromBackend](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-insertstorefrombackend)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:22](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L22)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:22](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L22)*
 
 **`default`** true
 
@@ -79,7 +79,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[notifyOnDelete](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-notifyondelete)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:7](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L7)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:7](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L7)*
 
 **`default`** true
 
@@ -91,7 +91,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[notifyOnGet](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-notifyonget)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:5](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L5)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:5](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L5)*
 
 **`default`** false
 
@@ -103,7 +103,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[notifyOnInsert](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-notifyoninsert)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:9](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L9)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:9](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L9)*
 
 **`default`** true
 
@@ -115,7 +115,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[notifyOnUpdate](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-notifyonupdate)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:11](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L11)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:11](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L11)*
 
 **`default`** true
 
@@ -127,7 +127,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[patchHeaders](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-patchheaders)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:20](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L20)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:20](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L20)*
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[patchStoreFromBackend](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-patchstorefrombackend)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:26](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L26)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:26](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L26)*
 
 **`default`** false
 
@@ -149,7 +149,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[prependInserts](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-prependinserts)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:13](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L13)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:13](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L13)*
 
 **`default`** true
 
@@ -161,7 +161,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[updateHeaders](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-updateheaders)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:17](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L17)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:17](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L17)*
 
 ___
 
@@ -171,7 +171,7 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[updateStoreFromBackend](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-updatestorefrombackend)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:24](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L24)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:24](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L24)*
 
 **`default`** false
 
@@ -183,6 +183,6 @@ ___
 
 *Implementation of [IStoreSettings](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md).[use$countOnQuery](../interfaces/_projects_odata_observable_store_src_lib_istore_.istoresettings.md#optional-usecountonquery)*
 
-*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:15](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/StoreSettings.ts#L15)*
+*Defined in [projects/odata-observable-store/src/lib/StoreSettings.ts:15](https://github.com/lucasheight/odata-observable-store/blob/787a1ef7/projects/odata-observable-store/src/lib/StoreSettings.ts#L15)*
 
 **`default`** true

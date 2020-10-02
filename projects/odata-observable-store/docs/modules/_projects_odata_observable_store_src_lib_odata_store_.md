@@ -19,7 +19,7 @@
 
 Ƭ **completeCallbackFn**: *function*
 
-*Defined in [projects/odata-observable-store/src/lib/odata.store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/odata.store.ts#L15)*
+*Defined in [projects/odata-observable-store/src/lib/odata.store.ts:15](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/odata.store.ts#L15)*
 
 #### Type declaration:
 
@@ -31,7 +31,7 @@ ___
 
 Ƭ **errorCallbackFn**: *function*
 
-*Defined in [projects/odata-observable-store/src/lib/odata.store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/odata.store.ts#L17)*
+*Defined in [projects/odata-observable-store/src/lib/odata.store.ts:17](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/odata.store.ts#L17)*
 
 #### Type declaration:
 

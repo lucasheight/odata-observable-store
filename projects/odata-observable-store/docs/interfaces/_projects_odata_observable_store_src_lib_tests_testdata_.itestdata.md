@@ -20,7 +20,7 @@
 
 • **Id**: *number*
 
-*Defined in [projects/odata-observable-store/src/lib/tests/testData.ts:2](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/tests/testData.ts#L2)*
+*Defined in [projects/odata-observable-store/src/lib/tests/testData.ts:2](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/tests/testData.ts#L2)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **LastUpdatedDT**: *Date*
 
-*Defined in [projects/odata-observable-store/src/lib/tests/testData.ts:4](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/tests/testData.ts#L4)*
+*Defined in [projects/odata-observable-store/src/lib/tests/testData.ts:4](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/tests/testData.ts#L4)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **Name**: *string*
 
-*Defined in [projects/odata-observable-store/src/lib/tests/testData.ts:3](https://github.com/lucasheight/odata-observable-store/blob/c956e7f8/projects/odata-observable-store/src/lib/tests/testData.ts#L3)*
+*Defined in [projects/odata-observable-store/src/lib/tests/testData.ts:3](https://github.com/lucasheight/odata-observable-store/blob/a92f36b7/projects/odata-observable-store/src/lib/tests/testData.ts#L3)*

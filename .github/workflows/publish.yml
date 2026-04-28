@@ -9,6 +9,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -28,7 +31,5 @@ jobs:
         run: npx ng build odata-observable-store --configuration production
 
       - name: Publish
-        run: npm publish
+        run: npm publish --provenance --access public
         working-directory: dist/odata-observable-store
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

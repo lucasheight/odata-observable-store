@@ -1,5 +1,3 @@
-[![npm version](https://badge.fury.io/js/%40lucasheight%2Fodata-observable-store.svg)](https://badge.fury.io/js/%40lucasheight%2Fodata-observable-store)
-
 ## OData Observable Store — State management for Angular OData services
 
 OData Observable Store is a lightweight state management library that implements the observable store pattern for OData v4 APIs within Angular. It provides typed, reactive CRUD operations (query, get, insert, update, patch, remove) while keeping the service state as an Observable that components can subscribe to.

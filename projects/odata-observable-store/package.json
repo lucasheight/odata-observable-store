@@ -20,6 +20,10 @@
     "url": "https://github.com/lucasheight/odata-observable-store/issues"
   },
   "homepage": "https://github.com/lucasheight/odata-observable-store#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucasheight/odata-observable-store"
+  },
   "peerDependencies": {
     "@angular/common": ">=6",
     "@angular/core": ">=6",

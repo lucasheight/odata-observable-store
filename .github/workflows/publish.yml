@@ -32,5 +32,7 @@ jobs:
         run: npx ng build odata-observable-store --configuration production
 
       - name: Publish
-        run: npm publish --access public
+        run: npm publish --provenance --access public
         working-directory: dist/odata-observable-store
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

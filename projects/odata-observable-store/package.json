@@ -23,7 +23,7 @@
   "peerDependencies": {
     "@angular/common": ">=6",
     "@angular/core": ">=6",
-    "rxjs": ">=6"
+    "rxjs": ">=7"
   },
   "dependencies": {
     "tslib": "^2.0.0"

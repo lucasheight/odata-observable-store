@@ -2,11 +2,15 @@ import {
   Observable,
   BehaviorSubject,
   Subject,
-  PartialObserver,
+  Observer,
   Subscription,
+  tap,
+  map,
+  filter,
+  finalize,
 } from "rxjs";
 import { HttpClient, HttpResponse } from "@angular/common/http";
-import { tap, map, filter, finalize } from "rxjs/operators";
+import { Injectable } from "@angular/core";
 import { IStoreNotifier, IStoreSettings } from "./IStore";
 import { StoreSettings } from "./StoreSettings";
 import { action } from "./action.type";
@@ -20,6 +24,7 @@ type errorCallbackFn = (err: any) => void;
  *@description Provides default odata rest methods the handle the most common odata use.
  *In cases where public methods are not sufficient use the protected methods, fillStore, updateStore and dispatchNotifier
  */
+@Injectable()
 export abstract class ODataStore<T> {
   protected readonly subs$: Subscription = new Subscription();
   private _initState: IOdataCollection<T> = {
@@ -58,9 +63,7 @@ export abstract class ODataStore<T> {
     HttpResponse<IOdataCollection<T>>
   > = this._response$.asObservable();
 
-  protected responseObserver$: PartialObserver<
-    HttpResponse<T | IOdataCollection<T>>
-  >;
+  protected responseObserver$: Partial<Observer<HttpResponse<T | IOdataCollection<T>>>>;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   public complete: completeCallbackFn = () => {};
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -732,7 +735,7 @@ export abstract class ODataStore<T> {
     let id: string;
     if (Array.isArray(keys)) {
       id = keys
-        .map((m) => `${m}=${Helpers.quoteKey(value[m as string])}`)
+        .map((m) => `${String(m)}=${Helpers.quoteKey(value[m as string])}`)
         .join();
     } else {
       id = Helpers.quoteKey(value[keys as string]);

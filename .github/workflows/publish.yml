@@ -7,7 +7,7 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
 
 jobs:
   publish:
@@ -36,3 +36,14 @@ jobs:
         working-directory: dist/odata-observable-store
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=${GITHUB_REF_NAME}
+          gh release create "$VERSION" \
+            --title "$VERSION" \
+            --notes "## @lucasheight/odata-observable-store ${VERSION}
+
+          📦 **npm:** https://www.npmjs.com/package/@lucasheight/odata-observable-store/v/${VERSION#v}"

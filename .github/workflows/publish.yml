@@ -5,12 +5,13 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-
-    permissions:
-      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -31,5 +32,5 @@ jobs:
         run: npx ng build odata-observable-store --configuration production
 
       - name: Publish
-        run: npm publish --provenance --access public
+        run: npm publish --access public
         working-directory: dist/odata-observable-store

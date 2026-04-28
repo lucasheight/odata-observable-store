@@ -12,10 +12,11 @@ import { IPeople } from "../services/IPeople";
 import {
   takeUntil,
   map,
+  take,
   debounceTime,
   distinctUntilChanged,
   filter,
-} from "rxjs/operators";
+} from "rxjs";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IStoreNotifier } from "projects/odata-observable-store/src/lib/IStore";
 
@@ -25,6 +26,7 @@ import { IStoreNotifier } from "projects/odata-observable-store/src/lib/IStore";
   selector: "app-people",
   templateUrl: "./people.component.html",
   providers: [PeopleService],
+  standalone: false,
   styles: [
     "div.wrapper{width:100%;padding:1em}",
     "div.people{border:1px solid lightgrey; width:45%;float:left;margin:4px;padding:5px}",
@@ -88,18 +90,18 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
   public onPerson = (username: string): void => {
-    this.peopleService
-      .get({ UserName: username } as IPeople, "UserName")
-      .subscribe((s) => {
-        this.isNew = false;
-        this.formGroup.setValue({
-          UserName: s.UserName,
-          FirstName: s.FirstName,
-          LastName: s.LastName,
-          MiddleName: s.MiddleName,
-        });
-        this.formGroup.get("UserName").disable();
+    this.peopleService.state$.pipe(take(1)).subscribe((state) => {
+      const person = state.value.find((p) => p.UserName === username);
+      if (!person) return;
+      this.isNew = false;
+      this.formGroup.setValue({
+        UserName: person.UserName,
+        FirstName: person.FirstName,
+        LastName: person.LastName,
+        MiddleName: person.MiddleName ?? "",
       });
+      this.formGroup.get("UserName").disable();
+    });
   };
   public onSave = (): void => {
     const item: IPeople = this.formGroup.value;

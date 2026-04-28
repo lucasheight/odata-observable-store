@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Test
-        run: npx ng test odata-observable-store --watch=false --browsers=ChromeHeadless
+        run: npx ng test odata-observable-store --watch=false --browsers=ChromeHeadlessCI
 
       - name: Build
         run: npx ng build odata-observable-store --configuration production

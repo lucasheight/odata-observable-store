@@ -6,7 +6,7 @@ export class Helpers {
    */
   public static queryParser(
     queryString: string,
-    additionalParams: string[] = undefined
+    additionalParams: string[] = undefined,
   ): string {
     const segments: string[] = [];
     if (queryString) {
@@ -31,7 +31,8 @@ export class Helpers {
   }
 
   public static IsGuid(value: string): boolean {
-    const GuidPattern: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const GuidPattern: RegExp =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     return GuidPattern.test(value);
   }
 }

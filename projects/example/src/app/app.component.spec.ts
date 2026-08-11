@@ -1,11 +1,10 @@
-/* eslint-disable no-undef */
-import { TestBed, async } from "@angular/core/testing";
+import { TestBed, waitForAsync } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
 
 describe("AppComponent", () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent]
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
@@ -26,7 +25,7 @@ describe("AppComponent", () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector("h1").textContent).toContain(
-      "TripPin RESTier OData V4 Service"
+      "TripPin RESTier OData V4 Service",
     );
   });
 });

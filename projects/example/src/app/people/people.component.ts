@@ -49,7 +49,10 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
   isNew: boolean = true;
   @ViewChild("search") searchCtr: ElementRef;
 
-  constructor(private peopleService: PeopleService, private fb: FormBuilder) {}
+  constructor(
+    private peopleService: PeopleService,
+    private fb: FormBuilder,
+  ) {}
 
   ngOnInit(): void {
     this.resetForm();
@@ -58,7 +61,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     this.message$
       .pipe(
         takeUntil(this.destroy$),
-        filter((f) => f.action === "Delete")
+        filter((f) => f.action === "Delete"),
       )
       .subscribe(() => {
         //clear the edit form after a delete
@@ -67,7 +70,7 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.people$ = this.peopleService.state$.pipe(
       takeUntil(this.destroy$),
-      map((m) => m.value)
+      map((m) => m.value),
     );
     this.peopleService.query();
   }
@@ -107,9 +110,11 @@ export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit {
     const item: IPeople = this.formGroup.value;
     item.UserName = this.formGroup.getRawValue().UserName;
     console.log(this.isNew ? "Insert" : "Update", item);
-    this.isNew
-      ? this.peopleService.insert(item)
-      : this.peopleService.patch(item, "UserName");
+    if (this.isNew) {
+      this.peopleService.insert(item);
+    } else {
+      this.peopleService.patch(item, "UserName");
+    }
   };
   public onRemove = (userName: string): void => {
     console.log("remove", userName);

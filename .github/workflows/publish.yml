@@ -18,7 +18,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          # Angular 22 requires ^22.22.3 || ^24.15.0 || >=26. Pinning the
+          # major to 24 keeps the runner inside that range.
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 

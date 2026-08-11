@@ -1,29 +1,34 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    // TypeScript 6 enables `strict` by default. This library's public API
+    // intentionally uses loose null typing — `state`, `settings` and several
+    // dispatch parameters default to `null` on generic `T` — so turning it on
+    // produces 75 errors and would change the published type signatures.
+    // Kept off here; belongs in a 2.0.0.
+    "strict": false,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom",
-      "dom.iterable"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["ES2022", "dom", "dom.iterable"],
     "paths": {
-      "odata-observable-store": [
-        "dist/odata-observable-store"
-      ],
-      "odata-observable-store/*": [
-        "dist/odata-observable-store/*"
-      ]
+      // `baseUrl` is deprecated in TypeScript 6, so the workspace-relative
+      // imports it used to resolve (e.g. "projects/odata-observable-store/…",
+      // used by the example app) are mapped explicitly instead.
+      "projects/*": ["./projects/*"],
+      "odata-observable-store": ["./dist/odata-observable-store"],
+      "odata-observable-store/*": ["./dist/odata-observable-store/*"]
     }
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictTemplates": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@lucasheight/odata-observable-store",
-  "version": "1.2.16",
+  "version": "1.2.17",
   "description": "OData observable store pattern. ",
   "keywords": [
     "odata",

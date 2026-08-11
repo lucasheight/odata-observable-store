@@ -25,9 +25,9 @@
     "url": "https://github.com/lucasheight/odata-observable-store"
   },
   "peerDependencies": {
-    "@angular/common": ">=6",
-    "@angular/core": ">=6",
-    "rxjs": ">=7"
+    "@angular/common": ">=14 <=22",
+    "@angular/core": ">=14 <=22",
+    "rxjs": ">=7 <8"
   },
   "dependencies": {
     "tslib": "^2.0.0"

@@ -1,6 +1,5 @@
-/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-undef */
+
 import {
   HttpClientTestingModule,
   HttpTestingController,
@@ -59,16 +58,17 @@ describe("OData Store Tests", () => {
       expect(s.value.length === 5).toBeTrue();
     });
     store.query();
-    let req = httpTestingController.expectOne("/data?$count=true");
+    const req = httpTestingController.expectOne("/data?$count=true");
     // Assert that the request is a GET.
     expect(req.request.method).toEqual("GET");
 
     // Respond with mock data, causing Observable to resolve.
     // Subscribe callback asserts that correct data was returned.
     req.flush(testData, { status: 20, statusText: "Ok" });
-    store.fill({ "@odata.count": 5, value: testData } as IOdataCollection<
-      ITestData
-    >);
+    store.fill({
+      "@odata.count": 5,
+      value: testData,
+    } as IOdataCollection<ITestData>);
     // Finally, assert that there are no outstanding requests.
     httpTestingController.verify();
   });
@@ -103,7 +103,7 @@ describe("OData Store Tests", () => {
     store.notifier$.subscribe((s) => {
       expect(s.action).toEqual("Query");
     });
-    let req = httpTestingController.expectOne("/data?$count=true");
+    const req = httpTestingController.expectOne("/data?$count=true");
     // Assert that the request is a GET.
     expect(req.request.method).toEqual("GET");
 
@@ -126,7 +126,7 @@ describe("OData Store Tests", () => {
       expect(s.action).toEqual("Insert");
     });
     store.insert$(testItem).subscribe();
-    let req = httpTestingController.expectOne("/data");
+    const req = httpTestingController.expectOne("/data");
     // Assert that the request is a GET.
     expect(req.request.method).toEqual("POST");
 
@@ -159,7 +159,7 @@ describe("OData Store Tests", () => {
       });
       expect(s.Name).toEqual("Updated");
     });
-    let req = httpTestingController.expectOne("/data(1)");
+    const req = httpTestingController.expectOne("/data(1)");
     // Assert that the request is a GET.
     expect(req.request.method).toEqual("PUT");
 
@@ -192,7 +192,7 @@ describe("OData Store Tests", () => {
       });
       expect(s.Name).toEqual("Patched");
     });
-    let req = httpTestingController.expectOne("/data(1)");
+    const req = httpTestingController.expectOne("/data(1)");
     // Assert that the request is a GET.
     expect(req.request.method).toEqual("PATCH");
 
@@ -225,7 +225,7 @@ describe("OData Store Tests", () => {
         expect(found).toBeUndefined();
       });
     });
-    let req = httpTestingController.expectOne("/data(1)");
+    const req = httpTestingController.expectOne("/data(1)");
     // Assert that the request is a GET.
     expect(req.request.method).toEqual("DELETE");
 

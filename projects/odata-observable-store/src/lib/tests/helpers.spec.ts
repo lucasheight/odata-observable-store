@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { Helpers } from "../helpers";
 describe("Helper Tests", () => {
   it("Should parse query parameters to useable string", () => {

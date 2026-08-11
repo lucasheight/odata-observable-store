@@ -36,37 +36,32 @@ export abstract class ODataStore<T> {
    */
   abstract baseUrl: string;
   private _state$: BehaviorSubject<IOdataCollection<T>> = new BehaviorSubject(
-    undefined
+    undefined,
   );
   /**
    * Current Observable store state
    */
-  public state$: Observable<
-    IOdataCollection<T>
-  > = this._state$
+  public state$: Observable<IOdataCollection<T>> = this._state$
     .asObservable()
     .pipe(
-      filter((f) => typeof f === "object")
+      filter((f) => typeof f === "object"),
     ); /* only get objects not the default state */
   private _notifier$: Subject<IStoreNotifier<T>> = new Subject();
 
   /**Current notifier Observable state */
-  public notifier$: Observable<
-    IStoreNotifier<T>
-  > = this._notifier$.asObservable();
+  public notifier$: Observable<IStoreNotifier<T>> =
+    this._notifier$.asObservable();
   //public Notifier: Notifier<T>;
-  private _response$: Subject<
-    HttpResponse<IOdataCollection<T>>
-  > = new Subject();
+  private _response$: Subject<HttpResponse<IOdataCollection<T>>> =
+    new Subject();
   /**Current response observable state */
-  public response$: Observable<
-    HttpResponse<IOdataCollection<T>>
-  > = this._response$.asObservable();
+  public response$: Observable<HttpResponse<IOdataCollection<T>>> =
+    this._response$.asObservable();
 
-  protected responseObserver$: Partial<Observer<HttpResponse<T | IOdataCollection<T>>>>;
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  protected responseObserver$: Partial<
+    Observer<HttpResponse<T | IOdataCollection<T>>>
+  >;
   public complete: completeCallbackFn = () => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public error: errorCallbackFn = () => {};
 
   /**
@@ -80,7 +75,7 @@ export abstract class ODataStore<T> {
    */
   constructor(
     protected http: HttpClient,
-    protected settings: StoreSettings = null
+    protected settings: StoreSettings = null,
   ) {
     if (settings) {
       this._settings = Object.assign({}, this._settings, settings);
@@ -106,14 +101,14 @@ export abstract class ODataStore<T> {
     //const query: string = segments.length > 0 ? `?${segments.join("&")}` : "";
     const query: string = Helpers.queryParser(
       queryString,
-      this._settings.use$countOnQuery ? ["$count=true"] : []
+      this._settings.use$countOnQuery ? ["$count=true"] : [],
     );
     this.responseObserver$.next = (s): void => {
       this._response$.next(s);
       const currentState = Object.assign(
         {},
         this._state$.getValue(),
-        this._initState
+        this._initState,
       );
       currentState["@odata.count"] = s.body["@odata.count"];
       currentState.value = (s.body as IOdataCollection<T>).value;
@@ -127,7 +122,7 @@ export abstract class ODataStore<T> {
           observe: "response",
           headers: this._settings.getHeaders,
         })
-        .subscribe(this.responseObserver$)
+        .subscribe(this.responseObserver$),
     );
   };
   /**
@@ -138,11 +133,11 @@ export abstract class ODataStore<T> {
    * @returns Observable<IOdataCollection<T>>
    */
   public query$ = (
-    queryString: string = null
+    queryString: string = null,
   ): Observable<IOdataCollection<T>> => {
     const query: string = Helpers.queryParser(
       queryString,
-      this._settings.use$countOnQuery ? ["$count=true"] : []
+      this._settings.use$countOnQuery ? ["$count=true"] : [],
     );
     return this.http
       .get<IOdataCollection<T>>(`${this.baseUrl}${query}`, {
@@ -155,7 +150,7 @@ export abstract class ODataStore<T> {
           const currentState = Object.assign(
             {},
             this._state$.getValue(),
-            this._initState
+            this._initState,
           );
           currentState["@odata.count"] = s.body["@odata.count"];
           currentState.value = (s.body as IOdataCollection<T>).value;
@@ -164,7 +159,7 @@ export abstract class ODataStore<T> {
         }),
         map((m) => m.body),
         //call the complete callback
-        finalize(() => this.responseObserver$.complete())
+        finalize(() => this.responseObserver$.complete()),
       );
   };
 
@@ -180,7 +175,7 @@ export abstract class ODataStore<T> {
   public get = <K extends keyof T>(
     value: T,
     keys: K | K[] = null,
-    queryString: string = null
+    queryString: string = null,
   ): Observable<T> => {
     const query: string = Helpers.queryParser(queryString);
     const id: string = this.makeId(value, keys);
@@ -196,7 +191,7 @@ export abstract class ODataStore<T> {
         }),
         map((m) => m.body),
         //call the complete callback
-        finalize(() => this.responseObserver$.complete())
+        finalize(() => this.responseObserver$.complete()),
       );
     return getObs;
   };
@@ -213,7 +208,7 @@ export abstract class ODataStore<T> {
       this._response$.next(s);
       this.updateStore(
         this._settings.insertStoreFromBackend ? (s.body as T) : item,
-        "Insert"
+        "Insert",
       );
     };
 
@@ -223,7 +218,7 @@ export abstract class ODataStore<T> {
           observe: "response",
           headers: this._settings.insertHeaders,
         })
-        .subscribe(this.responseObserver$)
+        .subscribe(this.responseObserver$),
     );
   };
   /**
@@ -245,11 +240,11 @@ export abstract class ODataStore<T> {
           this._response$.next(t);
           this.updateStore(
             this._settings.insertStoreFromBackend ? (t.body as T) : item,
-            "Insert"
+            "Insert",
           );
         }),
         map((m) => m.body),
-        finalize(() => this.responseObserver$.complete())
+        finalize(() => this.responseObserver$.complete()),
       );
   };
   /**
@@ -267,7 +262,7 @@ export abstract class ODataStore<T> {
     item: T,
     keys: K | K[] = null,
     queryString: string = null,
-    method: "put" | "post" = "put"
+    method: "put" | "post" = "put",
   ): void => {
     const query: string = Helpers.queryParser(queryString);
     const id: string = this.makeId(item, keys);
@@ -297,7 +292,7 @@ export abstract class ODataStore<T> {
       this.updateStore(
         this._settings.updateStoreFromBackend ? (s.body as T) : item,
         "Update",
-        keys
+        keys,
       );
     };
 
@@ -318,7 +313,7 @@ export abstract class ODataStore<T> {
     item: T,
     keys: K | K[] = null,
     queryString: string = null,
-    method: "put" | "post" = "put"
+    method: "put" | "post" = "put",
   ): Observable<T> => {
     const query: string = Helpers.queryParser(queryString);
     const id: string = this.makeId(item, keys);
@@ -348,11 +343,11 @@ export abstract class ODataStore<T> {
         this.updateStore(
           this._settings.updateStoreFromBackend ? (s.body as T) : item,
           "Update",
-          keys
+          keys,
         );
       }),
       map((m) => m.body),
-      finalize(() => this.responseObserver$.complete())
+      finalize(() => this.responseObserver$.complete()),
     );
   };
   /**
@@ -370,7 +365,7 @@ export abstract class ODataStore<T> {
     item: T,
     keys: K | K[] = null,
     queryString: string = null,
-    method: "patch" | "put" | "post" = "patch"
+    method: "patch" | "put" | "post" = "patch",
   ): void => {
     const query: string = Helpers.queryParser(queryString);
     const id: string = this.makeId(item, keys);
@@ -406,7 +401,7 @@ export abstract class ODataStore<T> {
       this.updateStore(
         this._settings.patchStoreFromBackend ? (val.body as T) : item,
         "Update",
-        keys
+        keys,
       );
     };
 
@@ -427,7 +422,7 @@ export abstract class ODataStore<T> {
     item: T,
     keys: K | K[] = null,
     queryString: string = null,
-    method: "patch" | "put" | "post" = "patch"
+    method: "patch" | "put" | "post" = "patch",
   ): Observable<T> => {
     const query: string = Helpers.queryParser(queryString);
     const id: string = this.makeId(item, keys);
@@ -462,11 +457,11 @@ export abstract class ODataStore<T> {
         this.updateStore(
           this._settings.patchStoreFromBackend ? (val.body as T) : item,
           "Update",
-          keys
+          keys,
         );
       }),
       map((m) => m.body),
-      finalize(() => this.responseObserver$.complete())
+      finalize(() => this.responseObserver$.complete()),
     );
   };
   /**
@@ -481,7 +476,7 @@ export abstract class ODataStore<T> {
   public remove = <K extends keyof T>(
     item: T,
     keys: K | K[] = null,
-    method: "delete" | "post" = "delete"
+    method: "delete" | "post" = "delete",
   ): void => {
     const id: string = this.makeId(item, keys);
     const url: string =
@@ -516,8 +511,8 @@ export abstract class ODataStore<T> {
   public remove$ = <K extends keyof T>(
     item: T,
     keys: K | K[] = null,
-    method: "delete" | "post" = "delete"
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    method: "delete" | "post" = "delete",
+    // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
   ): Observable<void | Object> => {
     const id: string = this.makeId(item, keys);
     const url: string =
@@ -537,7 +532,7 @@ export abstract class ODataStore<T> {
         this.updateStore(item, "Delete", keys);
       }),
       map((m) => m.body),
-      finalize(() => this.responseObserver$.complete())
+      finalize(() => this.responseObserver$.complete()),
     );
   };
   /**
@@ -551,7 +546,7 @@ export abstract class ODataStore<T> {
   protected updateStore = <K extends keyof T>(
     item: T,
     operation: action,
-    keys: K | K[] = null
+    keys: K | K[] = null,
   ): void => {
     const _store = Object.assign({}, this._initState, this._state$.getValue());
     if (
@@ -598,18 +593,18 @@ export abstract class ODataStore<T> {
           }, _store.value);
           if (removed.length == 0) {
             console.warn(
-              "Update odata stored failed: Keys provided cannot be found."
+              "Update odata stored failed: Keys provided cannot be found.",
             );
           }
           //then filter from original array
           values = _store.value.filter((f) => removed.indexOf(f));
         } else {
           const found = _store.value.some(
-            (f) => f[keys as string] == item[keys]
+            (f) => f[keys as string] == item[keys],
           );
           if (!found) {
             console.warn(
-              "Update odata stored failed: Key provided cannot be found."
+              "Update odata stored failed: Key provided cannot be found.",
             );
           }
           values = _store.value.filter((f) => f[keys as string] != item[keys]);
@@ -639,17 +634,17 @@ export abstract class ODataStore<T> {
           }, _store.value);
           if (values.length == 0) {
             console.warn(
-              "Update odata stored failed: Keys provided cannot be found."
+              "Update odata stored failed: Keys provided cannot be found.",
             );
           }
           foundIdx = res.value.findIndex((f) => f == values[0]);
         } else {
           foundIdx = res.value.findIndex(
-            (f) => f[keys as string] == item[keys as string]
+            (f) => f[keys as string] == item[keys as string],
           );
           if (foundIdx == -1) {
             console.warn(
-              "Update odata stored failed: Key provided cannot be found."
+              "Update odata stored failed: Key provided cannot be found.",
             );
           }
         }
@@ -689,7 +684,7 @@ export abstract class ODataStore<T> {
    */
   protected dispatchNotifier = (
     act: action,
-    state: T | IOdataCollection<T> = null
+    state: T | IOdataCollection<T> = null,
   ): void => {
     const settings = this._settings;
     const note: IStoreNotifier<T> = { action: act, state: state };

@@ -6,9 +6,8 @@ export abstract class Store<T> {
   public state$: Observable<T>;
   protected _state$: BehaviorSubject<T>;
   protected _notifier$: Subject<IStoreNotifier<T>> = new Subject();
-  public notifier$: Observable<
-    IStoreNotifier<T>
-  > = this._notifier$.asObservable();
+  public notifier$: Observable<IStoreNotifier<T>> =
+    this._notifier$.asObservable();
   private _settings: IStoreSettings = {
     //defaults
     notifyOnDelete: true,
@@ -16,7 +15,10 @@ export abstract class Store<T> {
     notifyOnInsert: true,
     notifyOnUpdate: true,
   };
-  constructor(initialState: T, protected settings: IStoreSettings = null) {
+  constructor(
+    initialState: T,
+    protected settings: IStoreSettings = null,
+  ) {
     if (settings) {
       this._settings = Object.assign({}, this._settings, settings);
     }

@@ -19,7 +19,7 @@ export class OdataInterceptorService implements HttpInterceptor {
   intercept(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     req: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Observable<HttpEvent<any>> {
     const prefix = this.key
@@ -37,7 +37,7 @@ export class OdataInterceptorService implements HttpInterceptor {
             this.key = keyResults[1];
           }
         }
-      })
+      }),
     );
   }
 }
